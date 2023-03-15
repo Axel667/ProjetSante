@@ -1,0 +1,123 @@
+/* screen - sign-up */
+
+.sign-up {
+  align-items: flex-start;
+  background-color: var(--white);
+  border: 1px none;
+  display: flex;
+  height: 1024px;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.sign-up .overlap-group1 {
+  margin-left: -910px;
+  margin-top: -70px;
+  position: relative;
+}
+
+.sign-up .overlap-group {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.sign-up .santconomie {
+  height: 110px;
+  left: 1383px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 179px;
+  width: 495px;
+}
+
+.sign-up .nom {
+  height: 39px;
+  left: 1372px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 379px;
+  width: 188px;
+}
+
+.sign-up .prnom {
+  height: 38px;
+  left: 1370px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 480px;
+  width: 187px;
+}
+
+.sign-up .adresse-e-mail {
+  height: 39px;
+  left: 1370px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 580px;
+  width: 255px;
+}
+
+.sign-up .rectangle-54 {
+  background-color: var(--romance);
+  border: 1px solid;
+  border-color: var(--black-2);
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #00000026;
+  height: 39px;
+  left: 1370px;
+  position: absolute;
+  top: 620px;
+  width: 523px;
+}
+
+.sign-up .mot-de-passe {
+  height: 39px;
+  left: 1370px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 681px;
+  width: 255px;
+}
+
+.sign-up .rectangle-55 {
+  background-color: var(--romance);
+  border: 1px solid;
+  border-color: var(--black-2);
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #00000026;
+  height: 38px;
+  left: 1370px;
+  position: absolute;
+  top: 721px;
+  width: 523px;
+}
+
+.sign-up .confirmer-le-mot-de-passe {
+  height: 38px;
+  left: 1364px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 782px;
+  width: 443px;
+}
+
+.sign-up .rectangle-56 {
+  background-color: var(--romance);
+  border: 1px solid;
+  border-color: var(--black-2);
+  border-radius: 10px;
+  box-shadow: 0px 10px 50px #00000026;
+  height: 39px;
+  left: 1364px;
+  position: absolute;
+  top: 821px;
+  width: 524px;
+}

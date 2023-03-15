@@ -1,0 +1,89 @@
+/* screen - sign-in */
+
+.sign-in {
+  align-items: flex-start;
+  background-color: var(--white);
+  border: 1px none;
+  display: flex;
+  height: 1024px;
+  overflow: hidden;
+  width: 1440px;
+}
+
+.sign-in .overlap-group1 {
+  margin-left: -910px;
+  margin-top: -70px;
+  position: relative;
+}
+
+.sign-in .overlap-group {
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+.sign-in .santconomie {
+  height: 110px;
+  left: 1383px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  text-align: center;
+  top: 179px;
+  width: 495px;
+}
+
+.sign-in .mot-de-passe {
+  height: 38px;
+  left: 1370px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 480px;
+  width: 187px;
+}
+
+.sign-in .adresse-e-mail {
+  height: 39px;
+  left: 1375px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 379px;
+  width: 255px;
+}
+
+.sign-in .premire-visite-sur-santconomie {
+  height: 18px;
+  left: 1448px;
+  letter-spacing: 0;
+  line-height: normal;
+  position: absolute;
+  top: 671px;
+}
+
+.sign-in .span1 {
+  color: var(--black);
+  font-family: var(--font-family-inter);
+  font-size: var(--font-size-xxxs);
+  font-weight: 700;
+}
+
+.sign-in .inscrivez-vous {
+  align-items: flex-start;
+  cursor: pointer;
+  display: flex;
+  height: 18px;
+  left: 1710px;
+  min-width: 106px;
+  position: absolute;
+  top: 672px;
+}
+
+.sign-in .inscrivez-vous-1 {
+  height: 18px;
+  letter-spacing: 0;
+  line-height: normal;
+  margin-top: -1px;
+  text-decoration: underline;
+}
