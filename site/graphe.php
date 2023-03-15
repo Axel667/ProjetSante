@@ -23,36 +23,45 @@
 
     ?>
 <div>
-  <canvas id="myChart"></canvas>
+  <canvas id="graph1"></canvas>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-<script>
-
-    
-  const ctx = document.getElementById('myChart');
-
-
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels:<?php echo json_encode($année) ?>,
-      datasets: [{
-        label: <?php echo json_encode($année) ?>,
-        data:<?php echo json_encode($PIB) ?>,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-</script>
-
 </body>
 </html>
+
+<script>
+  var ctx = document.getElementById('graph1').getContext('2d')
+
+  var data = {
+    labels : ['label 1','label 2','label 3','label 4','label 5'],
+    datasets : [{
+      label: "data test1",
+      //backgroundColor : 'blue',
+      borderColor : 'blue',
+      data : [50,30,40,70,60],
+      tension : 0.4,
+      fill : true
+    },
+    {
+      label : "data test2",
+      //backgroundColor : 'red',
+      borderColor : 'red',
+      data :[10,60,30,40,50],
+      tension : 0.4,
+      fill : true
+    }]
+  }
+  var options = {
+    responsive: true
+  }
+
+  var config = {
+    type: 'line',
+    data: data,
+    options : options
+      
+    }
+  var graph1 = new Chart(ctx, config)
+</script>
