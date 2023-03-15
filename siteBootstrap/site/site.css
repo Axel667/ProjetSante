@@ -1,0 +1,80 @@
+h1{
+    vertical-align: middle;
+    font-size: 28px;
+    font-weight:bold;
+    color: white;
+}
+li.nav-item{
+    vertical-align: middle;
+    font-size: 20px;
+    color: white;
+    list-style-type: none;
+    margin: 10px;
+}
+a{
+    text-decoration: underline;
+    color: white;
+}
+a.link-btn{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.btn-index{
+    
+    float: right;
+}
+body{
+    background-image: url(img/303-3034795_fond-d-cran-mac-4k.jpg);
+    font-style:initial;
+    margin: 0; 
+    
+}
+p{
+    color:white;
+}
+form{
+    margin-top: 130px;
+    margin-bottom: 30px;
+}
+.d-flex{
+    margin: 0;
+}
+.form{
+    margin: 50px;
+    text-align: center;
+}
+.btn-light btn-lg {
+    margin-top:20px;
+    text-decoration: none;
+}
+img.tb {
+    margin-right: 10px;
+    
+}
+html{
+    margin: 0;
+}
+button.btn-light{
+    margin-bottom: 30px;
+    margin-right: 70px;
+}
+nav{
+    margin-bottom: 30px;
+}
+footer{
+    
+        position:absolute;
+        bottom:0;  /* on le colle en bas */
+        width:100%;
+        height:100px;   /* Hauteur du pied de page */
+}
+td,th,tr{
+    color: white;
+    border-style: double;
+    border-color: white;
+}
+table{
+    border-color: white;
+    color: white;
+}
