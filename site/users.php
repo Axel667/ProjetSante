@@ -45,7 +45,6 @@
         enregistrer($_POST['n'], $_POST['p'], $_POST['mail'], $_POST['genre'],$_POST['fonction'], md5($_POST['mdp2']));
         echo '<meta http-equiv="refresh" content="0;url=index.php">';
     }
-
     ?>
     
 </body>

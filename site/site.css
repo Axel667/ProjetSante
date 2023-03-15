@@ -72,8 +72,9 @@ footer{
 td,th,tr{
     color: white;
     border-style: double;
-    background-color: black;
+    border-color: white;
 }
 table{
+    border-color: white;
     color: white;
 }
