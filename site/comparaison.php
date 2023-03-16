@@ -16,7 +16,7 @@
 
 <body>
 
-<h1>Comapraison des PIB entre USA et la France</h1>
+<h1>Comapraison des PIB entre les USA et la France</h1>
 
 <?php 
         $bdd = getBD();
@@ -54,6 +54,7 @@
 
 
 <script>
+  
   var ctx = document.getElementById('comparaison').getContext('2d')
 
   var data = {
@@ -72,9 +73,10 @@
       data : <?php echo $pibU; ?>,
       tension : 0.4,
       fill : true
-    },
+    }
     ]
   }
+
   var options = {
     responsive: true
   }
@@ -83,7 +85,7 @@
     type: 'line',
     data: data,
     options : options
-      
-    }
-  var graph1 = new Chart(ctx, config)
+  }
+
+  var comparaison = new Chart(ctx, config)
 </script>
