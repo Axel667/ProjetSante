@@ -24,19 +24,37 @@
     <a class="nav-link active" href="compare.html">Comparer</a>
     </li>
     </ul>
-    <ul class="navbar-nav ms-auto">
-    <li class="nav-item">
-    <a class="nav-link active" href="#">Page 3</a>
+    <ul class="navbar-nav ms-auto"></ul>
+    <form class="d-flex" method="GET" action="recherche.php">
+                <input class="form-control me-2" name="s" id = "search" type="search" placeholder="Search">
+                <input type="submit" name="search" id = "envoyer" value= "search">
+              </form>
+              <?php
+              
+              session_start();
+
+              if (!isset($_SESSION['client'])){
+              echo '<li class="nav-item">
+                <a class="nav-link" href="sign-in.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a>
+              </li>';
+              }
+              else{
+                echo '<li class="nav-item">
+                <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
+                
+                echo '<li class="nav-item"><a class="nav-link active" href="deconnexion.php">Log out</a></li>';
+                
+              }
+              ?>
     </li>
     </ul>
-</ul>
     </div>
     </nav>
 
     
         <h3>Votre profil :</h3>
+
         <?php
-        session_start();
         if (!isset($_SESSION['client'])) {
             echo "<p>Veuillez vous connecter</p>";
         }
