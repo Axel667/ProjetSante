@@ -15,7 +15,7 @@
 
 </head>
 
-<h1>Comapraison des PIB entre la Russie et la France</h1>
+<h1>Comapraison des dépenses pour la santé entre la Russie et la France</h1>
 
 <?php 
         $bdd = getBD();
@@ -59,7 +59,7 @@
   var data = {
     labels : <?php echo $year;?>,
     datasets : [{
-      label: "PIB par habitant pour la France",
+      label: "Dépenses santé pour la France",
       backgroundColor : 'blue',
       borderColor : 'blue',
       data : <?php echo $Fr; ?>,
@@ -67,7 +67,7 @@
       fill : true
     },
     {
-      label : "PIB par habitant pour la Russie",
+      label : "Dépenses santé pour la Russie",
       borderColor : 'pink',
       backgroundColor: "cyan",
       data : <?php echo $RU; ?>,
