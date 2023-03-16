@@ -17,9 +17,12 @@
         
         foreach ($gra as $data){
 
-            $année[] = $data['espe_vie'];
-            $PIB[]= $data['Code'];
+            $année[] = $data['Annee'];
+            $PIB[]= $data['PIB par habitant'];
         }
+
+        $json = json_encode($année);
+        $json2 = json_encode($PIB);
 
     ?>
 <div>
@@ -35,20 +38,12 @@
   var ctx = document.getElementById('graph1').getContext('2d')
 
   var data = {
-    labels : ['label 1','label 2','label 3','label 4','label 5'],
+    labels : <?php echo $json;?>,
     datasets : [{
       label: "data test1",
       //backgroundColor : 'blue',
       borderColor : 'blue',
-      data : [50,30,40,70,60],
-      tension : 0.4,
-      fill : true
-    },
-    {
-      label : "data test2",
-      //backgroundColor : 'red',
-      borderColor : 'red',
-      data :[10,60,30,40,50],
+      data : <?php echo $json2; ?>,
       tension : 0.4,
       fill : true
     }]
