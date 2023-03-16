@@ -31,7 +31,7 @@
 
         <p> Mot de passe : <INPUT type="password" name="mdp" value=""></p>
 
-        <p><input type="submit" value="Se connecter"></p>
+        <p><input type="submit" class = "sign" value="Se connecter"></p>
 
 
     </from>

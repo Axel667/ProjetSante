@@ -29,8 +29,8 @@
             </ul>
             <ul class="navbar-nav ms-auto"></ul>
              <form class="d-flex" method="GET" action="recherche.php">
-                <input class="form-control me-2" name="s" type="search" placeholder="Search">
-                <input type="submit" name="envoyer">
+                <input class="form-control me-2" name="s" id = "search" type="search" placeholder="Search">
+                <input type="submit" name="search" id = "envoyer" value= "search">
               </form>
               <?php
               

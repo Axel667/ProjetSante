@@ -40,7 +40,7 @@
 
             echo '<p>Confirmer votre mot de passe : <INPUT type="password" name="mdp2" value="" require></p>';
 
-            echo '<p><input type="submit" value="Envoyer"></p>';
+            echo '<p><input type="submit"  class = "sign" value="S\'inscrire"></p>';
 
             ?>
 
