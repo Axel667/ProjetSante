@@ -231,7 +231,7 @@
         <OPTION VALUE="depenses_sante($)">Dépenses santé</OPTION>
         </SELECT>
 
-        <input type="submit"  class = "sign" value="Comparer">
+        <input type="submit"  class = "sign" value="Explorer">
 
     </form>
 
