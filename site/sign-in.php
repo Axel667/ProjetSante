@@ -25,11 +25,11 @@
 
     <h1>Bienvenue sur SantEconomie</h1>
 
-    <form action="connecter.php" method="post" autocomplete="off" class ="si">
+    <form  action="connecter.php" method="post" autocomplete="off" class ="si">
 
-        <p> Adresse e-mail : <INPUT type="text" name="mail" value=""></p>
+        <p> Adresse e-mail : <INPUT class = "sign" type="text" name="mail" value=""></p>
 
-        <p> Mot de passe : <INPUT type="password" name="mdp" value=""></p>
+        <p> Mot de passe : <INPUT class = "sign" type="password" name="mdp" value=""></p>
 
         <p><input type="submit" class = "sign" value="Se connecter"></p>
 

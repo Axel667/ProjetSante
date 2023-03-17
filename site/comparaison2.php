@@ -22,7 +22,7 @@
 <h2>Comapraison entre 2 pays</h2>
 
     <form action="comparaison2.php" method="post" autocomplete="off">
-        Pays  1: <SELECT name="Pays1">
+        Pays  1: <SELECT class = "sign" name="Pays1">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -220,7 +220,7 @@
         <OPTION VALUE="World">World</OPTION>
         </SELECT>
 
-        Pays 2: <SELECT name="Pays2">
+        Pays 2: <SELECT class = "sign" name="Pays2">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -418,7 +418,7 @@
         <OPTION VALUE="World">World</OPTION>
         </SELECT>
 
-        Type de graphique : <SELECT name="type">
+        Type de graphique : <SELECT class = "sign" name="type">
         <OPTION VALUE="bar">Barre</OPTION>
         <OPTION VALUE="line">Line</OPTION>
         <OPTION VALUE="scatter">Nuage de points</OPTION>
@@ -428,7 +428,7 @@
         <OPTION VALUE="pie">Pie</OPTION>
         </SELECT>
 
-        Données : <SELECT name="données">
+        Données : <SELECT  class = "sign"name="données">
         <OPTION VALUE="PIB par habitant">PIB</OPTION>
         <OPTION VALUE="espe_vie">Espérance de vie</OPTION>
         <OPTION VALUE="tx_obesite(%)">Taux d'obésité</OPTION>
