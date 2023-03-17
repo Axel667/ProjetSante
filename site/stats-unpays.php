@@ -258,7 +258,10 @@
         
         $y = json_encode($année);
         $data0 = json_encode($PAYS1);
+
+        $result1 ->closeCursor(); 
       }
+
       else{
         echo "Veuillez saisir tous les champs.";
     }

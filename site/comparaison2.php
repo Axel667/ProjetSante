@@ -460,6 +460,8 @@
         $year = json_encode($année);
         $data0 = json_encode($PAYS1);
 
+        $result1 ->closeCursor(); 
+
         $result2 = $bdd ->query("SELECT * FROM `data` WHERE pays = '".$p2."'" );
 
         while( $pays2 = $result2 -> fetch()){
@@ -468,6 +470,8 @@
         }
 
         $data1 = json_encode($PAYS2);
+
+        $result2 ->closeCursor(); 
       }
       else{
         echo "Veuillez saisir tous les champs.";
