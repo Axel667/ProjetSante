@@ -21,7 +21,7 @@
         <a class="nav-link active" href="carte.html">Carte</a>
         </li>
     <li class="nav-item">
-    <a class="nav-link active" href="compare.html">Comparer</a>
+    <a class="nav-link active" href="comparaison2.php">Comparer</a>
     </li>
     </ul>
     <ul class="navbar-nav ms-auto"></ul>

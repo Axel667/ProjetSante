@@ -35,6 +35,9 @@
                 <OPTION VALUE="retraite">Retraité(e)</OPTION>
                 <OPTION VALUE="autre">Autre</OPTION>
             </SELECT></p>';
+
+            echo '<p>S\'abonner à la newsletter : Oui  <input type="radio" name="news" value="oui">
+                Non  <input type="radio" name="news" value="non"><p>';
             
             echo '<p>Mot de passe : <input type="password" name="mdp1" value="" require></p>';
 
