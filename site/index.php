@@ -24,7 +24,7 @@
                 <a class="nav-link active" aria-current="page" href="carte.html">Carte</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="compare.html">Comparer</a>
+                <a class="nav-link active" href="comparaison2.php">Comparer</a>
               </li>
             </ul>
             <ul class="navbar-nav ms-auto"></ul>
@@ -68,7 +68,7 @@
           <button type="button" class="btn btn-light btn-lg"><img class="tb" src="img/world@2x.png"><a class="link-btn" href="carte.html">Découvrez notre carte</a></button>
       </div>
         <div>
-        <button type="button" class="btn btn-light btn-lg" ><img class="tb" src="img/compare@2x.png"><a class="link-btn" href="compare.html">Comparez les pays</button>
+        <button type="button" class="btn btn-light btn-lg" ><img class="tb" src="img/compare@2x.png"><a class="link-btn" href="comparaison2.php">Comparez les pays</button>
       </div>
         <div>
         <button type="button" class="btn btn-light btn-lg"><img class="tb" src="img/user-1@2x.png"><a class="link-btn" href="#">Publiez votre article</button>

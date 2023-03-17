@@ -25,7 +25,7 @@ a.link-btn{
     float: right;
 }
 body{
-    background-image: url(img/303-3034795_fond-d-cran-mac-4k.jpg);
+    background-color: white;
     font-style:initial;
     margin: 0; 
     
@@ -33,7 +33,7 @@ body{
 p{
     color:white;
 }
-form{
+form.si{
     margin-top: 130px;
     margin-bottom: 30px;
 }

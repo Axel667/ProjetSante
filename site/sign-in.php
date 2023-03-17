@@ -25,7 +25,7 @@
 
     <h1>Bienvenue sur SantEconomie</h1>
 
-    <form action="connecter.php" method="post" autocomplete="off">
+    <form action="connecter.php" method="post" autocomplete="off" class ="si">
 
         <p> Adresse e-mail : <INPUT type="text" name="mail" value=""></p>
 

@@ -14,7 +14,7 @@
 <div class="form">
     <h1>Sign up</h1>
     
-        <form action="users.php" method="post" autocomplete="off">
+        <form action="users.php" method="post" autocomplete="off" class="si">
             <?php
             
             echo '<p>Nom : <input type="text" name="n" value=""/></p>';
