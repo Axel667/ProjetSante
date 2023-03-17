@@ -19,9 +19,9 @@
 
 </head>
 
-<h1>Comapraison entre 2 pays</h1>
+<h2>Comapraison entre 2 pays</h2>
 
-      <form action="comparaison2.php" method="post" autocomplete="off">
+    <form action="comparaison2.php" method="post" autocomplete="off">
         Pays  1: <SELECT name="Pays1">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
@@ -220,7 +220,7 @@
         <OPTION VALUE="World">World</OPTION>
         </SELECT>
 
-        Pays  2: <SELECT name="Pays2">
+        Pays 2: <SELECT name="Pays2">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -424,8 +424,9 @@
         <OPTION VALUE="scatter">Nuage de points</OPTION>
         <OPTION VALUE="radar">Radar</OPTION>
         <OPTION VALUE="polarArea">Polar Area</OPTION>
+        <OPTION VALUE="doughnut">Doughnut</OPTION>
+        <OPTION VALUE="pie">Pie</OPTION>
         </SELECT>
-
 
         Données : <SELECT name="données">
         <OPTION VALUE="PIB par habitant">PIB</OPTION>
@@ -436,8 +437,9 @@
 
         <input type="submit"  class = "sign" value="Comparer">
 
-      </form>
-
+    </form>
+<body>
+  
       <?php 
 
       if ((isset($_POST['Pays1']) and !empty($_POST['Pays1']))
@@ -484,11 +486,11 @@
     ?>
     
 
-<div>
-  <canvas id="comparaison2"></canvas>
-</div>
+  <div>
+    <canvas id="comparaison2"></canvas>
+  </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>
