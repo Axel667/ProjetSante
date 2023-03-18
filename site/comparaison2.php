@@ -78,7 +78,7 @@
 <br/>
 
 <body>
-  <h2>Comapraison entre 2 pays</h2>
+  <h2>Compraison entre 2 pays</h2>
 
   <form action="comparaison2.php" method="post" autocomplete="off">
         Pays  1: <SELECT class = "sign" name="Pays1">
