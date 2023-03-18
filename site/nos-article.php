@@ -81,7 +81,7 @@
 		while ($ligne = $rep ->fetch()) {
 
 			//création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
-			echo "<a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a>";
+			echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
         }
 
         $rep ->closeCursor(); 

@@ -83,9 +83,9 @@
 
         while ($ligne = $rep ->fetch()){
 
-            echo "<h1>".$ligne['Titre']."</h1>";
+            echo "<h2>".$ligne['Titre']."</h2>";
 
-            echo $ligne['article'];
+            echo "<p>".$ligne['article']."</p>";
         }
 
         $rep ->closeCursor();
