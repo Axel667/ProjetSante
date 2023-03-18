@@ -33,6 +33,9 @@
               <li class="nav-item">
                 <a class="nav-link active" href="comparaison2.php">Comparer</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="nos-article.php">Nos Articles</a>
+              </li>
               <?php 
               session_start();
 
