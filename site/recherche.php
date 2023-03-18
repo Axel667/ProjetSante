@@ -10,6 +10,7 @@
 
 </head>
 <body>
+    <h4><a href = "index.php">Back home</a></h4>
 
 
     <?php
@@ -27,27 +28,27 @@
 
             if ($data->rowCount() > 0 and (!empty($data))){
 
-                echo'<table>';
+                echo'<table style="border: 3px solid black;">';
                 echo '<tr>
-                <th>Pays</th>
-                <th>Code Pays</th>
-                <th>Année</th>
-                <th>PIB par habitant</th>
-                <th>Espérance de vie</th>
-                <th>Taux d\'obésité(%)</th>
-                <th>Dépenses en santé($)</th>
+                <th style="border: 3px solid black;">Pays</th>
+                <th style="border: 3px solid black;">Code Pays</th>
+                <th style="border: 3px solid black;">Année</th>
+                <th style="border: 3px solid black;">PIB par habitant</th>
+                <th style="border: 3px solid black;">Espérance de vie</th>
+                <th style="border: 3px solid black;">Taux d\'obésité(%)</th>
+                <th style="border: 3px solid black;">Dépenses en santé($)</th>
                 </tr>';
 
                 while($d = $data->fetch()){
 
                     echo "<tr>";
-                    echo "<td>" .$d['Pays']. "</td>";
-                    echo "<td>" .$d['Code'] . "</td>";
-                    echo "<td>" .$d['Annee'] . "</td>";
-                    echo "<td>".$d['PIB par habitant']."</td>";
-                    echo "<td>".$d['espe_vie']."</td>";
-                    echo "<td>".$d['tx_obesite(%)']."</td>";
-                    echo "<td>".$d['depenses_sante($)']."</td>";
+                    echo "<td style='border: 3px solid black;'>" .$d['Pays']. "</td>";
+                    echo "<td style='border: 3px solid black;'>" .$d['Code'] . "</td>";
+                    echo "<td style='border: 3px solid black;'>" .$d['Annee'] . "</td>";
+                    echo "<td style='border: 3px solid black;'>".$d['PIB par habitant']."</td>";
+                    echo "<td style='border: 3px solid black;'>".$d['espe_vie']."</td>";
+                    echo "<td style='border: 3px solid black;'>".$d['tx_obesite(%)']."</td>";
+                    echo "<td style='border: 3px solid black;'>".$d['depenses_sante($)']."</td>";
                     echo "</tr>";
                     
                 }
