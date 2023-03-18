@@ -14,12 +14,62 @@
     <link rel="stylesheet" type="text/css" href="site.css" />
 </head>
 <body>
-    <h1>Créer un article</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.php"><h2>SantÉconomie</h2></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <ul class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="carte.html">Carte</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="comparaison2.php">Comparer</a>
+              </li>
+              <?php 
+              session_start();
+
+              if (!isset($_SESSION['client'])){
+              }
+              else{
+              echo '<li class="nav-item">
+                <a class="nav-link active" href="create.php">Créer</a>
+              </li>';
+            }?>
+            </ul>
+            <ul class="navbar-nav ms-auto"></ul>
+             <form class="d-flex" method="GET" action="recherche.php">
+                <input class="form-control me-2" name="s" id = "search" type="search" placeholder="Search">
+                <input type="submit" name="search" id = "envoyer" value= "search">
+              </form>
+              <?php
+
+              if (!isset($_SESSION['client'])){
+              echo '<li class="nav-item">
+                <a class="nav-link" href="sign-in.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a>
+              </li>';
+              }
+              else{
+                echo '<li class="nav-item">
+                <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
+                
+                echo '<li class="nav-item"><a class="nav-link active" id = "logout" href="deconnexion.php">Log out</a></li>';
+                
+              }
+              ?>
+              
+            </ul> 
+            </div>
+            </div>
+            </nav>
+            
+    <h2>Créer un article</h2>
 
     <p>Sur cette page vous pouvez créer un article à partir des des datasets et des graphiques mis à votre disposition sur notre site.<p>
     <?php 
     
-    session_start();
 
     if (isset($_SESSION['client'])){
 
