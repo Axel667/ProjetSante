@@ -27,9 +27,9 @@
 
     <form  action="connecter.php" method="post" autocomplete="off" class ="si">
 
-        <p> Adresse e-mail : <INPUT class = "sign" type="text" name="mail" value=""></p>
+        <p> Adresse e-mail : <INPUT class = "sign" type="text" name="mail" value="" required></p>
 
-        <p> Mot de passe : <INPUT class = "sign" type="password" name="mdp" value=""></p>
+        <p> Mot de passe : <INPUT class = "sign" type="password" name="mdp" value="" required></p>
 
         <p><input type="submit" class = "sign" value="Se connecter"></p>
 

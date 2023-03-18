@@ -45,7 +45,7 @@
     }
     else{
         
-        echo '<meta http-equiv="refresh" content="0;url=connexion.php">';
+        echo '<meta http-equiv="refresh" content="0;url=sign-in.php">';
     }
 
     ?>

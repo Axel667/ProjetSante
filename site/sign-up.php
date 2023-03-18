@@ -17,11 +17,11 @@
         <form  action="users.php" method="post" autocomplete="off" class="si">
             <?php
             
-            echo '<p>Nom : <input class = "sign" type="text" name="n" value=""/></p>';
+            echo '<p>Nom : <input class = "sign" type="text" name="n" value="" required /></p>';
 
-            echo '<p>Prénom : <input class = "sign" type="text" name="p" value=""/></p>'; 
+            echo '<p>Prénom : <input class = "sign" type="text" name="p" value="" required /></p>'; 
 
-            echo '<p>Adresse e-mail : <input  class = "sign" type="text" name="mail" value=""/></p>';
+            echo '<p>Adresse e-mail : <input  class = "sign" type="text" name="mail" value="" required /></p>';
 
             echo '<p>Genre : Homme  <input type="radio" name="genre" value="Mr">
                 Femme  <input type="radio" name="genre" value="Mme"><p>';
@@ -39,9 +39,9 @@
             echo '<p>S\'abonner à la newsletter : Oui  <input type="radio" name="news" value="oui">
                 Non  <input type="radio" name="news" value="non"><p>';
             
-            echo '<p>Mot de passe : <input class = "sign" type="password" name="mdp1" value="" require></p>';
+            echo '<p>Mot de passe : <input class = "sign" type="password" name="mdp1" value="" required ></p>';
 
-            echo '<p>Confirmer votre mot de passe : <INPUT class ="sign" type="password" name="mdp2" value="" require></p>';
+            echo '<p>Confirmer votre mot de passe : <INPUT class ="sign" type="password" name="mdp2" value="" required></p>';
 
             echo '<p><input type="submit"  class = "sign" value="S\'inscrire"></p>';
 
