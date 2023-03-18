@@ -26,6 +26,16 @@
               <li class="nav-item">
                 <a class="nav-link active" href="comparaison2.php">Comparer</a>
               </li>
+              <?php 
+              session_start();
+
+              if (!isset($_SESSION['client'])){
+              }
+              else{
+              echo '<li class="nav-item">
+                <a class="nav-link active" href="create.php">Créer</a>
+              </li>';
+            }?>
             </ul>
             <ul class="navbar-nav ms-auto"></ul>
              <form class="d-flex" method="GET" action="recherche.php">
@@ -33,8 +43,6 @@
                 <input type="submit" name="search" id = "envoyer" value= "search">
               </form>
               <?php
-              
-              session_start();
 
               if (!isset($_SESSION['client'])){
               echo '<li class="nav-item">
@@ -49,7 +57,6 @@
                 
               }
               ?>
-            
               
             </ul> 
             </div>

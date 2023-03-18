@@ -23,6 +23,15 @@
     <li class="nav-item">
     <a class="nav-link active" href="comparaison2.php">Comparer</a>
     </li>
+    <?php session_start();
+
+              if (!isset($_SESSION['client'])){
+              }
+              else{
+              echo '<li class="nav-item">
+                <a class="nav-link active" href="create.php">Créer</a>
+              </li>';
+            }?>
     </ul>
     <ul class="navbar-nav ms-auto"></ul>
     <form class="d-flex" method="GET" action="recherche.php">
@@ -30,8 +39,6 @@
                 <input type="submit" name="search" id = "envoyer" value= "search">
               </form>
               <?php
-              
-              session_start();
 
               if (!isset($_SESSION['client'])){
               echo '<li class="nav-item">
@@ -59,15 +66,16 @@
             echo "<p>Veuillez vous connecter</p>";
         }
         else{
-            echo "<p>".$_SESSION['client']['genre']."</p>";
-            echo "<p>".$_SESSION['client']['Nom']."</p>";
-            echo "<p>".$_SESSION['client']['Prenom']."</p>";
-            echo "<p>".$_SESSION['client']['mail']."</p>";
-            echo "<p>".$_SESSION['client']['fonction']."</p>";
+            echo "<p>Civilité : ".$_SESSION['client']['genre']."</p>";
+            echo "<p>Nom : ".$_SESSION['client']['Nom']."</p>";
+            echo "<p>Prénom : ".$_SESSION['client']['Prenom']."</p>";
+            echo "<p>Adresse e-mail : ".$_SESSION['client']['mail']."</p>";
+            echo "<p> Fonction : ".$_SESSION['client']['fonction']."</p>";
         }
         ?>
     
-    <a class="btn btn-primary" href="index.php" role="button">Retour à la page d'acceuil</a>
+    <a href="index.php" class="btn btn-secondary">Back Home</a>
+
 
 
     

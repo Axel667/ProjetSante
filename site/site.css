@@ -13,13 +13,13 @@ li.nav-item{
 }
 a{
     text-decoration: none;
-    color: black;
+    color: white;
 }
 a:visited{
     color: black;
 }
 a:hover{
-    color: palevioletred;
+    color:darkgoldenrod;
 }
 div.link-btn{
     margin-top: 20px;
@@ -31,8 +31,7 @@ div.link-btn{
 body{
     background-color: white;
     font-style:initial;
-    margin: 0; 
-    
+    margin: 0;
 }
 p{
     color:black;
