@@ -18,6 +18,9 @@ a{
 a:visited{
     color: black;
 }
+a.logout:visited{
+    color: white;
+}
 a:hover{
     color:darkgoldenrod;
 }

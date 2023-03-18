@@ -53,7 +53,7 @@
                 echo '<li class="nav-item">
                 <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
                 
-                echo '<li class="nav-item"><a class="nav-link active" href="deconnexion.php">Log out</a></li>';
+                echo '<li class="nav-item"><a class="nav-link active" id = "logout" href="deconnexion.php">Log out</a></li>';
                 
               }
               ?>
@@ -84,8 +84,6 @@
       <a href="create.php" class="btn btn-light btn-lg"><img class="tb" src="img/user-1@2x.png">Publiez votre article</a>
     </div>
   </div>
-
-
 
 </body>
 </html>
