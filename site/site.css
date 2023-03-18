@@ -21,13 +21,11 @@ a:visited{
 a:hover{
     color: palevioletred;
 }
-a.link-btn{
-    text-decoration: none;
-    color: black;
+div.link-btn{
+    margin-top: 20px;
     font-weight: bold;
 }
 .btn-index{
-    
     float: right;
 }
 body{
@@ -49,10 +47,6 @@ form.si{
 .form{
     margin: 50px;
     text-align: center;
-}
-.btn-light btn-lg {
-    margin-top:20px;
-    text-decoration: none;
 }
 img.tb {
     margin-right: 10px;
@@ -92,8 +86,4 @@ table{
 .sign{
     background-color: white;
     border-radius: 30px;
-}
-h4{
-    text-decoration: none;
-    color: black;
 }

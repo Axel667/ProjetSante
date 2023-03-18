@@ -64,15 +64,18 @@
             }
             ?>
   <div class="btn-index">
-        <div>
-          <button type="button" class="btn btn-light btn-lg"><img class="tb" src="img/world@2x.png"><a class="link-btn" href="carte.html">Découvrez notre carte</a></button>
-      </div>
-        <div>
-        <button type="button" class="btn btn-light btn-lg" ><img class="tb" src="img/compare@2x.png"><a class="link-btn" href="comparaison2.php">Comparez les pays</button>
-      </div>
-        <div>
-        <button type="button" class="btn btn-light btn-lg"><img class="tb" src="img/user-1@2x.png"><a class="link-btn" href="#">Publiez votre article</button>
-      </div>
+
+    <div class = "link-btn">
+      <a href="carte.html" class="btn btn-light btn-lg" ><img class="tb" src="img/world@2x.png">Découvrez notre carte</a>
+    </div>
+
+    <div class = "link-btn">
+      <a href="comparaison2.php" class="btn btn-light btn-lg"><img class="tb" src="img/compare@2x.png">Comparez les pays</a>
+    </div>
+
+    <div class = "link-btn">
+      <a href="create.php" class="btn btn-light btn-lg"><img class="tb" src="img/user-1@2x.png">Publiez votre article</a>
+    </div>
   </div>
 
 

@@ -21,6 +21,8 @@
 
 <h2>Comapraison entre 2 pays</h2>
 
+<a href="index.php" class="btn btn-secondary">Back Home</a>
+
     <form action="comparaison2.php" method="post" autocomplete="off">
         Pays  1: <SELECT class = "sign" name="Pays1">
         <OPTION VALUE="Aruba">Aruba</OPTION>
