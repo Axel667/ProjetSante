@@ -99,15 +99,13 @@
 
     <p>Vous pouvez nous joindre en laissant un message dans le formulaire ci-dessous : </p>
 
-    <form method="post" action="#">
+    <form method ="post" action="#">
+    <div class="mb-3 mt-3">
+      <label for="comment">Comments:</label>
+      <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+    </div>
+    <button type="submit" class="btn btn-secondary">Envoyer</button>
+  </form>
 
-        <p> Article : <br/><TEXTAREA  class ="sign" rows="5" cols="50" name="message">
-            Ecrivez votre message ici
-            </TEXTAREA>
-        </p>;
-        
-        <p><input type="submit"  class = "sign" value="Envoyer"></p>
-
-    </form>
 </body>
 </html>

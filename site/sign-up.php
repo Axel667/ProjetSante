@@ -11,6 +11,9 @@
     
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
 
@@ -18,40 +21,52 @@
 
     <h1>Sign up</h1>
     
-        <form  action="users.php" method="post" autocomplete="off" class="si">
-            <?php
-            
-            echo '<p>Nom : <input class = "sign" type="text" name="n" value="" required /></p>';
 
-            echo '<p>Prénom : <input class = "sign" type="text" name="p" value="" required /></p>'; 
-
-            echo '<p>Adresse e-mail : <input  class = "sign" type="text" name="mail" value="" required /></p>';
-
-            echo '<p>Genre : Homme  <input type="radio" name="genre" value="Mr">
-                Femme  <input type="radio" name="genre" value="Mme"><p>';
-
-            echo 
-            '<p>Fonction : <SELECT class = "sign" name="fonction">
-                <OPTION
-                VALUE="enseignant">Enseignant(e)</OPTION>
-                <OPTION VALUE="etudiant">Etudiant(e)</OPTION>
-                <OPTION VALUE="Statisticien">Statisticien(ne)</OPTION>
-                <OPTION VALUE="retraite">Retraité(e)</OPTION>
-                <OPTION VALUE="autre">Autre</OPTION>
-            </SELECT></p>';
-
-            echo '<p>S\'abonner à la newsletter : Oui  <input type="radio" name="news" value="oui">
-                Non  <input type="radio" name="news" value="non"><p>';
-            
-            echo '<p>Mot de passe : <input class = "sign" type="password" name="mdp1" value="" required ></p>';
-
-            echo '<p>Confirmer votre mot de passe : <INPUT class ="sign" type="password" name="mdp2" value="" required></p>';
-
-            echo '<p><input type="submit"  class = "sign" value="S\'inscrire"></p>';
-
-            ?>
-
-        </form>
+    <form action="users.php" method="post">
+    <div class="mb-3 mt-3">
+        <label for="Nom" class="form-label">Nom : </label>
+        <input type="nom" class="form-control" id="nom" name="n">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Prenom" class="form-label">Prénom : </label>
+        <input type="prenom" class="form-control" id="prenom" name="p">
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="Mail" class="form-label">Adresse e-mail : </label>
+        <input type="mail" class="form-control" id="mail" name="mail">
+    </div>
+    Genre : <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="radio1" name="genre" value="Mr" checked>Homme
+    <label class="form-check-label" for="radio1"></label>
+    </div>
+    <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="radio2" name="genre" value="Mme">Femme
+    <label class="form-check-label" for="radio2"></label>
+    </div>
+    Fonction : <select class="form-select" name="fonction">
+    <option value = "Etudiant(e)">Etudiant(e)</option>
+    <option value ="Enseignant(e)">Enseignant(e)</option>
+    <option value ="Statisticien(e)">Statisticien(e)</option>
+    <option value = "Retraité(e)">Retraité(e)</option>
+    </select>
+    S'abonner à la newsletter :<div class="form-check">
+    <input type="checkbox" class="form-check-input" id="radio1" name="news" value="Oui" checked>Oui
+    <label class="form-check-label" for="radio1"></label>
+    </div>
+    <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="radio2" name="news" value="Non">Non
+    <label class="form-check-label" for="radio2"></label>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Mot de passe : </label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mdp1">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Confirmer votre mot de passe : </label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mdp2">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </form>
 </div>
 </body>
 

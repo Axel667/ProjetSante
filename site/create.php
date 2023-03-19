@@ -74,6 +74,8 @@
             </div>
             </nav>
 
+    <a href="index.php" class="btn btn-secondary">Back Home</a>
+
     <h2>Créer un article</h2>
 
     <p>Sur cette page vous pouvez créer un article à partir des des datasets et des graphiques mis à votre disposition sur notre site.<p>
@@ -84,19 +86,27 @@
     echo '<form method="post" action="enregistrer.php" >';
 
     if(!isset($_GET['var1'])){
-        echo '<p> Titre : <INPUT class = "sign" type="text" name="titre" value=""></p>';
+        echo '<div class="mb-3 mt-3">
+        <label for="Titre" class="form-label">Titre : </label>
+        <input type="titre" class="form-control" id="titre" name="titre"></div>';
     }
     elseif(isset($_GET['var1'])){
-        echo '<p> Titre : <INPUT class = "sign" type="text" name="titre" value='.$_GET['var1'].'></p>';
+        echo '<div class="mb-3 mt-3">
+        <label for="Titre" class="form-label">Titre : </label>
+        <input type="titre" class="form-control" id="titre" name="titre" value='.$_GET['var1'].'></div>';
     }
     if(!isset($_GET['var2'])){
-        echo '<p> Auteur : <INPUT class = "sign" type="text" name="auteur" value=""></p>';
+        echo '<div class="mb-3 mt-3">
+        <label for="Auteur" class="form-label">Auteur : </label>
+        <input type="auteur" class="form-control" id="auteur" name="auteur"></div>';
     }
     elseif(isset($_GET['var2'])){
-        echo '<p> Auteur : <INPUT class = "sign" type="text" name="auteur" value='.$_GET['var2'].'></p>';
+        echo '<div class="mb-3 mt-3">
+        <label for="Auteur" class="form-label">Auteur : </label>
+        <input type="auteur" class="form-control" id="auteur" name="auteur" value='.$_GET['var2'].'></div>';
     }
-    echo'
-        <p>Pays :  <SELECT class = "sign" name="pays">
+    echo'</div>
+        Pays : <select class="form-select" name="pays">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -292,20 +302,23 @@
         <OPTION VALUE="Zambia">Zambia</OPTION>
         <OPTION VALUE="Zimbabwe">Zimbabwe</OPTION>
         <OPTION VALUE="World">World</OPTION>
-        </SELECT></p>';
+        </SELECT></div>';
     if(!isset($_GET['var4'])){
 
-        echo '<p> Article : <br/><TEXTAREA  class ="sign" rows="20" cols="170" name="art">
-        Ecrivez votre article ici
-        </TEXTAREA></p>';
+        echo '<div class="mb-3 mt-3">
+        <label for="article">Article : </label>
+        <textarea class="form-control" rows="5" id="comment" name="art"></textarea>
+      </div>';
     }
     elseif(isset($_GET['var4'])){
-        echo '<p> Article : <br/><TEXTAREA  class ="sign" rows="20" cols="170" name="art">
-        '.$_GET['var4'].'
-        </TEXTAREA></p>';
+        echo '<div class="mb-3 mt-3">
+        <label for="article">Article : </label>
+        <textarea class="form-control" rows="5" id="comment" name="art">'.$_GET['var4'].'</textarea>
+        
+        </div>';
     }
 
-    echo '<p><input type="submit"  class = "sign" value="Enregistrer"></p>
+    echo '<button type="submit" class="btn btn-primary">Enregistrer</button>
 
     </form>';
     }
@@ -314,7 +327,6 @@
     }
     ?>
 
-    <a href="index.php" class="btn btn-secondary">Back Home</a>
 
 </body>
 </html>
