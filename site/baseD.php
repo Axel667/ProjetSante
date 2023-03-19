@@ -2,7 +2,7 @@
 
 function getBD() {
     $host = 'database-1.ckmwomwn8pbh.eu-west-3.rds.amazonaws.com';
-    $dbname = 'SanteEco';
+    $dbname = 'SantEco';
     $username = 'admin';
     $password = 'santeconomie';
 
