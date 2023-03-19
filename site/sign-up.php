@@ -20,8 +20,9 @@
 <div class="form">
 
     <h1>Sign up</h1>
-    
 
+    <br/>
+    
     <form action="users.php" method="post">
     <div class="mb-3 mt-3">
         <label for="Nom" class="form-label">Nom : </label>
