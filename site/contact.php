@@ -9,16 +9,17 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Recherche</title>
-
-    <link rel="stylesheet" type="text/css" href="site.css" />
+    <title>Contact</title>
 
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
 
+    <link rel="stylesheet" type="text/css" href="site.css" />
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 </head>
 
+<body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.php"><h2>SantÉconomie</h2></a>
@@ -35,6 +36,9 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="nos-article.php">Nos Articles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="datasets.php">Datasets</a>
               </li>
               <?php 
               session_start();
@@ -72,66 +76,38 @@
             </div>
             </div>
             </nav>
-
-<body>
-
-    <a href="index.php" class="btn btn-secondary">Back Home</a>
-
-    <br/>
-    <br/>
     
-    <?php
+    <h2>Contact : </h2>
 
-        echo "<p>Voici les résultats des données pour la recherche : <strong>'".$_GET['s']."'</strong></p>";
+    <p>
+        Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS <br/>
+        à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créer par 6 jeunes étudiants en plein <br/>
+        apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. <br/>
+        Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie de chaque pays.
+    </p>
 
-        include("baseD.php");
+    <h4>Fondateur : </h4>
 
-        $bdd = getBD();
+    <ul>
+        <li>Girondin Audric</li>
+        <li>Can Arisoy Ivan</li>
+        <li>Carot Axel</li>
+        <li>Duckes Jonathan</li>
+        <li>Ravalisaona Malala</li>
+        <li>Abdallah Rachydah</li>
+    </ul>
+
+    <p>Vous pouvez nous joindre en laissant un message dans le formulaire ci-dessous : </p>
+
+    <form method="post" action="#">
+
+        <p> Article : <br/><TEXTAREA  class ="sign" rows="5" cols="50" name="message">
+            Ecrivez votre message ici
+            </TEXTAREA>
+        </p>;
         
-        if (isset($_GET['s']) and !empty($_GET['s'])){
+        <p><input type="submit"  class = "sign" value="Envoyer"></p>
 
-            $rech = htmlspecialchars($_GET['s']);
-            $data = $bdd->query('select * from Data where Pays LIKE "%'.$rech.'%" ORDER by Pays DESC');
-
-            if ($data->rowCount() > 0 and (!empty($data))){
-
-                echo'<table style="border: 3px solid black;">';
-                echo '<tr>
-                <th style="border: 3px solid black;">Pays</th>
-                <th style="border: 3px solid black;">Code Pays</th>
-                <th style="border: 3px solid black;">Année</th>
-                <th style="border: 3px solid black;">PIB par habitant</th>
-                <th style="border: 3px solid black;">Espérance de vie</th>
-                <th style="border: 3px solid black;">Taux d\'obésité(%)</th>
-                <th style="border: 3px solid black;">Dépenses en santé($)</th>
-                </tr>';
-
-                while($d = $data->fetch()){
-
-                    echo "<tr>";
-                    echo "<td style='border: 3px solid black;'>" .$d['Pays']. "</td>";
-                    echo "<td style='border: 3px solid black;'>" .$d['Code'] . "</td>";
-                    echo "<td style='border: 3px solid black;'>" .$d['Annee'] . "</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['PIB par habitant']."</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['espe_vie']."</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['tx_obesite(%)']."</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['depenses_sante($)']."</td>";
-                    echo "</tr>";
-                    
-                }
-
-                echo '</table>';
-                $data ->closeCursor(); 
-
-            }
-            else{
-                echo "<p>Aucune correspondance pour votre recherchre</p>";
-            }
-        }
-        else{
-            echo "<p>Veuillez saisir une champ dans la barre de recherche</p>";
-        }
-    ?>
-    </>
+    </form>
 </body>
 </html>

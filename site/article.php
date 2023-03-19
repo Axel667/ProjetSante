@@ -9,7 +9,10 @@
 
     <?php include("baseD.php"); ?>
 
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+
     <link rel="stylesheet" type="text/css" href="site.css" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
 </head>
@@ -73,26 +76,31 @@
 
 <body>
 
-    <?php
+  <a href="index.php" class="btn btn-secondary">Back Home</a>
 
-        //récupération du paramètre
-        $aa = $_GET['id_article'];
+  <br/>
+  <br/>
 
-        //connection avec la bdd avec la fonction getBD
-        $bdd = getBD();
+  <?php
 
-        //requete sur la bd avec le paramètre récupéré
-        $rep = $bdd->query("select * from sourcer where id_article= $aa ");
+    //récupération du paramètre
+    $aa = $_GET['id_article'];
 
-        while ($ligne = $rep ->fetch()){
+    //connection avec la bdd avec la fonction getBD
+    $bdd = getBD();
 
-            echo "<h2>".$ligne['Titre']."</h2>";
+    //requete sur la bd avec le paramètre récupéré
+    $rep = $bdd->query("select * from sourcer where id_article= $aa ");
 
-            echo "<p>".$ligne['article']."</p>";
-        }
+    while ($ligne = $rep ->fetch()){
 
-        $rep ->closeCursor();
-    ?>
+      echo "<h2>".$ligne['Titre']."</h2>";
+
+      echo "<p>".$ligne['article']."</p>";
+    }
+
+    $rep ->closeCursor();
+  ?>
     
 </body>
 </html>

@@ -8,10 +8,14 @@
     <title>Sign up</title>
 
     <link rel="stylesheet" type="text/css" href="site.css" />
+    
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+
 </head>
 <body>
 
 <div class="form">
+
     <h1>Sign up</h1>
     
         <form  action="users.php" method="post" autocomplete="off" class="si">
