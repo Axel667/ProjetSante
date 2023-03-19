@@ -76,15 +76,6 @@ table{
     border-color: black;
     color: black;
 }
-#search{
-    border-radius: 30px;
-    border: 2px solid black;
-}
-#envoyer{
-    background-color: white;
-    border-radius: 30px;
-    border : 2px solid black;
-}
 .sign{
     background-color: white;
     border-radius: 30px;
