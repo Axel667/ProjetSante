@@ -81,12 +81,12 @@
 
     <p>
         Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS <br/>
-        à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créer par 6 jeunes étudiants en plein <br/>
+        à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créé par 6 jeunes étudiants en plein <br/>
         apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. <br/>
         Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie de chaque pays.
     </p>
 
-    <h4>Fondateur : </h4>
+    <h4>Fondateurs : </h4>
 
     <ul>
         <li>Girondin Audric</li>
