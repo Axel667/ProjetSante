@@ -93,15 +93,15 @@
   <ul class="list-container">
 
     <li class = "list">
-      Format SQL : <a href="data.sql"><img src ="img/sql.png" style="height:60px"></a>
+      Format SQL : <a href="data/data.sql"><img src ="img/sql.png" style="height:60px"></a>
     </li>
 
     <li class = "list">
-      Format CSV : <a href="data.csv"><img src ="img/csv.png" style="height:60px"></a>
+      Format CSV : <a href="data/data.csv"><img src ="img/csv.png" style="height:60px"></a>
     </li>
 
     <li class = "list">
-      Format XLSX : <a href="data.xlsx"><img src ="img/xlsx.png" style="height:60px"></a>
+      Format XLSX : <a href="data/data.xlsx"><img src ="img/xlsx.png" style="height:60px"></a>
     </li>
 
   </ul>
