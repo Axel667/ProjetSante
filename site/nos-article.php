@@ -27,6 +27,9 @@
               <li class="nav-item">
                 <a class="nav-link active" href="nos-article.php">Nos Articles</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="datasets.php">Datasets</a>
+              </li>
               <?php 
               session_start();
 
@@ -70,21 +73,23 @@
     <br/>
 
     <h2>Nos Articles : </h2>
+    
+    <br/>
 
     <?php
 
-        $bdd =  getBD();
-			
-		//requête sur la bd
-		$rep = $bdd->query('select id_article,titre from sourcer');
+      $bdd =  getBD();
+        
+      //requête sur la bd
+      $rep = $bdd->query('select id_article,titre from sourcer');
 
-		while ($ligne = $rep ->fetch()) {
+      while ($ligne = $rep ->fetch()) {
 
-			//création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
-			echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
-        }
+        //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
+        echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
+      }
 
-        $rep ->closeCursor(); 
+      $rep ->closeCursor(); 
     ?>
 				
     

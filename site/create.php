@@ -34,6 +34,9 @@
               <li class="nav-item">
                 <a class="nav-link active" href="nos-article.php">Nos Articles</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link active" href="datasets.php">Datasets</a>
+              </li>
               <?php 
               session_start();
 
