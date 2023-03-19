@@ -76,7 +76,7 @@
 
     <a href="index.php" class="btn btn-secondary">Back Home</a>
 
-    <h2>Créer un article</h2>
+    <h2>Créer un article :</h2>
 
     <p>Sur cette page vous pouvez créer un article à partir des des datasets et des graphiques mis à votre disposition sur notre site.<p>
     <?php 
@@ -88,25 +88,26 @@
     if(!isset($_GET['var1'])){
         echo '<div class="mb-3 mt-3">
         <label for="Titre" class="form-label">Titre : </label>
-        <input type="titre" class="form-control" id="titre" name="titre"></div>';
+        <input type="titre" class="form-group" id="titre" name="titre"></div>';
     }
     elseif(isset($_GET['var1'])){
         echo '<div class="mb-3 mt-3">
         <label for="Titre" class="form-label">Titre : </label>
-        <input type="titre" class="form-control" id="titre" name="titre" value='.$_GET['var1'].'></div>';
+        <input type="titre" class="form-group" id="titre" name="titre" value='.$_GET['var1'].'></div>';
     }
     if(!isset($_GET['var2'])){
         echo '<div class="mb-3 mt-3">
         <label for="Auteur" class="form-label">Auteur : </label>
-        <input type="auteur" class="form-control" id="auteur" name="auteur"></div>';
+        <input type="auteur" class="form-group" id="auteur" name="auteur"></div>';
     }
     elseif(isset($_GET['var2'])){
         echo '<div class="mb-3 mt-3">
         <label for="Auteur" class="form-label">Auteur : </label>
-        <input type="auteur" class="form-control" id="auteur" name="auteur" value='.$_GET['var2'].'></div>';
+        <input type="auteur" class="form-group" id="auteur" name="auteur" value='.$_GET['var2'].'></div>';
     }
-    echo'</div>
-        Pays : <select class="form-select" name="pays">
+    echo'<div>
+        Pays : <select class="form-group" name="pays" value ="">
+        <OPTION VALUE="">Sélectionnez un pays</OPTION>
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -303,6 +304,7 @@
         <OPTION VALUE="Zimbabwe">Zimbabwe</OPTION>
         <OPTION VALUE="World">World</OPTION>
         </SELECT></div>';
+
     if(!isset($_GET['var4'])){
 
         echo '<div class="mb-3 mt-3">

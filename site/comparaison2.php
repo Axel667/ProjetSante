@@ -89,8 +89,8 @@
 
   <br/>
 
-  <form action="comparaison2.php" method="post" autocomplete="off">
-        Pays  1: <SELECT class = "sign" name="Pays1">
+  <form  action="comparaison2.php" method="post" autocomplete="off">
+        Pays  1: <SELECT class="form-group" name="Pays1">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -288,7 +288,7 @@
         <OPTION VALUE="World">World</OPTION>
         </SELECT>
 
-        Pays 2: <SELECT class = "sign" name="Pays2">
+        Pays 2: <SELECT class="form-group" name="Pays2">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -486,7 +486,7 @@
         <OPTION VALUE="World">World</OPTION>
         </SELECT>
 
-        Type de graphique : <SELECT class = "sign" name="type">
+        Type de graphique : <SELECT class="form-group" name="type">
         <OPTION VALUE="bar">Barre</OPTION>
         <OPTION VALUE="line">Line</OPTION>
         <OPTION VALUE="scatter">Nuage de points</OPTION>
@@ -496,14 +496,14 @@
         <OPTION VALUE="pie">Pie</OPTION>
         </SELECT>
 
-        Données : <SELECT  class = "sign"name="données">
+        Données : <SELECT class="form-group" name="données">
         <OPTION VALUE="PIB par habitant">PIB</OPTION>
         <OPTION VALUE="espe_vie">Espérance de vie</OPTION>
         <OPTION VALUE="tx_obesite(%)">Taux d'obésité</OPTION>
         <OPTION VALUE="depenses_sante($)">Dépenses santé</OPTION>
         </SELECT>
-
-        <input type="submit"  class = "sign" value="Comparer">
+              
+        <button type="submit" class="btn btn-secondary">Comparer</button>
 
   </form>
   

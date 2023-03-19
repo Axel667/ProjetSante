@@ -25,44 +25,58 @@
     <form action="users.php" method="post">
     <div class="mb-3 mt-3">
         <label for="Nom" class="form-label">Nom : </label>
-        <input type="nom" class="form-control" id="nom" name="n">
+        <input type="nom" class="form-group" id="nom" name="n">
     </div>
     <div class="mb-3 mt-3">
         <label for="Prenom" class="form-label">Prénom : </label>
-        <input type="prenom" class="form-control" id="prenom" name="p">
+        <input type="prenom" class="form-group" id="prenom" name="p">
     </div>
     <div class="mb-3 mt-3">
         <label for="Mail" class="form-label">Adresse e-mail : </label>
-        <input type="mail" class="form-control" id="mail" name="mail">
+        <input type="mail" class="form-group" id="mail" name="mail">
     </div>
-    Genre : <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="radio1" name="genre" value="Mr" checked>Homme
+    Genre : 
+    <div class="form-check form-check-inline">
+    <div class="form-check">
+    <input type="radio" class="form-check-input" id="radio1" name="genre" value="Mr" checked>Homme
     <label class="form-check-label" for="radio1"></label>
     </div>
+    </div>
+    <div class="form-check form-check-inline">
     <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="radio2" name="genre" value="Mme">Femme
+    <input type="radio" class="form-check-input" id="radio2" name="genre" value="Mme">Femme
     <label class="form-check-label" for="radio2"></label>
     </div>
-    Fonction : <select class="form-select" name="fonction">
+    </div>
+    <br/>
+    <br/>
+    Fonction : <select class="form-group" name="fonction">
     <option value = "Etudiant(e)">Etudiant(e)</option>
     <option value ="Enseignant(e)">Enseignant(e)</option>
     <option value ="Statisticien(e)">Statisticien(e)</option>
     <option value = "Retraité(e)">Retraité(e)</option>
-    </select>
-    S'abonner à la newsletter :<div class="form-check">
-    <input type="checkbox" class="form-check-input" id="radio1" name="news" value="Oui" checked>Oui
+    </select><br/><br/>
+    S'abonner à la newsletter :
+    <div class="form-check form-check-inline">
+    <div class="form-check">
+    <input type="radio" class="form-check-input" id="radio1" name="news" value="Oui" checked>Oui
     <label class="form-check-label" for="radio1"></label>
     </div>
+    </div>
+    <div class="form-check form-check-inline">
     <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="radio2" name="news" value="Non">Non
+    <input type="radio" class="form-check-input" id="radio2" name="news" value="Non">Non
     <label class="form-check-label" for="radio2"></label>
+    </div>
+    </div>
+    <br/><br/>
     <div class="mb-3">
         <label for="pwd" class="form-label">Mot de passe : </label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mdp1">
+        <input type="password" class="form-group" id="pwd" placeholder="Enter password" name="mdp1">
     </div>
     <div class="mb-3">
         <label for="pwd" class="form-label">Confirmer votre mot de passe : </label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="mdp2">
+        <input type="password" class="form-group" id="pwd" placeholder="Enter password" name="mdp2">
     </div>
     
     <button type="submit" class="btn btn-primary">S'inscrire</button>
