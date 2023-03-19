@@ -89,3 +89,17 @@ table{
     background-color: white;
     border-radius: 30px;
 }
+
+.list-container {
+    color: black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: none;
+    margin-left: 20px;
+
+}
+.list {
+    flex-basis: calc(33.33% - 10px);
+    padding: 0;
+    margin-left: 10px;
+}

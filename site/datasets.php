@@ -78,28 +78,33 @@
 
 <body>
     
-<h2>Datasets :</h2>
+  <h2>Datasets :</h2>
 
-<p>
+  <p>
 
-  Sur ctte page nous avons mis à votre disposition, les données utilisées pour nos graphiques
-  <br/> que nous mettons régulièrement à jour.
+    Sur ctte page nous avons mis à votre disposition, les données utilisées pour nos graphiques
+    <br/> que nous mettons régulièrement à jour.
 
-</p>
+  </p>
 
-<h3>Données :</h3>
+  <h3>Données :</h3>
 
-<ul>
-  
-  <li>
-    <a href="data.sql">Format SQL</a>
-  </li>
 
-  <li>
-    <a href="data.csv">Format CSV</a>
-  </li>
+  <ul class="list-container">
 
-</ul>
+    <li class = "list">
+      Format SQL : <a href="data.sql"><img src ="img/sql.png" style="height:60px"></a>
+    </li>
+
+    <li class = "list">
+      Format CSV : <a href="data.csv"><img src ="img/csv.png" style="height:60px"></a>
+    </li>
+
+    <li class = "list">
+      Format XLSX : <a href="data.xlsx"><img src ="img/xlsx.png" style="height:60px"></a>
+    </li>
+
+  </ul>
     
 </body>
 </html>
