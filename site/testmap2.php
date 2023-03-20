@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Carte</title>
-        <script src="Projet-SantEco_Map/mapdata.js"></script>
-        <script src="Projet-SantEco_Map/worldmap.js"></script>
+        <script src="Projet-SantEco_Map/Projet-SantEco_Map/mapdata.js"></script>
+        <script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>
 
         <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
 
@@ -20,7 +20,7 @@
         
         <p>Carte</p>
 
-        <form  action="testmap.php" method="post" autocomplete="off">
+        <form  action="testmap2.php" method="post" autocomplete="off">
 
             Données : <SELECT class="form-group" name="données">
             <OPTION VALUE="PIB par habitant">PIB</OPTION>
@@ -76,7 +76,7 @@
             $année = $_POST['année'];
             $données = $_POST['données'];
 
-            $map = $bdd ->query("SELECT * FROM `data` WHERE Annee = '".$année."'" );
+            $map = $bdd->query("SELECT Pays, Code, ".$données." FROM `data` WHERE Annee = '".$année."'");
             while($m = $map ->fetch()){
                 
                 $y = $m['Annee'];
@@ -93,6 +93,7 @@
         ?>
 
         <div id="map"></div>
+
         
     </body>
 </html>
