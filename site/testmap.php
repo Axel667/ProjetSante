@@ -5,12 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Carte</title>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-        crossorigin=""/>
-        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-        crossorigin=""></script>
+        <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+        <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
 
         <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
 
@@ -21,8 +17,9 @@
         
     </head>
     <body>
+        <a href="index.php" class="btn btn-secondary">Back Home</a>
         
-        <p>Carte</p>
+        <h2>Carte</h2>
 
         <form  action="testmap.php" method="post" autocomplete="off">
 
@@ -100,4 +97,13 @@
         
     </body>
 </html>
+
+
+<script>
+// Provide your access token
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWF1ZHJpYyIsImEiOiJjbGZndzAwb3IxYWdjM3NuemkwMTRkamJtIn0.5v3HkIpqfwb5p5IWfL4aWA';
+// Create a map in the div #map
+L.mapbox.map('map', 'mapbox.streets');
+</script>
+
 <script src="Projet-SantEco_Map/Projet-SantEco_Map/maptest.js"></script>
