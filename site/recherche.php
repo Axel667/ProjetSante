@@ -63,7 +63,7 @@
                 echo '<li class="nav-item">
                 <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
                 
-                echo '<li class="nav-item"><a class="nav-link active" id = "logout" href="deconnexion.php">Log out</a></li>';
+                echo '<li class="nav-item"><a href="deconnexion.php" class="btn btn-light">Log out</a></li>';
                 
               }
               ?>
@@ -91,7 +91,8 @@
         if (isset($_GET['s']) and !empty($_GET['s'])){
 
             $rech = htmlspecialchars($_GET['s']);
-            $data = $bdd->query('select * from Data where Pays LIKE "%'.$rech.'%" ORDER by Pays DESC');
+            
+            $data = $bdd->query('select * from data where Pays LIKE "%'.$rech.'%" ORDER by Annee');            
 
             if ($data->rowCount() > 0 and (!empty($data))){
 

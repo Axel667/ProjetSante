@@ -55,7 +55,7 @@
                 echo '<li class="nav-item">
                 <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
                 
-                echo '<li class="nav-item"><a class="nav-link active" href="deconnexion.php">Log out</a></li>';
+                echo '<li class="nav-item"><a href="deconnexion.php" class="btn btn-light">Log out</a></li>';
                 
               }
               ?>
@@ -87,3 +87,29 @@
     
 </body>
 </html>
+<section class="">
+  <!-- Footer -->
+  <footer class="text-center text-white" style="background-color: black;">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0">
+      <!-- Section: CTA -->
+      <section class="">
+        <p class="d-flex justify-content-center align-items-center">
+          <span class="me-3" style = "color:white;">Register for free</span>
+          <a href="sign-up.php" class="btn btn-light">Sign up !</a>
+        </p>
+      </section>
+      <!-- Section: CTA -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: black;">
+      © 2020 Copyright:
+      <a class="text-white" href="https://mdbootstrap.com/" >MDBootstrap.com</a>
+      <a href="contact.php" class="btn btn-light" style ="margin-left:20px;">About us</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+  <!-- Footer -->
+</section>

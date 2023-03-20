@@ -76,6 +76,8 @@
             </div>
             </div>
             </nav>
+
+            <a href="index.php" class="btn btn-secondary">Back Home</a>
     
     <h2>Contact : </h2>
 
