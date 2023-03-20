@@ -100,4 +100,4 @@
         
     </body>
 </html>
-<script src="Projet-SantEco_Map/Projet-SantEco_Map/maptest.js"></script>
+<script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>
