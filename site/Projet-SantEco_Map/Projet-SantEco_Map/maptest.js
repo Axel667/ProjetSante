@@ -1,12 +1,11 @@
 
 
-var map = L.map('map').setView([51.505, -0.09], 3);
-
-var tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
+<script>
+// Provide your access token
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWF1ZHJpYyIsImEiOiJjbGZndzAwb3IxYWdjM3NuemkwMTRkamJtIn0.5v3HkIpqfwb5p5IWfL4aWA';
+// Create a map in the div #map
+L.mapbox.map('map', 'mapbox.streets');
+</script>
 
 
 
