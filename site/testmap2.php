@@ -5,8 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Carte</title>
-        <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
-        <link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+        <script src="Projet-SantEco_Map/Projet-SantEco_Map/mapdata.js"></script>
+        <script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>
 
         <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
 
@@ -17,11 +17,10 @@
         
     </head>
     <body>
-        <a href="index.php" class="btn btn-secondary">Back Home</a>
         
-        <h2>Carte</h2>
+        <p>Carte</p>
 
-        <form  action="testmap.php" method="post" autocomplete="off">
+        <form  action="testmap2.php" method="post" autocomplete="off">
 
             Données : <SELECT class="form-group" name="données">
             <OPTION VALUE="PIB par habitant">PIB</OPTION>
@@ -77,7 +76,7 @@
             $année = $_POST['année'];
             $données = $_POST['données'];
 
-            $map = $bdd ->query("SELECT * FROM `data` WHERE Annee = '".$année."'" );
+            $map = $bdd->query("SELECT Pays, Code, ".$données." FROM `data` WHERE Annee = '".$année."'");
             while($m = $map ->fetch()){
                 
                 $y = $m['Annee'];
@@ -94,20 +93,8 @@
         ?>
 
         <div id="map"></div>
+
         
     </body>
 </html>
-<<<<<<< HEAD
-
-
-<script>
-// Provide your access token
-L.mapbox.accessToken = 'pk.eyJ1IjoiYWF1ZHJpYyIsImEiOiJjbGZndzAwb3IxYWdjM3NuemkwMTRkamJtIn0.5v3HkIpqfwb5p5IWfL4aWA';
-// Create a map in the div #map
-L.mapbox.map('map', 'mapbox.streets');
-</script>
-
-<script src="Projet-SantEco_Map/Projet-SantEco_Map/maptest.js"></script>
-=======
-<script src="Projet-SantEco_Map/Projet-SantEco_Map/maptest.js"></script>
->>>>>>> a4c20c2302d545e60c5a456350caad617c8dedda
+<script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>

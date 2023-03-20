@@ -1562,7 +1562,7 @@ var simplemaps_worldmap_mapdata={
       hover_color: "default",
       url: "default"
     },
-    CN: {
+    IC: {
       name: "Canary Islands (Spain)",
       description: "default",
       color: "default",
