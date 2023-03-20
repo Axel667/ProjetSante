@@ -18,7 +18,7 @@
     <ul class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-        <a class="nav-link active" href="carte.html">Carte</a>
+        <a class="nav-link active" href="testmap.php">Carte</a>
         </li>
     <li class="nav-item">
     <a class="nav-link active" href="comparaison2.php">Comparer</a>
