@@ -79,7 +79,7 @@
             </nav>
             <?php
             if (!isset($_SESSION['client'])){
-              echo "<h3><a href='sign-in.php'>Sign in</a><h3>";
+              
             }
             else{
             echo "<p>Bonjour ".$_SESSION['client']['genre']." ".$_SESSION['client']['Nom']." ".$_SESSION['client']['Prenom']."</p>";
