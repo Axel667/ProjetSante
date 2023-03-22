@@ -14,7 +14,6 @@
 
         <?php include("baseD.php"); ?>
 
-        
     </head>
     <body>
         <a href="index.php" class="btn btn-secondary">Back Home</a>
