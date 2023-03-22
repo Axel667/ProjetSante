@@ -5,15 +5,9 @@ var simplemaps_worldmap_mapdata = {
     background_color: "#FFFFFF",
     background_transparent: "yes",
     popups: "detect",
-<<<<<<< HEAD
     
 		//State defaults
 		state_description: "name",
-=======
-
-    //State defaults
-    state_description: "State description",
->>>>>>> a37ec3d5e0bd6482d6170eae456b8fedc7f76ed5
     state_color: "#8253C7",
     state_hover_color: "#A161BF",
     border_size: 1.5,
