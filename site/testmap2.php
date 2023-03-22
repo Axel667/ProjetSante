@@ -8,6 +8,7 @@
         <script src="Projet-SantEco_Map/Projet-SantEco_Map/mapdata.js"></script>
         <script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>
 
+
         <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
@@ -76,7 +77,7 @@
             $année = $_POST['année'];
             $données = $_POST['données'];
 
-            $map = $bdd->query("SELECT Pays, Code, ".$données." FROM `data` WHERE Annee = '".$année."'");
+            $map = $bdd->query("SELECT Pays, ".$données." FROM `data` WHERE Annee = '".$année."'");
             while($m = $map ->fetch()){
                 
                 $y = $m['Annee'];
@@ -94,7 +95,28 @@
 
         <div id="map"></div>
 
-        
+        <script>
+            // une fois que vous avez récupéré les données du pays sélectionné, vous pouvez les afficher dans une div appropriée 
+            // supposons que vous avez déjà les données dans les variables $pays et $donnees 
+
+            // créez une nouvelle div pour afficher les données du pays sélectionné
+            var resultDiv = document.createElement("div");
+
+            // ajoutez un id et une classe à la div pour la styliser
+            resultDiv.setAttribute("id", "result");
+            resultDiv.setAttribute("class", "card");
+
+            // créez un contenu HTML pour afficher les données
+            var content = "<h3>" + pays + "</h3>";
+            content += "<p>" + donnees + "</p>";
+
+            // ajoutez le contenu à la div
+            resultDiv.innerHTML = content;
+
+            // ajoutez la div à la page
+            document.body.appendChild(resultDiv);
+
+        </script>
     </body>
 </html>
 <script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>

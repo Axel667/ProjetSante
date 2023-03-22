@@ -1,0 +1,258 @@
+/*
+//Methode 1 connexin map-bd
+function onCountryClick(countryCode) {
+  // récupérer les données du pays à partir de la base de données
+  // afficher les données dans une popup
+  $.ajax({
+      url: 'get_country_data.php',
+      type: 'POST',
+      data: {
+        countryCode: countryCode
+      },
+      success: function(response) {
+      // afficher les données dans une popup
+      }
+  });
+}
+
+  <?php
+
+if(isset($_POST['countryCode'])) {
+  $countryCode = $_POST['countryCode'];
+
+  $bdd = getBD();
+
+  // récupérer les données du pays à partir de la base de données
+  $query = "SELECT `PIB par habitant` FROM `data` WHERE `Pays` = ?";
+  $stmt = $bdd->prepare($query);
+  $stmt->execute([$countryCode]);
+  $data = $stmt->fetch();
+
+  // renvoyer les données au format JSON
+  echo json_encode($data);
+}
+
+?>
+L.popup()
+  .setLatLng(e.latlng)
+  .setContent('PIB par habitant : ' + response['PIB par habitant'])
+  .openOn(map);
+
+
+  //Methode 2
+  // Ajoutez le code suivant après la boucle qui crée les éléments de pays dans la fonction createMap()
+var countries = document.getElementsByClassName('country');
+for (var i = 0; i < countries.length; i++) {
+  countries[i].addEventListener('click', function(e) {
+    e.preventDefault();
+    var countryName = e.target.getAttribute('data-country-name');
+    getDataForCountry(countryName);
+  });
+}
+
+// Créez une fonction getDataForCountry(countryName) pour récupérer les données du pays à partir de la base de données
+function getDataForCountry(countryName) {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (this.readyState === 4 && this.status === 200) {
+      displayDataForCountry(JSON.parse(this.responseText));
+    }
+  };
+  xhr.open('POST', 'get_data_for_country.php');
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+  xhr.send('country=' + countryName);
+}
+
+// Créez une fonction displayDataForCountry(data) pour afficher les données récupérées dans une fenêtre contextuelle ou une boîte de dialogue
+function displayDataForCountry(data) {
+  // Code pour afficher les données dans une fenêtre contextuelle ou une boîte de dialogue
+}
+
+// Methode 3
+
+// Récupérer tous les éléments "path" de la carte
+var paths = document.querySelectorAll('#map path');
+
+// Boucler sur chaque élément "path" de la carte
+paths.forEach(function(path) {
+
+  // Ajouter un événement de clic à chaque élément "path"
+  path.addEventListener('click', function() {
+
+    // Récupérer le nom du pays à partir de l'attribut "data-name" de l'élément "path"
+    var countryName = this.getAttribute('data-name');
+
+    // Envoyer une requête AJAX pour récupérer les données du pays correspondant dans la base de données
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'get_country_data.php?country=' + encodeURIComponent(countryName));
+    xhr.onload = function() {
+      // Afficher les données récupérées dans une fenêtre modale ou un élément de la page
+      var modal = document.getElementById('myModal');
+      modal.innerHTML = xhr.responseText;
+      modal.style.display = 'block';
+    };
+    xhr.send();
+
+  });
+
+});
+
+//dans get_country_data.php
+<?php
+
+if (isset($_GET['country']) && !empty($_GET['country'])) {
+  $countryName = $_GET['country'];
+
+  // Requête SQL pour récupérer les données du pays correspondant dans la base de données
+  $bdd = getBD();
+  $result = $bdd->query("SELECT * FROM data WHERE Pays = '".$countryName."'");
+
+  // Afficher les données sous forme de HTML
+  if ($result->rowCount() > 0) {
+    $data = $result->fetch();
+    echo "<h2>".$countryName."</h2>";
+    echo "<ul>";
+    echo "<li>PIB par habitant : ".$data['PIB_par_habitant']."</li>";
+    echo "<li>Espérance de vie : ".$data['espe_vie']."</li>";
+    echo "<li>Taux d'obésité : ".$data['tx_obesite(%)']."</li>";
+    echo "<li>Dépenses santé : ".$data['depenses_sante($)']."</li>";
+    // Ajouter d'autres données si nécessaire
+    echo "</ul>";
+  } else {
+    echo "Aucune donnée trouvée pour ".$countryName;
+  }
+
+  $result->closeCursor();
+}
+?>
+
+//Methode 4
+
+//dans testmap2
+<div id="map" class="map-container"></div>
+// Sélectionner l'élément de carte et créer une instance de la carte
+var mapContainer = document.getElementById('map');
+var map = new WorldMap(mapContainer);
+
+// Ajouter un gestionnaire d'événements au clic de la souris sur la carte
+mapContainer.addEventListener('click', function (event) {
+    // Récupérer le code ISO du pays sur lequel on a cliqué
+    var countryCode = map.getCountryCode(event);
+
+    // Envoyer une requête AJAX pour récupérer les données du pays
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                // Afficher les données du pays sur la page
+                var data = JSON.parse(xhr.responseText);
+                var countryData = data[0];
+                var countryName = countryData['Pays'];
+                var countryValue = countryData['<nom_de_la_colonne>'];
+                // Remplacer <nom_de_la_colonne> par le nom de la colonne de données à afficher
+                alert(countryName + ': ' + countryValue);
+            } else {
+                console.error('Une erreur est survenue lors de la récupération des données.');
+            }
+        }
+    };
+    xhr.open('GET', 'get_country_data.php?code=' + countryCode);
+    xhr.send();
+});
+
+//dans get_country_data.php
+<?php
+
+if (isset($_GET['code'])) {
+    // Récupérer le code ISO du pays depuis la requête GET
+    $code = $_GET['code'];
+
+    // Établir une connexion à la base de données et récupérer les données du pays
+    $bdd = getBD();
+    $query = $bdd->prepare("SELECT * FROM data WHERE Pays = :countryCode");
+    $query->bindParam(':countryCode', $code);
+    $query->execute();
+    $data = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    // Renvoyer les données au format JSON
+    header('Content-Type: application/json');
+    echo json_encode($data);
+} else {
+    http_response_code(400);
+    echo 'Le code de pays n\'a pas été fourni.';
+}
+
+
+//Methode 5
+// Sélectionnez tous les éléments de chemin de pays sur la carte
+var paths = document.querySelectorAll('.country');
+
+// Attachez un gestionnaire d'événements click à chaque chemin de pays
+paths.forEach(function(path) {
+    path.addEventListener('click', function() {
+        
+        // Récupérez le nom du pays à partir de l'attribut "data-name" du chemin de pays
+        var countryName = path.getAttribute('data-name');
+        
+        // Envoyer une requête AJAX pour récupérer les données du pays à partir de la base de données
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'get_country_data.php?country=' + countryName, true);
+        xhr.onload = function() {
+            if (xhr.status == 200) {
+                // Afficher les données récupérées dans une fenêtre modale ou une zone d'affichage dédiée
+                var countryData = xhr.responseText;
+                alert(countryData);
+            }
+        };
+        xhr.send();
+        
+    });
+});
+
+//Methode 6
+
+//dans testmap2
+//head
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+//body
+<script>
+    // Écouteur de clic sur les pays de la carte
+    $(document).on('click', '.datamaps-subunit', function(){
+        
+        // Récupération du nom du pays cliqué
+        var country = $(this).attr('data-name');
+        
+        // Envoi d'une requête Ajax pour récupérer les données du pays
+        $.ajax({
+            url: 'get_country_data.php',
+            type: 'POST',
+            data: {country: country},
+            dataType: 'json',
+            success: function(data){
+                // Affichage des données du pays dans une boîte de dialogue
+                alert('PIB par habitant : ' + data.pib + '\nEspérance de vie : ' + data.espe_vie + '\nTaux d\'obésité : ' + data.tx_obesite + '%\nDépenses santé : ' + data.depenses_sante);
+            }
+        });
+    });
+</script>
+
+// dans get_country_data.php
+<?php
+
+// Connexion à la base de données
+$bdd = new PDO('mysql:host=nom_du_serveur;dbname=nom_de_la_base_de_donnees;charset=utf8', 'nom_utilisateur', 'mot_de_passe');
+
+// Récupération du nom du pays envoyé par la requête Ajax
+$country = $_POST['country'];
+
+// Récupération des données du pays dans la base de données
+$query = $bdd->prepare('SELECT PIB_par_habitant, espe_vie, tx_obesite, depenses_sante FROM data WHERE Pays = :country');
+$query->bindParam(':country', $country);
+$query->execute();
+$data = $query->fetch(PDO::FETCH_ASSOC);
+
+// Conversion des données en JSON et envoi de la réponse
+echo json_encode($data);
+?>
+
+*/
