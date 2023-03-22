@@ -7,7 +7,7 @@
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="widdiv=device-widdiv, initial-scale=1.0">
 
     <title>Recherche</title>
 
@@ -48,7 +48,7 @@
             }?>
             </ul>
             <ul class="navbar-nav ms-auto"></ul>
-             <form class="d-flex" method="GET" action="recherche.php">
+             <form class="d-flex" medivod="GET" action="recherche.php">
                 <input class="form-control me-2" name="s"  type="search" placeholder="Search">
                 <button class="btn btn-secondary"  type="submit">Search</button>
               </form>
@@ -56,12 +56,12 @@
 
               if (!isset($_SESSION['client'])){
               echo '<li class="nav-item">
-                <a class="nav-link" href="sign-in.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a>
+                <a class="nav-link" href="sign-in.php"><img src="img/user@2x.png" style="height: 30px; widdiv: 30px;"></a>
               </li>';
               }
               else{
                 echo '<li class="nav-item">
-                <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
+                <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; widdiv: 30px;"></a></li>';
                 
                 echo '<li class="nav-item"><a href="deconnexion.php" class="btn btn-light">Log out</a></li>';
                 
@@ -96,32 +96,30 @@
 
             if ($data->rowCount() > 0 and (!empty($data))){
 
-                echo'<table style="border: 3px solid black;">';
-                echo '<tr>
-                <th style="border: 3px solid black;">Pays</th>
-                <th style="border: 3px solid black;">Code Pays</th>
-                <th style="border: 3px solid black;">Année</th>
-                <th style="border: 3px solid black;">PIB par habitant</th>
-                <th style="border: 3px solid black;">Espérance de vie</th>
-                <th style="border: 3px solid black;">Taux d\'obésité(%)</th>
-                <th style="border: 3px solid black;">Dépenses en santé($)</th>
-                </tr>';
+                echo "<div class='row bg-dark text-white'>";
+                echo '
+                <div class="col-sm-2">Pays</div>
+                <div class="col-sm-2">Code Pays</div>
+                <div class="col-sm-2">Année</div>
+                <div class="col-sm-2">PIB par habitant</div>
+                <div class="col-sm-2">Espérance de vie</div>
+                <div class="col-sm-1">Taux d\'obésité(%)</div>
+                <div class="col-sm-1">Dépenses en santé($)</div>';
 
                 while($d = $data->fetch()){
 
-                    echo "<tr>";
-                    echo "<td style='border: 3px solid black;'>" .$d['Pays']. "</td>";
-                    echo "<td style='border: 3px solid black;'>" .$d['Code'] . "</td>";
-                    echo "<td style='border: 3px solid black;'>" .$d['Annee'] . "</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['PIB par habitant']."</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['espe_vie']."</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['tx_obesite(%)']."</td>";
-                    echo "<td style='border: 3px solid black;'>".$d['depenses_sante($)']."</td>";
-                    echo "</tr>";
+                    echo "<div class='row bg-light text-dark'>";
+                    echo "<div class='col-sm-2'>" .$d['Pays']. "</div>";
+                    echo "<div class='col-sm-2'>" .$d['Code'] . "</div>";
+                    echo "<div class='col-sm-2'>" .$d['Annee'] . "</div>";
+                    echo "<div class='col-sm-2'>".$d['PIB par habitant']."</div>";
+                    echo "<div class='col-sm-2'>".$d['espe_vie']."</div>";
+                    echo "<div class='col-sm-1'>".$d['tx_obesite(%)']."</div>";
+                    echo "<div class='col-sm-1'>".$d['depenses_sante($)']."</div>";
+                    echo "</div>";
                     
                 }
-
-                echo '</table>';
+              
                 $data ->closeCursor(); 
 
             }

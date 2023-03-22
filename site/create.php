@@ -320,7 +320,7 @@
         </div>';
     }
 
-    echo '<button type="submit" class="btn btn-primary">Enregistrer</button>
+    echo '<button type="submit" class="btn btn-secondary">Enregistrer</button>
 
     </form>';
     }
