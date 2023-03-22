@@ -95,6 +95,7 @@
 
         <div id="map"></div>
 
+        /*
         <script>
             // une fois que vous avez récupéré les données du pays sélectionné, vous pouvez les afficher dans une div appropriée 
             // supposons que vous avez déjà les données dans les variables $pays et $donnees 
@@ -117,6 +118,7 @@
             document.body.appendChild(resultDiv);
 
         </script>
+        */
     </body>
 </html>
 <script src="Projet-SantEco_Map/Projet-SantEco_Map/worldmap.js"></script>
