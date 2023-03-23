@@ -41,61 +41,18 @@
         $json4 = json_encode($tx);
         $json5 = json_encode($dep);
 
+        $data = array(
+          array('code' => 'ABW', 'data' => 0.811),
+          array('code' => 'AFG', 'data' => 0.816)
+      );
+      print_r($data);
+      // afficher le tableau
+      echo json_encode($data);
+
     ?>
 
-<div>
-  <canvas id="graph1"></canvas>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 </html>
 
-<script>
-  var ctx = document.getElementById('graph1').getContext('2d')
-
-  var data = {
-    labels : <?php echo $json;?>,
-    datasets : [{
-      label: "PIB par habitant pour la France",
-      //backgroundColor : 'blue',
-      borderColor : 'blue',
-      data : <?php echo $json2; ?>,
-      tension : 0.4,
-      fill : true
-    },
-    {
-      label : "Esperance de vie",
-      borderColor : 'red',
-      data : <?php echo $json3; ?>,
-      tension : 0.4,
-      fill : true
-    },
-    {
-      label : "Taux d'obésité",
-      borderColor : 'green',
-      data : <?php echo $json4; ?>,
-      tension : 0.4,
-      fill : true
-    },
-    {
-      label : "Dépenses santé",
-      borderColor : 'purple',
-      data : <?php echo $json5; ?>,
-      tension : 0.4,
-      fill : true
-    }]
-  }
-  var options = {
-    responsive: true
-  }
-
-  var config = {
-    type: 'line',
-    data: data,
-    options : options
-      
-    }
-  var graph1 = new Chart(ctx, config)
-</script>

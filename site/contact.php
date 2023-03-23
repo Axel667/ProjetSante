@@ -85,7 +85,10 @@
         Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS <br/>
         à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créé par 6 jeunes étudiants en plein <br/>
         apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. <br/>
-        Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie de chaque pays.
+        Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie <br/>de chaque 
+        pays à travers des graphiques permettant la comparaison du PIB par habitant, l'espérance  de vie,<br/> le taux d'obésité 
+        mais aussi les dépenses en santé, entre pays. Mais aussi en explorant par le biais d'un globe<br/> terrestre, il permet 
+        aussi aux utilisateurs de créer des articles à partir des données mises à disposition de plus les articles créés et approuvés seront consultables.
     </p>
 
     <h4>Fondateurs : </h4>
