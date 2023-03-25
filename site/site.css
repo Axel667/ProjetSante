@@ -100,3 +100,13 @@ table {
   padding: 0;
   margin-left: 10px;
 }
+#map{
+  height: 500px;
+  float: right;
+  border-color: black;
+  border: 2px;
+}
+#comparaison2{
+  height: 60%;
+  width: 80%;
+}
