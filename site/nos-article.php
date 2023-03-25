@@ -86,11 +86,37 @@
     <h2>Nos Articles : </h2>
     
     <br/>
+    <form class="d-flex" method="GET" action="nos-article.php">
+      <input class="form-group me-2" name="rech"  type="search" placeholder="Rechercher un article">
+      <button class="btn btn-secondary"  type="submit">Search</button>
+    </form>
 
+    <br/>
     <?php
 
-      $bdd =  getBD();
+    $bdd =  getBD();
+
+    if (isset($_GET['rech']) and !empty($_GET['rech'])){
+
+      $rech = htmlspecialchars($_GET['rech']);
         
+      $Rart = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%'.$rech.'%" ');            
+
+      if ($Rart->rowCount() > 0 and (!empty($Rart))){
+
+        while($affart = $Rart->fetch()){
+
+          echo "<ul><li><a href ='article.php?id_article=".$affart['id_article']."'><em><strong>" .$affart['Titre']. "</em></strong></a></li></ul>";
+
+        }
+        $Rart ->closeCursor();
+      }
+      else{
+        echo "<p>Aucun article ne correspond à votre recherche</p>";
+      }
+    }
+    else{
+  
       //requête sur la bd
       $rep = $bdd->query('select id_article,titre from sourcer');
 
@@ -99,8 +125,10 @@
         //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
         echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
       }
-
       $rep ->closeCursor(); 
+    }
+
+      
     ?>
 				
     
