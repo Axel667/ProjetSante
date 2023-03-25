@@ -491,9 +491,6 @@
         <OPTION VALUE="line">Line</OPTION>
         <OPTION VALUE="scatter">Nuage de points</OPTION>
         <OPTION VALUE="radar">Radar</OPTION>
-        <OPTION VALUE="polarArea">Polar Area</OPTION>
-        <OPTION VALUE="doughnut">Doughnut</OPTION>
-        <OPTION VALUE="pie">Pie</OPTION>
         </SELECT>
 
         Données : <SELECT class="form-group" name="données">
@@ -580,7 +577,7 @@
     {
       label : "<?php echo "".$données." ".$p2."";?>",
       borderColor : 'red',
-      //backgroundColor: "cyan",
+      //backgroundColor: ,
       data : <?php echo $data1; ?>,
       tension : 0.4,
       fill : true
