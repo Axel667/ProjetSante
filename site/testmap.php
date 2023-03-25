@@ -6,9 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Carte</title>
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
 
-        <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
+        <style>
+            #map { position: relative; top: 20px; bottom: 40px; width: 70%; }
+        </style>
+
+        <link rel="stylesheet" href="site.css">
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
@@ -42,9 +46,9 @@
                 <a class="nav-link active" href="create.php">Créer</a>
               </li>';
             }?>
-    </ul>
-    <ul class="navbar-nav ms-auto"></ul>
-    <form class="d-flex" method="GET" action="recherche.php">
+            </ul>
+            <ul class="navbar-nav ms-auto"></ul>
+            <form class="d-flex" method="GET" action="recherche.php">
               <input class="form-control me-2" name="s"  type="search" placeholder="Search">
                 <button class="btn btn-secondary"  type="submit">Search</button>
               </form>
@@ -129,13 +133,13 @@
 
             $map = $bdd ->query("SELECT Code,`$données` FROM `data` WHERE Annee = '".$année."'" );
             while($m = $map ->fetch()){
-                
+                $v[]=$m[$données];
                 $r[]=$m;
             }
             
-            
             foreach($r as $d){
                 $data []= array('code'=>$d['Code'],'data'=>(float)$d[$données]);
+                
             
             }
              
@@ -143,17 +147,32 @@
             
             $map ->closeCursor();
             echo '<p>Pour l\'année '.$année.' nous avons :</p>';
+            
+            // Récupération des valeurs du tableau
+            $valeurs = array_values($v);
 
-            //print_r($Dmap);
+            // Tri des valeurs
+            sort($valeurs);
+
+            $decile1 = $valeurs[floor(count($valeurs) * 0.1)];
+            $decile2 = $valeurs[floor(count($valeurs) * 0.2)];
+            $decile3 = $valeurs[floor(count($valeurs) * 0.3)];
+            $decile4 = $valeurs[floor(count($valeurs) * 0.4)];
+            $decile5 = $valeurs[floor(count($valeurs) * 0.5)];
+            $decile6 = $valeurs[floor(count($valeurs) * 0.6)];
+            $decile7 = $valeurs[floor(count($valeurs) * 0.7)];
+            $decile8 = $valeurs[floor(count($valeurs) * 0.8)];
+            $decile9 = $valeurs[floor(count($valeurs) * 0.9)];
 
         }
-        
+      
         ?>
 
         <div id="map"></div>
         
     </body>
 </html>
+
 <script>
       mapboxgl.accessToken = 'pk.eyJ1IjoiYWF1ZHJpYyIsImEiOiJjbGZndzAwb3IxYWdjM3NuemkwMTRkamJtIn0.5v3HkIpqfwb5p5IWfL4aWA';
       const map = new mapboxgl.Map({
@@ -177,22 +196,34 @@
       // Build a GL match expression that defines the color for every vector tile feature
       // Use the ISO 3166-1 alpha 3 code as the lookup key for the country shape
       const matchExpression = ['match', ['get', 'iso_3166_1_alpha_3']];
+
+      const d1 = <?php echo $decile1; ?>;
+      const d2 = <?php echo $decile2; ?>;
+      const d3 = <?php echo $decile3; ?>;
+      const d4 = <?php echo $decile4; ?>;
+      const d5 = <?php echo $decile5; ?>;
+      const d6 = <?php echo $decile6; ?>;
+      const d7 = <?php echo $decile7; ?>;
+      const d8 = <?php echo $decile8; ?>;
+      const d9 = <?php echo $decile9; ?>;
       
       // Calculate color values for each country based on 'data' value
       for (const row of data) {
       // Convert the range of data values to a suitable color
       const blue = row['data'];
-      const color = getColor(blue);
+      const color = getColor(blue,d1,d2,d3,d4,d5,d6,d7,d8,d9);
       
-      function getColor(d) {
-          return d > 1000 ? 'blue' :
-              d > 500  ? 'yellow' :
-              d > 200  ? 'orange' :
-              d > 100  ? 'green' :
-              d > 50   ? 'brown' :
-              d > 20   ? 'purple' :
-              d > 10   ? 'pink' :
-                          'red';
+      function getColor(e,d1,d2,d3,d4,d5,d6,d7,d8,d9) {
+          return e > d9 ? '#87CEFA' :
+          e > d8  ? '#808000' :
+            e > d7  ? '#FFA500' :
+              e > d6  ? '#F4A460' :
+              e > d5  ? '#D3D3D3' :
+              e > d4  ? '#90EE90' :
+              e > d3   ? '#66CDAA' :
+              e > d2   ? '#9370DB' :
+              e > d1   ? '#FFB6C1' :
+                          '#F08080';
       }
       matchExpression.push(row['code'], color);
       }
@@ -223,4 +254,7 @@
       'admin-1-boundary-bg'
       );
       });
+
+
+
     </script>
