@@ -126,49 +126,61 @@
         if ((isset($_POST['année']) and !empty($_POST['année']))
         or (isset($_POST['données']) and !empty($_POST['données']))){
 
-            $bdd = getBD();
+          $bdd = getBD();
 
-            $année = $_POST['année'];
-            $données = $_POST['données'];
+          $année = $_POST['année'];
+          $données = $_POST['données'];
 
-            $map = $bdd ->query("SELECT Code,`$données` FROM `data` WHERE Annee = '".$année."'" );
-            while($m = $map ->fetch()){
-                $v[]=$m[$données];
-                $r[]=$m;
-            }
+          $map = $bdd ->query("SELECT Code,`$données` FROM `data` WHERE Annee = '".$année."'" );
+          while($m = $map ->fetch()){
+            $v[]=$m[$données];
+            $r[]=$m;
+          }
             
-            foreach($r as $d){
-                $data []= array('code'=>$d['Code'],'data'=>(float)$d[$données]);
+          foreach($r as $d){
+
+            $data []= array('code'=>$d['Code'],'data'=>(float)$d[$données]);
                 
+          }
+          ?>
             
-            }
-             
-            $Dmap =json_encode($data);
-            
-            $map ->closeCursor();
-            echo '<p>Pour l\'année '.$année.' nous avons :</p>';
-            
-            // Récupération des valeurs du tableau
-            $valeurs = array_values($v);
+          <div id =" data" > <?php $Dmap =json_encode($data);?></div>
 
-            // Tri des valeurs
-            sort($valeurs);
+          <?php
+            
+          $map ->closeCursor();
+          echo '<p>Pour l\'année '.$année.' nous avons :</p>';
+            
+          // Récupération des valeurs du tableau
+          $valeurs = array_values($v);
 
-            $decile1 = $valeurs[floor(count($valeurs) * 0.1)];
-            $decile2 = $valeurs[floor(count($valeurs) * 0.2)];
-            $decile3 = $valeurs[floor(count($valeurs) * 0.3)];
-            $decile4 = $valeurs[floor(count($valeurs) * 0.4)];
-            $decile5 = $valeurs[floor(count($valeurs) * 0.5)];
-            $decile6 = $valeurs[floor(count($valeurs) * 0.6)];
-            $decile7 = $valeurs[floor(count($valeurs) * 0.7)];
-            $decile8 = $valeurs[floor(count($valeurs) * 0.8)];
-            $decile9 = $valeurs[floor(count($valeurs) * 0.9)];
+          // Tri des valeurs
+          sort($valeurs);
+
+          $decile1 = $valeurs[floor(count($valeurs) * 0.1)];
+          $decile2 = $valeurs[floor(count($valeurs) * 0.2)];
+          $decile3 = $valeurs[floor(count($valeurs) * 0.3)];
+          $decile4 = $valeurs[floor(count($valeurs) * 0.4)];
+          $decile5 = $valeurs[floor(count($valeurs) * 0.5)];
+          $decile6 = $valeurs[floor(count($valeurs) * 0.6)];
+          $decile7 = $valeurs[floor(count($valeurs) * 0.7)];
+          $decile8 = $valeurs[floor(count($valeurs) * 0.8)];
+          $decile9 = $valeurs[floor(count($valeurs) * 0.9)];
 
         }
       
         ?>
 
         <div id="map"></div>
+        <?php if ((isset($_POST['année']) and !empty($_POST['année']))
+        or (isset($_POST['données']) and !empty($_POST['données']))){
+        ?>
+        <div class='map-overlay' id='features'><h2><?php echo "$données en $année"   ?></h2><div id='pd'><p>Hover over a country !</p></div></div>
+        <div class='map-overlay' id='legend'></div>
+        <?php }
+        else{
+
+        }?>
         
     </body>
 </html>
@@ -180,9 +192,8 @@
       // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
       style: 'mapbox://styles/mapbox/light-v11',
       center: [12, 50],
-      zoom: 2.2
+      zoom: 1.6
       });
-    
     
       const data = <?php echo $Dmap;?>
       
@@ -227,6 +238,46 @@
       }
       matchExpression.push(row['code'], color);
       }
+
+      const layers = [
+        '> '+d1,
+        '> '+d2,
+        '> '+d3,
+        '> '+d4,
+        '> '+d5,
+        '> '+d6,
+        '> '+d7,
+        '> '+d8,
+        '> '+d9
+      ];
+
+      const couleur = [
+        '#FFB6C1',
+        '#9370DB',
+        '#66CDAA',
+        '#90EE90',
+        '#D3D3D3',
+        '#F4A460',
+        '#FFA500',
+        '#808000',
+        '#87CEFA',
+      ];
+
+      const legend = document.getElementById('legend');
+
+      layers.forEach((layer, i) => {
+        const color2 = couleur[i];
+        const item = document.createElement('div');
+        const key = document.createElement('span');
+        key.className = 'legend-key';
+        key.style.backgroundColor = color2;
+
+        const value = document.createElement('span');
+        value.innerHTML = `${layer}`;
+        item.appendChild(key);
+        item.appendChild(value);
+        legend.appendChild(item);
+      });
       
       // Last value is the default, used where there is no data
       matchExpression.push('rgba(0, 0, 0, 0)');
@@ -242,7 +293,7 @@
       // Insert it below the 'admin-1-boundary-bg' layer in the style
       map.addLayer(
       {
-      'id': 'countries-join',
+      'id': 'countries',
       'type': 'fill',
       'source': 'countries',
       'source-layer': 'country_boundaries',
@@ -251,10 +302,38 @@
       },
       'filter': worldview_filter
       },
+      /*{
+        'id':'data',
+        'type': 'fill',
+        source: {type: "geojson",
+        data: "<?php echo $Dmap; ?>" }
+      }*/
       'admin-1-boundary-bg'
       );
-      });
+      
+      
+    map.on('click', (event) => {
+      const features = map.queryRenderedFeatures(event.point, { layers: ['countries'] });
+      const countries = map.queryRenderedFeatures(event.point, { layers : ['data']});
+      console.log(features);
+
+      if (features.length > 0 && countries.length > 0) {
+        const density = countries[0].properties.name;
+        const name = features[0].properties.name_en;
+        const tooltip = `<h3>${name}</h3><p><strong><em>${density}</strong> personnes par mile carré</em></p>`;
+
+        new mapboxgl.Popup({ offset: 15 })
+          .setLngLat(event.lngLat)
+          .setHTML(tooltip)
+          .addTo(map);
+      }
 
 
+    });
 
-    </script>
+
+    });
+
+      
+  
+  </script>

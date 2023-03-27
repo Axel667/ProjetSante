@@ -7,7 +7,7 @@
     <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
     <!--<link rel="stylesheet" type="text/css" href="site.css" />-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
+    <!--<link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">-->
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
@@ -335,6 +335,26 @@
       'admin-1-boundary-bg'
       );
       });
+
+      map.on('click', 'data', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['pays']
+  });
+
+  if (!features.length) {
+    return;
+  }
+
+  var feature = features[0];
+
+  new mapboxgl.Popup()
+    .setLngLat(e.lngLat)
+    .setHTML('<h3>' + feature.properties.name + '</h3>')
+    .addTo(map);
+});
+
+
+
     </script>
     
 </body>
