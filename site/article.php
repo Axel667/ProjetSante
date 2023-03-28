@@ -6,11 +6,27 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Article</title>
-   <?php include("baseD.php"); ?>
+   <?php include("baseD.php");  ?>
    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
    <link rel="stylesheet" type="text/css" href="site.css" />
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   <script>
+      function desapprouver() {
+         var aa = <?php echo $_GET['id_article']; ?>;
+
+         var xhttp = new XMLHttpRequest();
+         xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+               // Traitement à effectuer lorsque la mise à jour est terminée
+            }
+         };
+         xhttp.open("GET", "article.php?id_article=" + aa + "&action=desapprouver", false);
+         xhttp.send();
+         }
+
+
+   </script>
 </head>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
    <div class="container-fluid">
@@ -71,20 +87,61 @@
    <a href="index.php" class="btn btn-secondary">Back Home</a>
    <br />
    <br />
+
    <?php
     //récupération du paramètre
     $aa = $_GET['id_article'];
     //connection avec la bdd avec la fonction getBD
     $bdd = getBD();
+
+   
+    if (isset($_SESSION['client']) and $_SESSION['client']['admin']== "oui"){
+      
+      echo "<a type='button' class='btn btn-success' href ='approuve.php?id_article=$aa'>Approuver</a>
+
+      <a type='button' class='btn btn-danger' href='desapprouver.php?id_article=$aa'>Désapprouver</a>";
+
+   
     //requete sur la bd avec le paramètre récupéré
-    $rep = $bdd->query("select * from sourcer where id_article= $aa ");
-    while ($ligne = $rep->fetch()) {
+      $rep = $bdd->query("select * from sourcer where id_article= $aa ");
 
-        echo "<h2>" . $ligne['Titre'] . "</h2>";
+      while ($ligne = $rep->fetch()) {
 
-        echo "<p>" . $ligne['article'] . "</p>";
-    }
+         if ($ligne['approuve']== 0){
+            echo "<p> Approuvée : non</p>";
+         }
+         elseif ($ligne['approuve']== 1){
+            echo "<p> Approuvée : oui </p>";
+         }
+         
+         echo "Titre : <h2>" . $ligne['Titre'] . "</h2>";
+
+         echo "Auteur : <h3>" . $ligne['auteur'] . "</h3>";
+
+         //echo "<br/>";
+
+         echo "Article : <p>" . $ligne['article'] . "</p>";
+      }
     $rep->closeCursor();
+   }
+   else{
+
+      $rep3 = $bdd->query("select * from sourcer where id_article= $aa ");
+
+      while ($ligne = $rep3->fetch()) {
+         
+         echo "Titre : <h2>" . $ligne['Titre'] . "</h2>";
+
+         echo "Auteur : <h3>" . $ligne['auteur'] . "</h3>";
+
+         //echo "<br/>";
+
+         echo "Article : <p>" . $ligne['article'] . "</p>";
+      }
+
+      $rep3->closeCursor();
+
+   }
     ?>
 </body>
 

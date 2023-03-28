@@ -96,37 +96,93 @@
 
     $bdd =  getBD();
 
-    if (isset($_GET['rech']) and !empty($_GET['rech'])){
+    if (isset($_SESSION['client']) and  $_SESSION['client']['admin'] == "oui"){
 
-      $rech = htmlspecialchars($_GET['rech']);
-        
-      $Rart = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%'.$rech.'%" ');            
+      if (isset($_GET['rech']) and !empty($_GET['rech'])){
+      
 
-      if ($Rart->rowCount() > 0 and (!empty($Rart))){
-
-        while($affart = $Rart->fetch()){
-
-          echo "<ul><li><a href ='article.php?id_article=".$affart['id_article']."'><em><strong>" .$affart['Titre']. "</em></strong></a></li></ul>";
-
+        $rech = htmlspecialchars($_GET['rech']);
+          
+        $Rart = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%'.$rech.'%" ');            
+  
+        if ($Rart->rowCount() > 0 and (!empty($Rart))){
+  
+          while($affart = $Rart->fetch()){
+  
+            echo "<ul><li><a href ='article.php?id_article=".$affart['id_article']."'><em><strong>" .$affart['Titre']. "</em></strong></a></li></ul>";
+  
+          }
+          $Rart ->closeCursor();
         }
-        $Rart ->closeCursor();
+        else{
+          echo "<p>Aucun article ne correspond à votre recherche</p>";
+        }
       }
       else{
-        echo "<p>Aucun article ne correspond à votre recherche</p>";
+    
+        //requête sur la bd
+        $rep = $bdd->query('select id_article,titre from sourcer WHERE approuve = 0');
+
+        echo "<h3> Artcile non approuvée :</h3>";
+
+        while ($ligne = $rep ->fetch()) {
+
+          
+  
+          //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
+          echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
+        }
+        $rep ->closeCursor(); 
+
+        $rep2 = $bdd->query('select id_article,titre from sourcer where approuve = 1');
+
+        echo "<h3> Artcile approuvée : </h3>";
+
+        while ($ligne2 = $rep2 ->fetch()){
+          
+          echo "<ul><li><a href ='article.php?id_article=".$ligne2['id_article']."'><em><strong>".$ligne2['titre']."</strong></em></a></li></ul>";
+
+        }
+
+        $rep2 ->closeCursor();
       }
+
     }
     else{
-  
-      //requête sur la bd
-      $rep = $bdd->query('select id_article,titre from sourcer');
 
-      while ($ligne = $rep ->fetch()) {
+      if (isset($_GET['rech']) and !empty($_GET['rech'])){
+        
 
-        //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
-        echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
+        $rech = htmlspecialchars($_GET['rech']);
+          
+        $Rart = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%'.$rech.'%"  and approuve = 1');            
+
+        if ($Rart->rowCount() > 0 and (!empty($Rart))){
+
+          while($affart = $Rart->fetch()){
+
+            echo "<ul><li><a href ='article.php?id_article=".$affart['id_article']."'><em><strong>" .$affart['Titre']. "</em></strong></a></li></ul>";
+
+          }
+          $Rart ->closeCursor();
+        }
+        else{
+          echo "<p>Aucun article ne correspond à votre recherche</p>";
+        }
       }
-      $rep ->closeCursor(); 
-    }
+      else{
+    
+        //requête sur la bd
+        $rep = $bdd->query('select id_article,titre from sourcer WHERE approuve = 1');
+
+        while ($ligne = $rep ->fetch()) {
+
+          //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
+          echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
+        }
+        $rep ->closeCursor(); 
+      }
+  }
 
       
     ?>
