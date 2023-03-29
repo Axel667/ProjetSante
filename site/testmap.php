@@ -225,21 +225,22 @@
       const color = getColor(blue,d1,d2,d3,d4,d5,d6,d7,d8,d9);
       
       function getColor(e,d1,d2,d3,d4,d5,d6,d7,d8,d9) {
-          return e > d9 ? '#87CEFA' :
-          e > d8  ? '#808000' :
-            e > d7  ? '#FFA500' :
-              e > d6  ? '#F4A460' :
-              e > d5  ? '#DC143C' :
-              e > d4  ? '#90EE90' :
-              e > d3   ? '#66CDAA' :
-              e > d2   ? '#9370DB' :
-              e > d1   ? '#FFB6C1' :
-                          '#F08080';
+          return e > d9   ? '#2f2f87' :
+            e > d8  ? '#203e94' :
+              e > d7  ? '#2a90b6' :
+              e > d6  ? '#1bad86' :
+              e > d5  ? '#43c61f' :
+              e > d4   ? '#9fce21' :
+              e > d3 ? '#d1d11e' :
+              e > d2   ? '#fdbd12' :
+              e > d1   ? '#f87e27' :
+                          '#be3f07';
       }
       matchExpression.push(row['code'], color);
       }
 
       const layers = [
+        'NA',
         '> '+d1,
         '> '+d2,
         '> '+d3,
@@ -252,15 +253,17 @@
       ];
 
       const couleur = [
-        '#FFB6C1',
-        '#9370DB',
-        '#66CDAA',
-        '#90EE90',
-        '#DC143C',
-        '#F4A460',
-        '#FFA500',
-        '#808000',
-        '#87CEFA',
+        '#fff',
+        '#be3f07',
+        '#f87e27',
+        '#fdbd12',
+        '#d1d11e',
+        '#9fce21',
+        '#43c61f',
+        '#1bad86',
+        '#2a90b6',
+        '#203e94',
+        '#2f2f87',
       ];
 
       const legend = document.getElementById('legend');
