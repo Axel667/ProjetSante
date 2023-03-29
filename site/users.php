@@ -20,15 +20,16 @@
     include("baseD.php");
 
     function enregistrer($nom, $prenom, $mail, $genre,$fonction,$news, $mdp) {
-
+        
+        $admin = "non";
         // Connexion à la base de données
         $bdd =  getBD();
         
         // Préparation de la requête d'insertion
-        $requete = $bdd->prepare("INSERT INTO `users` ( `nom`, `prenom`, `mail`,`genre`,`fonction`,`abonne`, `mdp`) VALUES ( '$nom', '$prenom', '$mail','$genre','$fonction','$news', '$mdp')");
+        $requete = $bdd->prepare("INSERT INTO `users` ( `nom`, `prenom`, `mail`, `genre`,`fonction`,`abonne`, `mdp`,`admin`) VALUES ( '$nom', '$prenom', '$mail', '$genre','$fonction','$news', '$mdp', '$admin')");
         
         // Exécution de la requête avec les paramètres donnés
-        $requete->execute(array('nom'=>$nom, 'prenom'=>$prenom, 'mail'=>$mail,'genre'=> $genre,'fonction' => $fonction,'news'=>$news, 'mdp'=> $mdp));
+        $requete->execute(array('nom'=>$nom, 'prenom'=>$prenom, 'mail'=>$mail, 'genre'=> $genre,'fonction' => $fonction,'news'=>$news, 'mdp'=> $mdp, 'admin'=>$admin));
     }
 
     if ((isset($_POST['n']) and empty($_POST['n']))

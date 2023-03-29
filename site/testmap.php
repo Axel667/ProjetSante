@@ -175,7 +175,7 @@
         <?php if ((isset($_POST['année']) and !empty($_POST['année']))
         or (isset($_POST['données']) and !empty($_POST['données']))){
         ?>
-        <div class='map-overlay' id='features'><h2><?php echo "$données en $année"   ?></h2><div id='pd'><p>Hover over a country !</p></div></div>
+        <div class='map-overlay' id='features'><h2><?php echo "$données en $année"   ?></h2><div id='pd'><p>Cliquez sur un pays !</p></div></div>
         <div class='map-overlay' id='legend'></div>
         <?php }
         else{
@@ -229,7 +229,7 @@
           e > d8  ? '#808000' :
             e > d7  ? '#FFA500' :
               e > d6  ? '#F4A460' :
-              e > d5  ? '#D3D3D3' :
+              e > d5  ? '#DC143C' :
               e > d4  ? '#90EE90' :
               e > d3   ? '#66CDAA' :
               e > d2   ? '#9370DB' :
@@ -256,7 +256,7 @@
         '#9370DB',
         '#66CDAA',
         '#90EE90',
-        '#D3D3D3',
+        '#DC143C',
         '#F4A460',
         '#FFA500',
         '#808000',
@@ -302,25 +302,18 @@
       },
       'filter': worldview_filter
       },
-      /*{
-        'id':'data',
-        'type': 'fill',
-        source: {type: "geojson",
-        data: "<?php echo $Dmap; ?>" }
-      }*/
       'admin-1-boundary-bg'
       );
       
       
     map.on('click', (event) => {
       const features = map.queryRenderedFeatures(event.point, { layers: ['countries'] });
-      const countries = map.queryRenderedFeatures(event.point, { layers : ['data']});
       console.log(features);
 
-      if (features.length > 0 && countries.length > 0) {
-        const density = countries[0].properties.name;
+      if (features.length > 0) {
+        const density = features[0].properties.name;
         const name = features[0].properties.name_en;
-        const tooltip = `<h3>${name}</h3><p><strong><em>${density}</strong> personnes par mile carré</em></p>`;
+        const tooltip = `<h3>${name}</h3><p><strong><em>${density}</strong> </em></p>`;
 
         new mapboxgl.Popup({ offset: 15 })
           .setLngLat(event.lngLat)

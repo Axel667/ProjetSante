@@ -123,12 +123,12 @@
         //requête sur la bd
         $rep = $bdd->query('select id_article,titre from sourcer WHERE approuve = 0');
 
-        echo "<h3> Artcile non approuvée :</h3>";
+        
+
+        echo "<h3> Article non approuvé :</h3>";
 
         while ($ligne = $rep ->fetch()) {
 
-          
-  
           //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
           echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
         }
@@ -136,7 +136,7 @@
 
         $rep2 = $bdd->query('select id_article,titre from sourcer where approuve = 1');
 
-        echo "<h3> Artcile approuvée : </h3>";
+        echo "<h3> Article approuvé : </h3>";
 
         while ($ligne2 = $rep2 ->fetch()){
           
@@ -155,16 +155,16 @@
 
         $rech = htmlspecialchars($_GET['rech']);
           
-        $Rart = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%'.$rech.'%"  and approuve = 1');            
+        $Rart2 = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%'.$rech.'%"  and approuve = 1');            
 
-        if ($Rart->rowCount() > 0 and (!empty($Rart))){
+        if ($Rart2->rowCount() > 0 and (!empty($Rart))){
 
-          while($affart = $Rart->fetch()){
+          while($affart2 = $Rart2->fetch()){
 
-            echo "<ul><li><a href ='article.php?id_article=".$affart['id_article']."'><em><strong>" .$affart['Titre']. "</em></strong></a></li></ul>";
+            echo "<ul><li><a href ='article.php?id_article=".$affart2['id_article']."'><em><strong>" .$affart2['Titre']. "</em></strong></a></li></ul>";
 
           }
-          $Rart ->closeCursor();
+          $Rart2 ->closeCursor();
         }
         else{
           echo "<p>Aucun article ne correspond à votre recherche</p>";
@@ -173,14 +173,14 @@
       else{
     
         //requête sur la bd
-        $rep = $bdd->query('select id_article,titre from sourcer WHERE approuve = 1');
+        $rep3 = $bdd->query('select id_article,titre from sourcer WHERE approuve = 1');
 
-        while ($ligne = $rep ->fetch()) {
+        while ($ligne3 = $rep3 ->fetch()) {
 
           //création d'un lien contenant le paramètre de l'article en question sur le nom de l'article
-          echo "<ul><li><a href ='article.php?id_article=".$ligne['id_article']."'><em><strong>" .$ligne['titre']. "</em></strong></a></li></ul>";
+          echo "<ul><li><a href ='article.php?id_article=".$ligne3['id_article']."'><em><strong>" .$ligne3['titre']. "</em></strong></a></li></ul>";
         }
-        $rep ->closeCursor(); 
+        $rep3 ->closeCursor(); 
       }
   }
 
