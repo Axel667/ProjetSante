@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Create</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
-    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
-
-    <link rel="stylesheet" type="text/css" href="site.css" />
+    <title>Evolutionon</title>
 
     <?php include("baseD.php"); ?>
 
+    <link rel="stylesheet" type="text/css" href="site.css" />
+    
+    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    
+
 </head>
-<body>
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.php"><h2>SantÉconomie</h2></a>
@@ -77,40 +82,18 @@
             </div>
             </nav>
 
-    <a href="index.php" class="btn btn-secondary">Back Home</a>
+<a href="index.php" class="btn btn-secondary">Back Home</a>
 
-    <h2>Créer un article :</h2>
+<br/>
 
-    <p>Sur cette page vous pouvez créer un article à partir des des datasets et des graphiques mis à votre disposition sur notre site.<p>
-    <?php 
+<body>
 
-    if (isset($_SESSION['client'])){
+  <h2>Evolution d'un pays : </h2>
 
-    echo '<form method="post" action="enregistrer.php" >';
+  <br/>
 
-    if(!isset($_GET['var1'])){
-        echo '<div class="mb-3 mt-3">
-        <label for="Titre" class="form-label">Titre : </label>
-        <input type="titre" class="form-group" id="titre" name="titre"></div>';
-    }
-    elseif(isset($_GET['var1'])){
-        echo '<div class="mb-3 mt-3">
-        <label for="Titre" class="form-label">Titre : </label>
-        <input type="titre" class="form-group" id="titre" name="titre" value='.$_GET['var1'].'></div>';
-    }
-    if(!isset($_GET['var2'])){
-        echo '<div class="mb-3 mt-3">
-        <label for="Auteur" class="form-label">Auteur : </label>
-        <input type="auteur" class="form-group" id="auteur" name="auteur"></div>';
-    }
-    elseif(isset($_GET['var2'])){
-        echo '<div class="mb-3 mt-3">
-        <label for="Auteur" class="form-label">Auteur : </label>
-        <input type="auteur" class="form-group" id="auteur" name="auteur" value='.$_GET['var2'].'></div>';
-    }
-    echo'<div>
-        Pays : <select class="form-group" name="pays" value ="">
-        <OPTION VALUE="">Sélectionnez un pays</OPTION>
+  <form  action="evolutiontest.php" method="post" autocomplete="off">
+        Pays  1: <SELECT class="form-group" name="Pays">
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
         <OPTION VALUE="Angola">Angola</OPTION>
@@ -145,7 +128,7 @@
         <OPTION VALUE="Switzerland">Switzerland</OPTION>
         <OPTION VALUE="Chile">Chile</OPTION>
         <OPTION VALUE="China">China</OPTION>
-        <OPTION VALUE="Cote d\'Ivoire">Cote d\'Ivoire</OPTION>
+        <OPTION VALUE="Cote d'Ivoire">Cote d'Ivoire</OPTION>
         <OPTION VALUE="Cameroon">Cameroon</OPTION>
         <OPTION VALUE="Democratic Republic of Congo">Democratic Republic of Congo</OPTION>
         <OPTION VALUE="Congo">Congo</OPTION>
@@ -306,32 +289,117 @@
         <OPTION VALUE="Zambia">Zambia</OPTION>
         <OPTION VALUE="Zimbabwe">Zimbabwe</OPTION>
         <OPTION VALUE="World">World</OPTION>
-        </SELECT></div>';
+        </SELECT>
 
-    if(!isset($_GET['var4'])){
+        Type de graphique : <SELECT class="form-group" name="type">
+        <OPTION VALUE="bar">Barre</OPTION>
+        <OPTION VALUE="line">Line</OPTION>
+        <OPTION VALUE="scatter">Nuage de points</OPTION>
+        <OPTION VALUE="radar">Radar</OPTION>
+        </SELECT>
 
-        echo '<div class="mb-3 mt-3">
-        <label for="article">Article : </label>
-        <textarea class="form-control" rows="5" id="comment" name="art"></textarea>
-      </div>';
-    }
-    elseif(isset($_GET['var4'])){
-        echo '<div class="mb-3 mt-3">
-        <label for="article">Article : </label>
-        <textarea class="form-control" rows="5" id="comment" name="art">'.$_GET['var4'].'</textarea>
+        PIB : <SELECT class="form-group" name="pib">
+        <OPTION VALUE="PIB par habitant">PIB</OPTION>
+       </SELECT>
+
+        Données : <SELECT class="form-group" name="donnée">
+        <OPTION VALUE="espe_vie">Espérance de vie</OPTION>
+        <OPTION VALUE="tx_obesite(%)">Taux d'obésité</OPTION>
+        <OPTION VALUE="depenses_sante($)">Dépenses santé</OPTION>
+        </SELECT>
+              
+        <button type="submit" class="btn btn-secondary">Voir l'évolution</button>
+
+  </form>
+  
+  <?php 
+
+      if ((isset($_POST['Pays']) and !empty($_POST['Pays']))
+      or (isset($_POST['type']) and !empty($_POST['type']))
+      or (isset($_POST['pib']) and !empty($_POST['pib']))
+      or (isset($_POST['donnée']) and !empty($_POST['donnée']))){
+
+        $bdd = getBD();
+
+        $p= $_POST['Pays'];
+        $pib = $_POST['pib'];
+        $type = $_POST['type'];
+        $donnée = $_POST['donnée'];
+        $result = $bdd ->query("SELECT * FROM `data` WHERE Pays = '".$p."'" );
+        while($pays = $result -> fetch()){
+
+            $année[] = $pays["Annee"];
+            $datapib[]= $pays["PIB par habitant"];
+            $PAYS[]= $pays[$donnée];
+            
+        }
         
-        </div>';
-    }
+        $year = json_encode($année);
+        $data1 = json_encode($datapib);
+        $data0 = json_encode($PAYS);
+        
 
-    echo '<button type="submit" class="btn btn-secondary">Enregistrer</button>
 
-    </form>';
+        $result ->closeCursor(); 
     }
     else{
-        echo '<p>Veuillez vous connecter afin créer un article</p>';
-    }
+        echo "Veuillez saisir tous les champs.";
+        }
+    
     ?>
+    <div>
+    <canvas id="evolution"></canvas>
+  
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   
+ 
+ <script>
+  
+    var ctx = document.getElementById('evolution').getContext('2d')
+    var evolution = new Chart(ctx, {
+            type: '<?php echo $type ?>',
+            data: {
+                labels: <?php echo $year?>,
+                datasets: [{
+                    label: "<?php echo "PIB de " .$p."" ?>",
+                    data: <?php echo $data1; ?>,
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                    tension: 0.4,
+                    
+                    yAxisID: 'y-axis-1'
+                }, {
+                    label: '<?php echo "".$donnée." de ".$p."" ?>',
+                    data: <?php echo $data0; ?>,
+                    backgroundColor: 'blue',
+                    borderColor: 'blue',
+                    tension: 0.4,
+                    
+                    yAxisID: 'y-axis-2'
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        id: 'y-axis-1',
+                        position: 'right',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }, {
+                        id: 'y-axis-2',
+                        position: 'left',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+    
 
 </body>
 </html>
