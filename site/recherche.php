@@ -108,11 +108,11 @@
    <br />
    <br />
    <?php
-  echo "<p>Voici les résultats des données pour la recherche : <strong>'" . $_GET['s'] . "'</strong></p>";
+  echo "<p>Voici les résultats des données pour la recherche : <strong>'" . $_GET['q'] . "'</strong></p>";
   include("baseD.php");
   $bdd = getBD();
-  if (isset($_GET['s']) and !empty($_GET['s'])) {
-    $rech = htmlspecialchars($_GET['s']);
+  if (isset($_GET['q']) and !empty($_GET['q'])) {
+    $rech = htmlspecialchars($_GET['q']);
     $data = $bdd->query('select * from data where Pays LIKE "%' . $rech . '%" ORDER by Annee');
     if ($data->rowCount() > 0 and (!empty($data))) {
       echo "<div class='row bg-dark text-white'>";
