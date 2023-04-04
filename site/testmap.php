@@ -1,130 +1,155 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Carte</title>
-        <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
-        <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
 
-        <style>
-            #map { position: relative; top: 20px; bottom: 40px; width: 70%; }
-        </style>
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Carte</title>
+   <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
+   <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+   <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <?php include("baseD.php"); ?>
 
-        <link rel="stylesheet" href="site.css">
+</head>
 
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<body class="">
+   <nav class="bg-stone-800 text-white px-6 rounded-lg mt-4 mx-4">
+      <div class="flex items-center justify-between">
+         <div class="flex space-x-4">
+            <!-- logo -->
+            <div class="mx-8">
+               <a href=" index.php" class="flex items-center py-5 px-2  hover:text-stone-400">
+                  <svg class="h-6 w-6 mr-1 text-purple-700" xmlns="http://www.w3.org/2000/svg" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                  </svg>
+                  <span class="text-2xl font-bold">SantÉconomie</span>
+               </a>
+            </div>
 
-        <?php include("baseD.php"); ?>
+            <!-- primary nav -->
+            <div class="hidden md:flex items-center space-x-1">
+               <a href="testmap.php" class="px-4 py-2">Carte</a>
+               <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
+               <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
+               <a href="datasets.php" class="px-4 py-2">Datasets</a>
+               <?php
+          session_start();
+          if (!isset($_SESSION['client'])) {
+          } else {
+            echo '<a href="create.php" class="mx-2">Créer</a>';
+          } ?>
+            </div>
+         </div>
 
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-    <a class="navbar-brand" href="index.php"><h2>SantÉconomie</h2></a>
-    <ul class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-        <a class="nav-link active" href="testmap.php">Carte</a>
-        </li>
-    <li class="nav-item">
-    <a class="nav-link active" href="comparaison2.php">Comparer</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="evolutiontest.php">Evolution</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="nos-article.php">Nos Articles</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link active" href="datasets.php">Datasets</a>
-    </li>
-    <?php session_start();
+         <!-- secondary nav -->
+         <div class="hidden md:flex items-center space-x-1">
 
-              if (!isset($_SESSION['client'])){
-              }
-              else{
-              echo '<li class="nav-item">
-                <a class="nav-link active" href="create.php">Créer</a>
-              </li>';
-            }?>
-            </ul>
-            <ul class="navbar-nav ms-auto"></ul>
-            <form class="d-flex" method="GET" action="recherche.php">
-              <input class="form-control me-2" name="s"  type="search" placeholder="Search">
-                <button class="btn btn-secondary"  type="submit">Search</button>
-              </form>
-              <?php
+            <form method="GET" action="recherche.php">
+               <div class="relative text-stone-600 focus-within:text-stone-400">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                     <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                           stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                           <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                     </button>
+                  </span>
+                  <input type="search" name="q"
+                     class="py-2 text-sm text-white bg-stone-900 rounded-md pl-10 focus:outline-none focus:bg-stone-700 focus:text-white"
+                     placeholder="Search..." autocomplete="off">
+               </div>
+            </form>
 
-              if (!isset($_SESSION['client'])){
-              echo '<li class="nav-item">
-                <a class="nav-link" href="sign-in.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a>
-              </li>';
-              }
-              else{
-                echo '<li class="nav-item">
-                <a class="nav-link active" href="profil.php"><img src="img/user@2x.png" style="height: 30px; width: 30px;"></a></li>';
-                
-                echo '<li class="nav-item"><a href="deconnexion.php" class="btn btn-light">Log out</a></li>';
-                
-              }
-              ?>
-    </li>
-    </ul>
-    </div>
-    </nav>
-        <a href="index.php" class="btn btn-secondary">Back Home</a>
-        
-        <h2>Carte</h2>
+            <?php
+        if (!isset($_SESSION['client'])) {
+          echo '            
+               <a href="sign-in.php" class="flex items-center py-5 px-4">Sign-in
+               <svg class="h-6 w-6 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+               </svg>
+               </a>
+               <a href="sign-up.php"
+               class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+               <span
+                  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                  Sign-up
+               </span>
+            </a>';
 
-        <form  action="testmap.php" method="post" autocomplete="off">
+        } else {
+          echo '<a href="profil.php" class="mx-4"><svg class="h-8 w-8 mx-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+               </svg></a>';
+          echo '<a href="deconnexion.php" class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+               <span
+                  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                  Log-out
+               </span></a>';
+        }
+        ?>
 
-            Données : <SELECT class="form-group" name="données">
-            <OPTION VALUE="PIB par habitant">PIB</OPTION>
-            <OPTION VALUE="espe_vie">Espérance de vie</OPTION>
-            <OPTION VALUE="tx_obesite(%)">Taux d'obésité</OPTION>
-            <OPTION VALUE="depenses_sante($)">Dépenses santé</OPTION>
-            </SELECT>
+         </div>
+      </div>
+   </nav>
+   <a href="index.php" class="btn btn-secondary">Back Home</a>
 
-            Année : <SELECT class="form-group" name="année">
-                <option value="1990">1990</option>
-                <option value="1991">1991</option>
-                <option value="1992">1992</option>
-                <option value="1993">1993</option>
-                <option value="1994">1994</option>
-                <option value="1995">1995</option>
-                <option value="1996">1996</option>
-                <option value="1997">1997</option>
-                <option value="1998">1998</option>
-                <option value="1999">1999</option>
-                <option value="2000">2000</option>
-                <option value="2001">2001</option>
-                <option value="2002">2002</option>
-                <option value="2003">2003</option>
-                <option value="2004">2004</option>
-                <option value="2005">2005</option>
-                <option value="2006">2006</option>
-                <option value="2007">2007</option>
-                <option value="2008">2008</option>
-                <option value="2009">2009</option>
-                <option value="2010">2010</option>
-                <option value="2011">2011</option>
-                <option value="2012">2012</option>
-                <option value="2013">2013</option>
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-            </SELECT>
+   <h2>Carte</h2>
 
-            <button type="submit" class="btn btn-secondary">Sélectionner</button>
-        </form>
+   <form action="testmap.php" method="post" autocomplete="off">
 
-        <?php 
+      Données : <SELECT class="form-group" name="données">
+         <OPTION VALUE="PIB par habitant">PIB</OPTION>
+         <OPTION VALUE="espe_vie">Espérance de vie</OPTION>
+         <OPTION VALUE="tx_obesite(%)">Taux d'obésité</OPTION>
+         <OPTION VALUE="depenses_sante($)">Dépenses santé</OPTION>
+      </SELECT>
+
+      Année : <SELECT class="form-group" name="année">
+         <option value="1990">1990</option>
+         <option value="1991">1991</option>
+         <option value="1992">1992</option>
+         <option value="1993">1993</option>
+         <option value="1994">1994</option>
+         <option value="1995">1995</option>
+         <option value="1996">1996</option>
+         <option value="1997">1997</option>
+         <option value="1998">1998</option>
+         <option value="1999">1999</option>
+         <option value="2000">2000</option>
+         <option value="2001">2001</option>
+         <option value="2002">2002</option>
+         <option value="2003">2003</option>
+         <option value="2004">2004</option>
+         <option value="2005">2005</option>
+         <option value="2006">2006</option>
+         <option value="2007">2007</option>
+         <option value="2008">2008</option>
+         <option value="2009">2009</option>
+         <option value="2010">2010</option>
+         <option value="2011">2011</option>
+         <option value="2012">2012</option>
+         <option value="2013">2013</option>
+         <option value="2014">2014</option>
+         <option value="2015">2015</option>
+         <option value="2016">2016</option>
+         <option value="2017">2017</option>
+         <option value="2018">2018</option>
+         <option value="2019">2019</option>
+         <option value="2020">2020</option>
+      </SELECT>
+
+      <button type="submit" class="btn btn-secondary">Sélectionner</button>
+   </form>
+
+   <?php 
 
         if ((isset($_POST['année']) and !empty($_POST['année']))
         or (isset($_POST['données']) and !empty($_POST['données']))){
@@ -146,10 +171,10 @@
                 
           }
           ?>
-            
-          <div id =" data" > <?php $Dmap =json_encode($data);?></div>
 
-          <?php
+   <div id=" data"> <?php $Dmap =json_encode($data);?></div>
+
+   <?php
             
           $map ->closeCursor();
           echo '<p>Pour l\'année '.$année.' nous avons :</p>';
@@ -174,165 +199,182 @@
       
         ?>
 
-        <div id="map"></div>
-        <?php if ((isset($_POST['année']) and !empty($_POST['année']))
+   <div id="map"></div>
+   <?php if ((isset($_POST['année']) and !empty($_POST['année']))
         or (isset($_POST['données']) and !empty($_POST['données']))){
         ?>
-        <div class='map-overlay' id='features'><h2><?php echo "$données en $année"   ?></h2><div id='pd'><p>Cliquez sur un pays !</p></div></div>
-        <div class='map-overlay' id='legend'></div>
-        <?php }
+   <div class='map-overlay' id='features'>
+      <h2><?php echo "$données en $année"   ?></h2>
+      <div id='pd'>
+         <p>Hover over a country !</p>
+      </div>
+   </div>
+   <div class='map-overlay' id='legend'></div>
+   <?php }
         else{
 
         }?>
-        
-    </body>
+
+</body>
+
 </html>
 
 <script>
-      mapboxgl.accessToken = 'pk.eyJ1IjoiYWF1ZHJpYyIsImEiOiJjbGZndzAwb3IxYWdjM3NuemkwMTRkamJtIn0.5v3HkIpqfwb5p5IWfL4aWA';
-      const map = new mapboxgl.Map({
-      container: 'map',
-      // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
-      style: 'mapbox://styles/mapbox/light-v11',
-      center: [12, 50],
-      zoom: 1.6
-      });
-    
-      const data = <?php echo $Dmap;?>
-      
-      map.on('load', () => {
-      
-      map.addSource('countries', {
+mapboxgl.accessToken = 'pk.eyJ1IjoiYWF1ZHJpYyIsImEiOiJjbGZndzAwb3IxYWdjM3NuemkwMTRkamJtIn0.5v3HkIpqfwb5p5IWfL4aWA';
+const map = new mapboxgl.Map({
+   container: 'map',
+   // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+   style: 'mapbox://styles/mapbox/light-v11',
+   center: [12, 50],
+   zoom: 1.6
+});
+
+const data = <?php echo $Dmap;?>
+
+map.on('load', () => {
+
+   map.addSource('countries', {
       type: 'vector',
       url: 'mapbox://mapbox.country-boundaries-v1'
-      });
-      
-      // Build a GL match expression that defines the color for every vector tile feature
-      // Use the ISO 3166-1 alpha 3 code as the lookup key for the country shape
-      const matchExpression = ['match', ['get', 'iso_3166_1_alpha_3']];
+   });
 
-      const d1 = <?php echo $decile1; ?>;
-      const d2 = <?php echo $decile2; ?>;
-      const d3 = <?php echo $decile3; ?>;
-      const d4 = <?php echo $decile4; ?>;
-      const d5 = <?php echo $decile5; ?>;
-      const d6 = <?php echo $decile6; ?>;
-      const d7 = <?php echo $decile7; ?>;
-      const d8 = <?php echo $decile8; ?>;
-      const d9 = <?php echo $decile9; ?>;
-      
-      // Calculate color values for each country based on 'data' value
-      for (const row of data) {
+   // Build a GL match expression that defines the color for every vector tile feature
+   // Use the ISO 3166-1 alpha 3 code as the lookup key for the country shape
+   const matchExpression = ['match', ['get', 'iso_3166_1_alpha_3']];
+
+   const d1 = <?php echo $decile1; ?>;
+   const d2 = <?php echo $decile2; ?>;
+   const d3 = <?php echo $decile3; ?>;
+   const d4 = <?php echo $decile4; ?>;
+   const d5 = <?php echo $decile5; ?>;
+   const d6 = <?php echo $decile6; ?>;
+   const d7 = <?php echo $decile7; ?>;
+   const d8 = <?php echo $decile8; ?>;
+   const d9 = <?php echo $decile9; ?>;
+
+   // Calculate color values for each country based on 'data' value
+   for (const row of data) {
       // Convert the range of data values to a suitable color
       const blue = row['data'];
-      const color = getColor(blue,d1,d2,d3,d4,d5,d6,d7,d8,d9);
-      
-      function getColor(e,d1,d2,d3,d4,d5,d6,d7,d8,d9) {
-          return e > d9   ? '#2f2f87' :
-            e > d8  ? '#203e94' :
-              e > d7  ? '#2a90b6' :
-              e > d6  ? '#1bad86' :
-              e > d5  ? '#43c61f' :
-              e > d4   ? '#9fce21' :
-              e > d3 ? '#d1d11e' :
-              e > d2   ? '#fdbd12' :
-              e > d1   ? '#f87e27' :
-                          '#be3f07';
+      const color = getColor(blue, d1, d2, d3, d4, d5, d6, d7, d8, d9);
+
+      function getColor(e, d1, d2, d3, d4, d5, d6, d7, d8, d9) {
+         return e > d9 ? '#87CEFA' :
+            e > d8 ? '#808000' :
+            e > d7 ? '#FFA500' :
+            e > d6 ? '#F4A460' :
+            e > d5 ? '#D3D3D3' :
+            e > d4 ? '#90EE90' :
+            e > d3 ? '#66CDAA' :
+            e > d2 ? '#9370DB' :
+            e > d1 ? '#FFB6C1' :
+            '#F08080';
       }
       matchExpression.push(row['code'], color);
-      }
+   }
 
-      const layers = [
-        'NA',
-        '> '+d1,
-        '> '+d2,
-        '> '+d3,
-        '> '+d4,
-        '> '+d5,
-        '> '+d6,
-        '> '+d7,
-        '> '+d8,
-        '> '+d9
-      ];
+   const layers = [
+      '> ' + d1,
+      '> ' + d2,
+      '> ' + d3,
+      '> ' + d4,
+      '> ' + d5,
+      '> ' + d6,
+      '> ' + d7,
+      '> ' + d8,
+      '> ' + d9
+   ];
 
-      const couleur = [
-        '#fff',
-        '#be3f07',
-        '#f87e27',
-        '#fdbd12',
-        '#d1d11e',
-        '#9fce21',
-        '#43c61f',
-        '#1bad86',
-        '#2a90b6',
-        '#203e94',
-        '#2f2f87',
-      ];
+   const couleur = [
+      '#FFB6C1',
+      '#9370DB',
+      '#66CDAA',
+      '#90EE90',
+      '#D3D3D3',
+      '#F4A460',
+      '#FFA500',
+      '#808000',
+      '#87CEFA',
+   ];
 
-      const legend = document.getElementById('legend');
+   const legend = document.getElementById('legend');
 
-      layers.forEach((layer, i) => {
-        const color2 = couleur[i];
-        const item = document.createElement('div');
-        const key = document.createElement('span');
-        key.className = 'legend-key';
-        key.style.backgroundColor = color2;
+   layers.forEach((layer, i) => {
+      const color2 = couleur[i];
+      const item = document.createElement('div');
+      const key = document.createElement('span');
+      key.className = 'legend-key';
+      key.style.backgroundColor = color2;
 
-        const value = document.createElement('span');
-        value.innerHTML = `${layer}`;
-        item.appendChild(key);
-        item.appendChild(value);
-        legend.appendChild(item);
-      });
-      
-      // Last value is the default, used where there is no data
-      matchExpression.push('rgba(0, 0, 0, 0)');
-      
-      map.doubleClickZoom.enable();
+      const value = document.createElement('span');
+      value.innerHTML = `${layer}`;
+      item.appendChild(key);
+      item.appendChild(value);
+      legend.appendChild(item);
+   });
 
-      const isBoxZoomEnabled = map.boxZoom.isEnabled();
-      
-      const WORLDVIEW = "US";
-      const worldview_filter = [ "all", [ "==", ["get", "disputed"], "false" ], [ "any", [ "==", "all", ["get", "worldview"] ], [ "in", WORLDVIEW, ["get", "worldview"] ] ] ];
-      
-      // Add layer from the vector tile source to create the choropleth
-      // Insert it below the 'admin-1-boundary-bg' layer in the style
-      map.addLayer(
-      {
-      'id': 'countries',
-      'type': 'fill',
-      'source': 'countries',
-      'source-layer': 'country_boundaries',
-      'paint': {
-      'fill-color': matchExpression
+   // Last value is the default, used where there is no data
+   matchExpression.push('rgba(0, 0, 0, 0)');
+
+   map.doubleClickZoom.enable();
+
+   const isBoxZoomEnabled = map.boxZoom.isEnabled();
+
+   const WORLDVIEW = "US";
+   const worldview_filter = ["all", ["==", ["get", "disputed"], "false"],
+      ["any", ["==", "all", ["get", "worldview"]],
+         ["in", WORLDVIEW, ["get", "worldview"]]
+      ]
+   ];
+
+   // Add layer from the vector tile source to create the choropleth
+   // Insert it below the 'admin-1-boundary-bg' layer in the style
+   map.addLayer({
+         'id': 'countries',
+         'type': 'fill',
+         'source': 'countries',
+         'source-layer': 'country_boundaries',
+         'paint': {
+            'fill-color': matchExpression
+         },
+         'filter': worldview_filter
       },
-      'filter': worldview_filter
-      },
+      /*{
+        'id':'data',
+        'type': 'fill',
+        source: {type: "geojson",
+        data: "<?php echo $Dmap; ?>" }
+      }*/
       'admin-1-boundary-bg'
-      );
-      
-      
-    map.on('click', (event) => {
-      const features = map.queryRenderedFeatures(event.point, { layers: ['countries'] });
+   );
+
+
+   map.on('click', (event) => {
+      const features = map.queryRenderedFeatures(event.point, {
+         layers: ['countries']
+      });
+      const countries = map.queryRenderedFeatures(event.point, {
+         layers: ['data']
+      });
       console.log(features);
 
-      if (features.length > 0) {
-        const density = features[0].properties.name;
-        const name = features[0].properties.name_en;
-        const tooltip = `<h3>${name}</h3><p><strong><em>${density}</strong> </em></p>`;
+      if (features.length > 0 && countries.length > 0) {
+         const density = countries[0].properties.name;
+         const name = features[0].properties.name_en;
+         const tooltip =
+            `<h3>${name}</h3><p><strong><em>${density}</strong> personnes par mile carré</em></p>`;
 
-        new mapboxgl.Popup({ offset: 15 })
-          .setLngLat(event.lngLat)
-          .setHTML(tooltip)
-          .addTo(map);
+         new mapboxgl.Popup({
+               offset: 15
+            })
+            .setLngLat(event.lngLat)
+            .setHTML(tooltip)
+            .addTo(map);
       }
 
 
-    });
+   });
 
 
-    });
-
-      
-  
-  </script>
+});
+</script>

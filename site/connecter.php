@@ -3,52 +3,52 @@
 
 <head>
 
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Document</title>
+   <title>Document</title>
 
-    <?php include("baseD.php");?>
-    
 </head>
 
 <body>
-    
-    <?php 
 
-    $bdd=getBD();
+   <?php
 
-    $client = $_POST['mail'];
+include("baseD.php");
 
-    $mdp = md5($_POST['mdp']);
+$bdd = getBD();
 
-    $qu = $bdd->query("select * from users where users.mail= '".$client."' and users.mdp = '".$mdp."'");
+$client = $_POST['mail'];
+$mdp = $_POST['mdp'];
 
-    session_start();
+// Check if the email and password are provided
+if (!isset($client) || empty($client) || !isset($mdp) || empty($mdp)) {
+    echo '<meta http-equiv="refresh" content="0;url=sign-in.php">';
+    exit();
+}
 
-    if ($qu->rowCount()==1){
+// Check if the email and password are correct
+$requete = $bdd->prepare("SELECT * FROM `users` WHERE `mail` = :mail AND `mdp` = :mdp");
+$requete->execute(array('mail' => $client, 'mdp' => $mdp));
+$ligne = $requete->fetch();
 
-        $ligne = $qu->fetch();
+if (!$ligne) {
+    echo '<meta http-equiv="refresh" content="0;url=sign-in.php">';
+    exit();
+}
 
-        if ((isset($_POST['mail'])) and empty($_POST['mail']) or (isset($_POST['mdp']) and empty($_POST['mdp']))){
-            echo '<meta http-equiv="refresh" content="0;url=sign-in.php">';
-        }
-        else{
+// Start the session and store the user's information
+session_start();
+$_SESSION['client'] = $ligne;
 
-            $_SESSION['client']=$ligne;
+// Redirect to the main page
+echo '<meta http-equiv="refresh" content="0;url=index.php">';
+exit();
 
-        echo '<meta http-equiv="refresh" content="0;url=index.php">';
-        }
-    }
-    else{
-        
-        echo '<meta http-equiv="refresh" content="0;url=sign-in.php">';
-    }
-
-    ?>
+?>
 
 </body>
 

@@ -3,34 +3,34 @@
 
 <head>
 
-    <meta charset="UTF-8">
+   <meta charset="UTF-8">
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Enregistrement</title>
+   <title>Enregistrement</title>
 
 </head>
 
 <body>
 
-    <?php 
+   <?php 
 
     include("baseD.php");
 
-    function enregistrer($nom, $prenom, $mail, $genre,$fonction,$news, $mdp) {
-        
-        $admin = "non";
-        // Connexion à la base de données
-        $bdd =  getBD();
-        
-        // Préparation de la requête d'insertion
-        $requete = $bdd->prepare("INSERT INTO `users` ( `nom`, `prenom`, `mail`, `genre`,`fonction`,`abonne`, `mdp`,`admin`) VALUES ( '$nom', '$prenom', '$mail', '$genre','$fonction','$news', '$mdp', '$admin')");
-        
-        // Exécution de la requête avec les paramètres donnés
-        $requete->execute(array('nom'=>$nom, 'prenom'=>$prenom, 'mail'=>$mail, 'genre'=> $genre,'fonction' => $fonction,'news'=>$news, 'mdp'=> $mdp, 'admin'=>$admin));
-    }
+   function enregistrer($nom, $prenom, $mail, $genre, $fonction, $news, $mdp)
+   {
+
+       // Connexion à la base de données
+       $bdd = getBD();
+
+       // Préparation de la requête d'insertion
+       $requete = $bdd->prepare("INSERT INTO `users` (`nom`, `prenom`, `mail`, `genre`, `fonction`, `abonne`, `mdp`) 
+                      VALUES (:nom, :prenom, :mail, :genre, :fonction, :news, :mdp)");
+
+       $requete->execute(array('nom' => $nom, 'prenom' => $prenom, 'mail' => $mail, 'genre' => $genre, 'fonction' => $fonction, 'news' => $news, 'mdp' => $mdp));
+   }
 
     if ((isset($_POST['n']) and empty($_POST['n']))
     or (isset($_POST['p']) and empty($_POST['p']))
@@ -48,7 +48,7 @@
         echo '<meta http-equiv="refresh" content="0;url=index.php">';
     }
     ?>
-    
+
 </body>
 
 </html>
