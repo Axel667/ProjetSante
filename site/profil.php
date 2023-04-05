@@ -8,8 +8,7 @@
    <title>Profil</title>
    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
    <link rel="stylesheet" type="text/css" href="site.css" />
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+   <script src="https://cdn.tailwindcss.com"></script>
    <?php include("baseD.php") ?>
 </head>
 
@@ -37,11 +36,11 @@
                <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
                <a href="datasets.php" class="px-4 py-2">Datasets</a>
                <?php
-          session_start();
-          if (!isset($_SESSION['client'])) {
-          } else {
-            echo '<a href="create.php" class="mx-2">Créer</a>';
-          } ?>
+               session_start();
+               if (!isset($_SESSION['client'])) {
+               } else {
+                  echo '<a href="create.php" class="mx-2">Créer</a>';
+               } ?>
             </div>
          </div>
 
@@ -65,8 +64,8 @@
             </form>
 
             <?php
-        if (!isset($_SESSION['client'])) {
-          echo '            
+            if (!isset($_SESSION['client'])) {
+               echo '            
                <a href="sign-in.php" class="flex items-center py-5 px-4">Sign-in
                <svg class="h-6 w-6 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                   stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -81,19 +80,19 @@
                   Sign-up
                </span>
             </a>';
-        } else {
-          echo '<a href="profil.php" class="mx-4"><svg class="h-8 w-8 mx-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            } else {
+               echo '<a href="profil.php" class="mx-4"><svg class="h-8 w-8 mx-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                   stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round"
                      d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
                </svg></a>';
-          echo '<a href="deconnexion.php" class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+               echo '<a href="deconnexion.php" class="relative inline-flex items-center justify-center p-0.5 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
                <span
                   class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                   Log-out
                </span></a>';
-        }
-        ?>
+            }
+            ?>
          </div>
       </div>
    </nav>
@@ -102,16 +101,16 @@
    <h3>Votre profil :</h3>
 
    <?php
-  if (!isset($_SESSION['client'])) {
-    echo "<p>Veuillez vous connecter</p>";
-  } else {
-    echo "<p>Civilité : " . $_SESSION['client']['genre'] . "</p>";
-    echo "<p>Nom : " . $_SESSION['client']['Nom'] . "</p>";
-    echo "<p>Prénom : " . $_SESSION['client']['Prenom'] . "</p>";
-    echo "<p>Adresse e-mail : " . $_SESSION['client']['mail'] . "</p>";
-    echo "<p> Fonction : " . $_SESSION['client']['fonction'] . "</p>";
-  }
-  ?>
+   if (!isset($_SESSION['client'])) {
+      echo "<p>Veuillez vous connecter</p>";
+   } else {
+      echo "<p>Civilité : " . $_SESSION['client']['genre'] . "</p>";
+      echo "<p>Nom : " . $_SESSION['client']['Nom'] . "</p>";
+      echo "<p>Prénom : " . $_SESSION['client']['Prenom'] . "</p>";
+      echo "<p>Adresse e-mail : " . $_SESSION['client']['mail'] . "</p>";
+      echo "<p> Fonction : " . $_SESSION['client']['fonction'] . "</p>";
+   }
+   ?>
 
    <a href="index.php" class="btn btn-secondary">Back Home</a>
 
