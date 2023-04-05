@@ -309,7 +309,6 @@
             <OPTION VALUE="bar">Barre</OPTION>
             <OPTION VALUE="line">Line</OPTION>
             <OPTION VALUE="scatter">Nuage de points</OPTION>
-            <OPTION VALUE="radar">Radar</OPTION>
          </SELECT>
 
          PIB : <SELECT class="form-group" name="pib">
