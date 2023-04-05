@@ -378,16 +378,16 @@
             datasets: [{
                label: "<?php echo "PIB de " . $p . "" ?>",
                data: <?php echo $data1; ?>,
-               backgroundColor: 'red',
-               borderColor: 'red',
+               backgroundColor: '#58508d',
+               borderColor: '#58508d',
                tension: 0.4,
 
                yAxisID: 'y-axis-1'
             }, {
                label: '<?php echo "" . $donnée . " de " . $p . "" ?>',
                data: <?php echo $data0; ?>,
-               backgroundColor: 'blue',
-               borderColor: 'blue',
+               backgroundColor: '#bc5090',
+               borderColor: '#bc5090',
                tension: 0.4,
 
                yAxisID: 'y-axis-2'
