@@ -29,10 +29,11 @@
 
          <!-- primary nav -->
          <div class="hidden md:flex items-center space-x-1">
-            <a href="testmap.php" class="px-4 py-2">Carte</a>
-            <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
-            <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
-            <a href="datasets.php" class="px-4 py-2">Datasets</a>
+               <a href="testmap.php" class="px-4 py-2">Carte</a>
+               <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
+               <a href="evolutiontest.php" class="px-4 py-2">Evolution</a>
+               <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
+               <a href="datasets.php" class="px-4 py-2">Datasets</a>
             <?php
                session_start();
                if (!isset($_SESSION['client'])) {
