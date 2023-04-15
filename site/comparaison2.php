@@ -506,7 +506,6 @@ a href="index.php" class="btn btn-secondary">Back Home</a>
       </SELECT>
 
       Type de graphique : <SELECT class="form-group" name="type">
-         <OPTION VALUE="bar">Barre</OPTION>
          <OPTION VALUE="line">Line</OPTION>
          <OPTION VALUE="scatter">Nuage de points</OPTION>
          <OPTION VALUE="radar">Radar</OPTION>
