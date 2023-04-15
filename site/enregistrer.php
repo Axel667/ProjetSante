@@ -38,7 +38,7 @@
       }
     else{
         creer($id_users,$_POST['auteur'], $_POST['pays'], $_POST['titre'], $_POST['art']);
-        echo'<p>Votre article a bien été enregistréé, il est en cours de vérification</p>';
+        echo'<p>Votre article a bien été enregistrée, il est en cours de vérification</p>';
         echo '<meta http-equiv="refresh" content="5;url=nos-article.php">';
       }
     ?>

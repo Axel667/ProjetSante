@@ -109,8 +109,59 @@
       echo "<p>Prénom : " . $_SESSION['client']['Prenom'] . "</p>";
       echo "<p>Adresse e-mail : " . $_SESSION['client']['mail'] . "</p>";
       echo "<p> Fonction : " . $_SESSION['client']['fonction'] . "</p>";
+      
+      echo "<h3>Vos articles :</h3>";
+
+      $bdd = getBD();
+      // Récupérer l'ID du client connecté
+      $client_id = $_SESSION['client']['id_users'];
+         
+      // requête SQL pour récupérer l'historique du client connecté en utilisant une jointure
+      $hist = $bdd->query("SELECT  `sourcer`.`id_article`, `sourcer`.`Titre`,`sourcer`.`Pays`,`sourcer`.`approuve` FROM `sourcer` JOIN `users`  on  `sourcer`.`id_users` = `users`.`id_users`WHERE `users`.`id_users`=$client_id");
+      
+      if ($hist->rowCount()==0){
+
+         echo "<p>Vous n'avez pas encore créer d'article pour le moment.</p>";
+      }
+      else{
+         // Afficher le tableau répertoriant tout les articles créés du client connecté
+         echo '<table>
+                  <thead>
+                  <tr>
+                     <th>Id de l\'article</th>
+                     <th>Nom de l\'article</th>
+                     <th>Pays</th>
+                     <th>Statut</th>
+                  </tr>
+                  </thead>
+                  <tbody>';
+
+         while ($h = $hist->fetch()){
+               
+               echo '<tr>
+                  <td>'.$h['id_article'].'</td>
+                  <td>'.$h['Titre'].'</td>
+                  <td>'.$h['Pays'].'</td>';
+                  if ($h['approuve']== 0){
+                     echo' <td>'."En cours de vérification".'</td>';
+                  }
+                  elseif ($h['approuve']==1){
+                     echo' <td>'."Approuvé".'</td>';
+                  }
+                  
+               '</tr>';
+         }
+         echo '</tbody>
+                  </table>';
+         
+         $hist ->closeCursor(); 
+      
+      } 
    }
+
    ?>
+
+
 
    <a href="index.php" class="btn btn-secondary">Back Home</a>
 

@@ -208,7 +208,7 @@
    <div class='map-overlay' id='features'>
       <h2><?php echo "$données en $année"   ?></h2>
       <div id='pd'>
-         <p>Hover over a country !</p>
+         <p>Cliquez sur un pays !</p>
       </div>
    </div>
    <div class='map-overlay' id='legend'></div>
@@ -237,7 +237,8 @@ map.on('load', () => {
 
    map.addSource('countries', {
       type: 'vector',
-      url: 'mapbox://mapbox.country-boundaries-v1'
+      url: 'mapbox://mapbox.country-boundaries-v1',
+      data : data
    });
 
    // Build a GL match expression that defines the color for every vector tile feature
@@ -349,6 +350,7 @@ map.on('load', () => {
 
 
    map.on('click', (event) => {
+      
       const features = map.queryRenderedFeatures(event.point, {
          layers: ['countries']
       });
@@ -356,7 +358,7 @@ map.on('load', () => {
       console.log(features);
 
       if (features.length > 0) {
-         const density = features[0].properties.name;
+         const density = features[0].properties.source;
          const name = features[0].properties.name_en;
          const tooltip =
             `<h3>${name}</h3><p><strong><em>${density}</strong> personnes par mile carré</em></p>`;

@@ -524,12 +524,10 @@ a href="index.php" class="btn btn-secondary">Back Home</a>
 
    <?php
 
-   if (
-      (isset($_POST['Pays1']) and !empty($_POST['Pays1']))
+   if ((isset($_POST['Pays1']) and !empty($_POST['Pays1']))
       or (isset($_POST['Pays2']) and !empty($_POST['Pays2']))
       or (isset($_POST['type']) and !empty($_POST['type']))
-      or (isset($_POST['données']) and !empty($_POST['données']))
-   ) {
+      or (isset($_POST['données']) and !empty($_POST['données']))) {
 
       $bdd = getBD();
 

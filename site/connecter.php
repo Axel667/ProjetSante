@@ -22,7 +22,7 @@ include("baseD.php");
 $bdd = getBD();
 
 $client = $_POST['mail'];
-$mdp = $_POST['mdp'];
+$mdp = md5($_POST['mdp']);
 
 // Check if the email and password are provided
 if (!isset($client) || empty($client) || !isset($mdp) || empty($mdp)) {
