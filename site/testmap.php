@@ -172,6 +172,8 @@
             $data []= array('code'=>$d['Code'],'data'=>(float)$d[$données]);
                 
           }
+          //a montrer a mme bringuay
+          //echo json_encode($data);
           ?>
 
    <div id=" data"> <?php $Dmap =json_encode($data);?></div>

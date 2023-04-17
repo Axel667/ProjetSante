@@ -112,6 +112,9 @@
       <li class="list">
          Format XLSX : <a href="data/data.xlsx"><img src="img/xlsx.png" style="height:60px"></a>
       </li>
+      <li class="list">
+         Format JSON : <a href="data/data.json" target= "_blank"><img src="img/json.png" style="height:60px"></a>
+      </li>
    </ul>
 </body>
 
