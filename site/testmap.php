@@ -166,17 +166,22 @@
             $v[]=$m[$données];
             $r[]=$m;
           }
-            
+
+          $toto= [] ;
           foreach($r as $d){
 
             $data []= array('code'=>$d['Code'],'data'=>(float)$d[$données]);
-                
-          }
-          //a montrer a mme bringuay
-          //echo json_encode($data);
-          ?>
+            $toto[$d['Code']] = (float)$d[$données];
 
-   <div id=" data"> <?php $Dmap =json_encode($data);?></div>
+          }
+          
+          //a montrer a mme bringuay
+         // echo json_encode($toto);
+          echo "<script> var toto=".json_encode($toto).";</script>";
+
+          ?>
+         
+         <div id=" data"> <?php $Dmap =json_encode($data);?></div>
 
    <?php
             
@@ -360,10 +365,12 @@ map.on('load', () => {
       console.log(features);
 
       if (features.length > 0) {
-         const density = features[0].properties.source;
          const name = features[0].properties.name_en;
+         const ext =  name.substring(0, 3);
+         const maj = ext.toUpperCase();
+         const donnee = toto[maj];
          const tooltip =
-            `<h3>${name}</h3><p><strong><em>${density}</strong> personnes par mile carré</em></p>`;
+            `<h3>${name}</h3><p><?php echo "$données : ";?><strong><em>${donnee}</strong></em></p>`;
 
          new mapboxgl.Popup({
                offset: 15
