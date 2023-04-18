@@ -366,8 +366,7 @@ map.on('load', () => {
 
       if (features.length > 0) {
          const name = features[0].properties.name_en;
-         const ext =  name.substring(0, 3);
-         const maj = ext.toUpperCase();
+         const maj = features[0].properties.iso_3166_1_alpha_3;
          const donnee = toto[maj];
          const tooltip =
             `<h3>${name}</h3><p><?php echo "$données : ";?><strong><em>${donnee}</strong></em></p>`;
