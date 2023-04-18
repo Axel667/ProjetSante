@@ -29,16 +29,22 @@
 
             <!-- primary nav -->
             <div class="hidden md:flex items-center space-x-1">
-               <a href="testmap.php" class="px-4 py-2">Carte</a>
-               <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
-               <a href="evolutiontest.php" class="px-4 py-2">Evolution</a>
-               <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
-               <a href="datasets.php" class="px-4 py-2">Datasets</a>
+               <a href="testmap.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Carte</a>
+               <a href="comparaison2.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Comparer</a>
+               <a href="evolutiontest.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Evolution</a>
+               <a href="nos-article.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Nos
+                  Articles</a>
+               <a href="datasets.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Datasets</a>
                <?php
                session_start();
                if (!isset($_SESSION['client'])) {
                } else {
-                  echo '<a href="create.php" class="mx-2">Créer</a>';
+                  echo '<a href="create.php" class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Créer</a>';
                } ?>
             </div>
          </div>
@@ -79,7 +85,6 @@
                   Sign-up
                </span>
             </a>';
-
             } else {
                echo '<a href="profil.php" class="mx-4"><svg class="h-8 w-8 mx-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                   stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -146,28 +151,42 @@
       <div class="flex flex-col my-8 lg:pt-6">
          <div class="border bg-white p-6 rounded-lg mb-6">
             <a href="testmap.php" class="flex items-center text-gray-900">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 mr-4">
+                  <path fill-rule="evenodd"
+                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM8.547 4.505a8.25 8.25 0 1011.672 8.214l-.46-.46a2.252 2.252 0 01-.422-.586l-1.08-2.16a.414.414 0 00-.663-.107.827.827 0 01-.812.21l-1.273-.363a.89.89 0 00-.738 1.595l.587.39c.59.395.674 1.23.172 1.732l-.2.2c-.211.212-.33.498-.33.796v.41c0 .409-.11.809-.32 1.158l-1.315 2.191a2.11 2.11 0 01-1.81 1.025 1.055 1.055 0 01-1.055-1.055v-1.172c0-.92-.56-1.747-1.414-2.089l-.654-.261a2.25 2.25 0 01-1.384-2.46l.007-.042a2.25 2.25 0 01.29-.787l.09-.15a2.25 2.25 0 012.37-1.048l1.178.236a1.125 1.125 0 001.302-.795l.208-.73a1.125 1.125 0 00-.578-1.315l-.665-.332-.091.091a2.25 2.25 0 01-1.591.659h-.18c-.249 0-.487.1-.662.274a.931.931 0 01-1.458-1.137l1.279-2.132z"
+                     clip-rule="evenodd" />
+               </svg>
+
                Découvrez notre carte
             </a>
          </div>
          <div class="border bg-white p-6 rounded-lg mb-6">
             <a href="comparaison2.php" class="flex items-center text-gray-900">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-8 h-8 mr-4">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5m.75-9l3-3 2.148 2.148A12.061 12.061 0 0116.5 7.605" />
+               </svg>
                Comparez les pays
             </a>
          </div>
          <div class="border bg-white p-6 rounded-lg">
             <a href="create.php" class="flex items-center text-gray-900">
+               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-8 h-8 mr-4">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                     d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m6.75 12l-3-3m0 0l-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+               </svg>
+
                Publiez votre article
             </a>
          </div>
       </div>
    </div>
-   <?php
-   if (!isset($_SESSION['client'])) {
-   } else {
-      echo "<p class='p-6'>Bonjour " . $_SESSION['client']['genre'] . " " . $_SESSION['client']['Nom'] . " " . $_SESSION['client']['Prenom'] . "</p>";
-   }
-   ?>
-   <section class="mt-auto">
+
+
+
+   <section class="mt-10">
       <!-- Footer -->
       <footer class="bg-black text-white text-center py-6">
          <!-- Grid container -->

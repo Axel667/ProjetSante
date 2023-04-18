@@ -18,7 +18,9 @@
    <div class="flex min-h-full items-center justify-center py-12 mt-20 sm:px-6 lg:px-8">
       <div class="w-full max-w-md space-y-8">
          <div>
-            <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Bienvenue sur SantEconomie</h2>
+            <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Connectez-vous sur
+               SantEconomie 🧑‍💻
+            </h2>
          </div>
          <form class="mt-8 space-y-6" action="connecter.php" method="POST">
             <input type="hidden" name="remember" value="true">

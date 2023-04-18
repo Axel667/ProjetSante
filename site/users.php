@@ -2,13 +2,9 @@
 <html lang="fr">
 
 <head>
-
    <meta charset="UTF-8">
-
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
    <title>Enregistrement</title>
 
 </head>
@@ -45,7 +41,7 @@
         }
     else{
         enregistrer($_POST['n'], $_POST['p'], $_POST['mail'], $_POST['genre'],$_POST['fonction'],$_POST['news'], md5($_POST['mdp2']));
-        echo '<meta http-equiv="refresh" content="0;url=index.php">';
+        echo '<meta http-equiv="refresh" content="0;url=sign-in.php">';
     }
     ?>
 
