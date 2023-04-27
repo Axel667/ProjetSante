@@ -30,16 +30,22 @@
 
             <!-- primary nav -->
             <div class="hidden md:flex items-center space-x-1">
-               <a href="testmap.php" class="px-4 py-2">Carte</a>
-               <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
-               <a href="evolutiontest.php" class="px-4 py-2">Evolution</a>
-               <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
-               <a href="datasets.php" class="px-4 py-2">Datasets</a>
+               <a href="testmap.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Carte</a>
+               <a href="comparaison2.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Comparer</a>
+               <a href="evolutiontest.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Evolution</a>
+               <a href="nos-article.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Nos
+                  Articles</a>
+               <a href="datasets.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Datasets</a>
                <?php
                session_start();
                if (!isset($_SESSION['client'])) {
                } else {
-                  echo '<a href="create.php" class="mx-2">Créer</a>';
+                  echo '<a href="create.php" class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Créer</a>';
                } ?>
             </div>
          </div>
@@ -93,107 +99,73 @@
                </span></a>';
             }
             ?>
+
          </div>
       </div>
    </nav>
 
 
-   <h3>Votre profil :</h3>
+   <div class="m-4 p-4">
+      <h3 class="text-xl font-semibold mb-4">Votre profil :</h3>
 
-   <?php
-   if (!isset($_SESSION['client'])) {
-      echo "<p>Veuillez vous connecter</p>";
-   } else {
-      echo "<p>Civilité : " . $_SESSION['client']['genre'] . "</p>";
-      echo "<p>Nom : " . $_SESSION['client']['Nom'] . "</p>";
-      echo "<p>Prénom : " . $_SESSION['client']['Prenom'] . "</p>";
-      echo "<p>Adresse e-mail : " . $_SESSION['client']['mail'] . "</p>";
-      echo "<p> Fonction : " . $_SESSION['client']['fonction'] . "</p>";
-      
-      echo "<h3>Vos articles :</h3>";
+      <?php
+      if (!isset($_SESSION['client'])) {
+         echo "<p>Veuillez vous connecter</p>";
+      } else {
+         echo "<p class='mb-2'>Civilité : " . $_SESSION['client']['genre'] . "</p>";
+         echo "<p class='mb-2'>Nom : " . $_SESSION['client']['Nom'] . "</p>";
+         echo "<p class='mb-2'>Prénom : " . $_SESSION['client']['Prenom'] . "</p>";
+         echo "<p class='mb-2'>Adresse e-mail : " . $_SESSION['client']['mail'] . "</p>";
+         echo "<p class='mb-4'> Fonction : " . $_SESSION['client']['fonction'] . "</p>";
 
-      $bdd = getBD();
-      // Récupérer l'ID du client connecté
-      $client_id = $_SESSION['client']['id_users'];
-         
-      // requête SQL pour récupérer l'historique du client connecté en utilisant une jointure
-      $hist = $bdd->query("SELECT  `sourcer`.`id_article`, `sourcer`.`Titre`,`sourcer`.`Pays`,`sourcer`.`approuve` FROM `sourcer` JOIN `users`  on  `sourcer`.`id_users` = `users`.`id_users`WHERE `users`.`id_users`=$client_id");
-      
-      if ($hist->rowCount()==0){
+         echo "<h3 class='text-xl font-semibold mb-4'>Vos articles :</h3>";
 
-         echo "<p>Vous n'avez pas encore créer d'article pour le moment.</p>";
-      }
-      else{
-         // Afficher le tableau répertoriant tout les articles créés du client connecté
-         echo '<table>
-                  <thead>
-                  <tr>
-                     <th>Id de l\'article</th>
-                     <th>Nom de l\'article</th>
-                     <th>Pays</th>
-                     <th>Statut</th>
-                  </tr>
-                  </thead>
-                  <tbody>';
+         $bdd = getBD();
+         // Récupérer l'ID du client connecté
+         $client_id = $_SESSION['client']['id_users'];
 
-         while ($h = $hist->fetch()){
-               
+         // requête SQL pour récupérer l'historique du client connecté en utilisant une jointure
+         $hist = $bdd->query("SELECT  `sourcer`.`id_article`, `sourcer`.`Titre`,`sourcer`.`Pays`,`sourcer`.`approuve` FROM `sourcer` JOIN `users`  on  `sourcer`.`id_users` = `users`.`id_users`WHERE `users`.`id_users`=$client_id");
+
+         if ($hist->rowCount() == 0) {
+
+            echo "<p>Vous n'avez pas encore créer d'article pour le moment.</p>";
+         } else {
+            // Afficher le tableau répertoriant tout les articles créés du client connecté
+            echo '<table class="table-auto w-full text-left border-collapse">
+                      <thead>
+                      <tr>
+                         <th class="px-4 py-2 border border-gray-400">Id de l\'article</th>
+                         <th class="px-4 py-2 border border-gray-400">Nom de l\'article</th>
+                         <th class="px-4 py-2 border border-gray-400">Pays</th>
+                         <th class="px-4 py-2 border border-gray-400">Statut</th>
+                      </tr>
+                      </thead>
+                      <tbody>';
+
+            while ($h = $hist->fetch()) {
+
                echo '<tr>
-                  <td>'.$h['id_article'].'</td>
-                  <td>'.$h['Titre'].'</td>
-                  <td>'.$h['Pays'].'</td>';
-                  if ($h['approuve']== 0){
-                     echo' <td>'."En cours de vérification".'</td>';
-                  }
-                  elseif ($h['approuve']==1){
-                     echo' <td>'."Approuvé".'</td>';
-                  }
-                  
+                      <td class="px-4 py-2 border border-gray-400">' . $h['id_article'] . '</td>
+                      <td class="px-4 py-2 border border-gray-400">' . $h['Titre'] . '</td>
+                      <td class="px-4 py-2 border border-gray-400">' . $h['Pays'] . '</td>';
+               if ($h['approuve'] == 0) {
+                  echo ' <td class="px-4 py-2 border border-gray-400">' . "En cours de vérification" . '</td>';
+               } elseif ($h['approuve'] == 1) {
+                  echo ' <td class="px-4 py-2 border border-gray-400">' . "Approuvé" . '</td>';
+               }
+
                '</tr>';
+            }
+            echo '</tbody>
+                      </table>';
+
+            $hist->closeCursor();
          }
-         echo '</tbody>
-                  </table>';
-         
-         $hist ->closeCursor(); 
-      
-      } 
-   }
+      }
 
-   ?>
-
-
-
-   <a href="index.php" class="btn btn-secondary">Back Home</a>
-
-
-
-
+      ?>
+   </div>
 </body>
 
 </html>
-<section class="">
-   <!-- Footer -->
-   <footer class="text-center text-white" style="background-color: black;">
-      <!-- Grid container -->
-      <div class="container p-4 pb-0">
-         <!-- Section: CTA -->
-         <section class="">
-            <p class="d-flex justify-content-center align-items-center">
-               <span class="me-3" style="color:white;">Register for free</span>
-               <a href="sign-up.php" class="btn btn-light">Sign up !</a>
-            </p>
-         </section>
-         <!-- Section: CTA -->
-      </div>
-      <!-- Grid container -->
-
-      <!-- Copyright -->
-      <div class="text-center p-3" style="background-color: black;">
-         © 2020 Copyright:
-         <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-         <a href="contact.php" class="btn btn-light" style="margin-left:20px;">About us</a>
-      </div>
-      <!-- Copyright -->
-   </footer>
-   <!-- Footer -->
-</section>

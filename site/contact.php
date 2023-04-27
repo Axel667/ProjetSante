@@ -2,22 +2,13 @@
 <html lang="fr">
 
 <head>
-
    <meta charset="UTF-8">
-
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
    <title>Contact</title>
-
+   <script src="https://cdn.tailwindcss.com"></script>
    <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
-
    <link rel="stylesheet" type="text/css" href="site.css" />
-
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-
 </head>
 
 <body>
@@ -38,16 +29,22 @@
 
             <!-- primary nav -->
             <div class="hidden md:flex items-center space-x-1">
-               <a href="testmap.php" class="px-4 py-2">Carte</a>
-               <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
-               <a href="evolutiontest.php" class="px-4 py-2">Evolution</a>
-               <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
-               <a href="datasets.php" class="px-4 py-2">Datasets</a>
+               <a href="testmap.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Carte</a>
+               <a href="comparaison2.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Comparer</a>
+               <a href="evolutiontest.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Evolution</a>
+               <a href="nos-article.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Nos
+                  Articles</a>
+               <a href="datasets.php"
+                  class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Datasets</a>
                <?php
                session_start();
                if (!isset($_SESSION['client'])) {
                } else {
-                  echo '<a href="create.php" class="mx-2">Créer</a>';
+                  echo '<a href="create.php" class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Créer</a>';
                } ?>
             </div>
          </div>
@@ -88,7 +85,6 @@
                   Sign-up
                </span>
             </a>';
-
             } else {
                echo '<a href="profil.php" class="mx-4"><svg class="h-8 w-8 mx-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                   stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -106,46 +102,42 @@
          </div>
       </div>
    </nav>
-
-   <a href="index.php" class="btn btn-secondary">Back Home</a>
-
-   <h2>Contact : </h2>
-
-   <p>
-      Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS <br />
-      à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créé par 6 jeunes étudiants en plein <br />
-      apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. <br />
-      Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie <br />de
-      chaque
-      pays à travers des graphiques permettant la comparaison du PIB par habitant, l'espérance de vie,<br /> le taux
-      d'obésité
-      mais aussi les dépenses en santé, entre pays. Mais aussi en explorant par le biais d'un globe<br /> terrestre, il
-      permet
-      aussi aux utilisateurs de créer des articles à partir des données mises à disposition de plus les articles créés
-      et approuvés seront consultables.
-   </p>
-
-   <h4>Fondateurs : </h4>
-
-   <ul>
-      <li>Girondin Audric</li>
-      <li>Can Arisoy Ivan</li>
-      <li>Carot Axel</li>
-      <li>Duckes Jonathan</li>
-      <li>Ravalisaona Malala</li>
-      <li>Abdallah Rachydah</li>
-   </ul>
-
-   <p>Vous pouvez nous joindre en laissant un message dans le formulaire ci-dessous : </p>
-
-   <form method="post" action="#">
-      <div class="mb-3 mt-3">
-         <label for="comment">Comments:</label>
-         <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
-      </div>
-      <button type="submit" class="btn btn-secondary">Envoyer</button>
-   </form>
-
+   <div class="m-4 p-4">
+      <h2 class="text-2xl font-semibold mt-6 mb-4">Contact :</h2>
+      <p class="mb-6">
+         Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS <br />
+         à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créé par 6 jeunes étudiants en plein <br />
+         apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. <br />
+         Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie <br />de
+         chaque
+         pays à travers des graphiques permettant la comparaison du PIB par habitant, l'espérance de vie,<br /> le taux
+         d'obésité
+         mais aussi les dépenses en santé, entre pays. Mais aussi en explorant par le biais d'un globe<br /> terrestre,
+         il
+         permet
+         aussi aux utilisateurs de créer des articles à partir des données mises à disposition de plus les articles
+         créés
+         et approuvés seront consultables.
+      </p>
+      <h4 class="text-xl font-semibold mb-2">Fondateurs :</h4>
+      <ul class="list-disc list-inside mb-6">
+         <li>Girondin Audric</li>
+         <li>Can Arisoy Ivan</li>
+         <li>Carot Axel</li>
+         <li>Duckes Jonathan</li>
+         <li>Ravalisaona Malala</li>
+         <li>Abdallah Rachydah</li>
+      </ul>
+      <p class="mb-6">Vous pouvez nous joindre en laissant un message dans le formulaire ci-dessous :</p>
+      <form method="post" action="#">
+         <div class="mb-4">
+            <label for="comment" class="block mb-2">Comments:</label>
+            <textarea class="form-textarea w-full h-24 px-2 py-1 border border-gray-300 rounded" rows="5" id="comment"
+               name="text"></textarea>
+         </div>
+         <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Envoyer</button>
+      </form>
+   </div>
 </body>
 
 </html>

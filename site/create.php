@@ -103,40 +103,28 @@
          </div>
       </div>
    </nav>
+   <div class="container mt-6 mx-auto px-4">
+      <h2 class="text-2xl font-semibold mb-4">Créer un article :
+      </h2>
+      <p class="mb-4">Sur cette page, vous pouvez créer un article à partir des datasets et des graphiques mis à votre
+         disposition sur notre site.</p>
+   </div>
+   <?php
+   echo '<div class="m-4 p-4">';
+   if (isset($_SESSION['client'])) {
+      echo '<form method="post" action="enregistrer.php" class="space-y-4">';
 
-   <a href="index.php" class="btn btn-secondary">Back Home</a>
-
-   <h2>Créer un article :</h2>
-
-   <p>Sur cette page vous pouvez créer un article à partir des des datasets et des graphiques mis à votre disposition
-      sur notre site.
-   <p>
-      <?php
-
-      if (isset($_SESSION['client'])) {
-
-         echo '<form method="post" action="enregistrer.php" >';
-
-         if (!isset($_GET['var1'])) {
-            echo '<div class="mb-3 mt-3">
-        <label for="Titre" class="form-label">Titre : </label>
-        <input type="titre" class="form-group" id="titre" name="titre"></div>';
-         } elseif (isset($_GET['var1'])) {
-            echo '<div class="mb-3 mt-3">
-        <label for="Titre" class="form-label">Titre : </label>
-        <input type="titre" class="form-group" id="titre" name="titre" value=' . $_GET['var1'] . '></div>';
-         }
-         if (!isset($_GET['var2'])) {
-            echo '<div class="mb-3 mt-3">
-        <label for="Auteur" class="form-label">Auteur : </label>
-        <input type="auteur" class="form-group" id="auteur" name="auteur"></div>';
-         } elseif (isset($_GET['var2'])) {
-            echo '<div class="mb-3 mt-3">
-        <label for="Auteur" class="form-label">Auteur : </label>
-        <input type="auteur" class="form-group" id="auteur" name="auteur" value=' . $_GET['var2'] . '></div>';
-         }
-         echo '<div>
-        Pays : <select class="form-group" name="pays" value ="">
+      if (!isset($_GET['var1'])) {
+         echo '<div><label for="titre" class="font-semibold">Titre :</label> <input type="titre" class="border border-gray-400 rounded py-1 px-2" id="titre" name="titre"></div>';
+      } elseif (isset($_GET['var1'])) {
+         echo '<div><label for="titre" class="font-semibold">Titre :</label> <input type="titre" class="border border-gray-400 rounded py-1 px-2" id="titre" name="titre" value=' . $_GET['var1'] . '></div>';
+      }
+      if (!isset($_GET['var2'])) {
+         echo '<div><label for="auteur" class="font-semibold">Auteur :</label> <input type="auteur" class="border border-gray-400 rounded py-1 px-2" id="auteur" name="auteur"></div>';
+      } elseif (isset($_GET['var2'])) {
+         echo '<div><label for="auteur" class="font-semibold">Auteur :</label> <input type="auteur" class="border border-gray-400 rounded py-1 px-2" id="auteur" name="auteur" value=' . $_GET['var2'] . '></div>';
+      }
+      echo '<div><label for="pays" class="font-semibold">Pays :</label> <select class="border border-gray-400 rounded py-1 px-2" name="pays" value ="">
         <OPTION VALUE="">Sélectionnez un pays</OPTION>
         <OPTION VALUE="Aruba">Aruba</OPTION>
         <OPTION VALUE="Afghanistan">Afghanistan</OPTION>
@@ -335,28 +323,18 @@
         <OPTION VALUE="World">World</OPTION>
         </SELECT></div>';
 
-         if (!isset($_GET['var4'])) {
-
-            echo '<div class="mb-3 mt-3">
-        <label for="article">Article : </label>
-        <textarea class="form-control" rows="5" id="comment" name="art"></textarea>
-      </div>';
-         } elseif (isset($_GET['var4'])) {
-            echo '<div class="mb-3 mt-3">
-        <label for="article">Article : </label>
-        <textarea class="form-control" rows="5" id="comment" name="art">' . $_GET['var4'] . '</textarea>
-        
-        </div>';
-         }
-
-         echo '<button type="submit" class="btn btn-secondary">Enregistrer</button>
-
-    </form>';
-      } else {
-         echo '<p>Veuillez vous connecter afin créer un article</p>';
+      if (!isset($_GET['var4'])) {
+         echo '<div><label for="comment" class="font-semibold">Article :</label> <textarea class="form-textarea border border-gray-400 rounded py-1 px-2 w-full" rows="5" id="comment" name="art"></textarea></div>';
+      } elseif (isset($_GET['var4'])) {
+         echo '<div><label for="comment" class="font-semibold">Article :</label> <textarea class="form-textarea border border-gray-400 rounded py-1 px-2 w-full" rows="5" id="comment" name="art">' . $_GET['var4'] . '</textarea></div>';
       }
-      ?>
-
+      echo '<button type="submit" class="bg-gray-700 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded">Enregistrer</button>
+</form>';
+   } else {
+      echo '<p class="text-red-600">Veuillez vous connecter afin de créer un article</p>';
+   }
+   echo '</div>';
+   ?>
 
 </body>
 

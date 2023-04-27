@@ -101,28 +101,36 @@
          </div>
       </div>
    </nav>
+   <div class="container mt-6 mx-auto px-4">
+      <h2 class="text-2xl font-semibold mb-4">Datasets :
+      </h2>
+      <p class="mb-4">Sur cette page, nous avons mis à votre disposition les données utilisées pour nos graphiques
+         <br /> que nous mettons régulièrement à jour.
+      </p>
+      <h3 class="text-xl font-semibold mb-4">Données :</h3>
+      <ul class="space-y-4">
+         <li class="flex items-center">
+            <span class="mr-4">Format SQL :</span> <a href="data/data.sql"><img src="img/sql.png"
+                  class="h-16 w-auto"></a>
+         </li>
+         <li class="flex items-center">
+            <span class="mr-4">Format CSV :</span> <a href="data/data.csv"><img src="img/csv.png"
+                  class="h-16 w-auto"></a>
+         </li>
+         <li class="flex items-center">
+            <span class="mr-4">Format XLSX :</span> <a href="data/data.xlsx"><img src="img/xlsx.png"
+                  class="h-16 w-auto"></a>
+         </li>
+         <li class="flex items-center">
+            <span class="mr-4">Format JSON :</span> <a href="data/data.json" target="_blank"><img src="img/json.png"
+                  class="h-16 w-auto"></a>
+         </li>
+      </ul>
+   </div>
+   <div class="m-4 p-4">
 
 
-   <h2>Datasets :</h2>
-   <p>
-      Sur ctte page nous avons mis à votre disposition, les données utilisées pour nos graphiques
-      <br /> que nous mettons régulièrement à jour.
-   </p>
-   <h3>Données :</h3>
-   <ul class="list-container">
-      <li class="list">
-         Format SQL : <a href="data/data.sql"><img src="img/sql.png" style="height:60px"></a>
-      </li>
-      <li class="list">
-         Format CSV : <a href="data/data.csv"><img src="img/csv.png" style="height:60px"></a>
-      </li>
-      <li class="list">
-         Format XLSX : <a href="data/data.xlsx"><img src="img/xlsx.png" style="height:60px"></a>
-      </li>
-      <li class="list">
-         Format JSON : <a href="data/data.json" target="_blank"><img src="img/json.png" style="height:60px"></a>
-      </li>
-   </ul>
+   </div>
 </body>
 
 </html>
