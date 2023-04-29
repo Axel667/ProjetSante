@@ -103,22 +103,22 @@
          </div>
       </div>
    </nav>
-
-
-   <div class="m-4 p-4">
-      <h3 class="text-xl font-semibold mb-4">Votre profil :</h3>
+   <div class="m-4 p-4 bg-gray-100 rounded-lg shadow-md">
+      <h3 class="text-2xl font-semibold mb-4 text-indigo-600">Votre profil :</h3>
 
       <?php
       if (!isset($_SESSION['client'])) {
          echo "<p>Veuillez vous connecter</p>";
       } else {
-         echo "<p class='mb-2'>Civilité : " . $_SESSION['client']['genre'] . "</p>";
-         echo "<p class='mb-2'>Nom : " . $_SESSION['client']['Nom'] . "</p>";
-         echo "<p class='mb-2'>Prénom : " . $_SESSION['client']['Prenom'] . "</p>";
-         echo "<p class='mb-2'>Adresse e-mail : " . $_SESSION['client']['mail'] . "</p>";
-         echo "<p class='mb-4'> Fonction : " . $_SESSION['client']['fonction'] . "</p>";
+         echo "<div class='grid grid-cols-2 gap-4 mb-4'>";
+         echo "<div class='bg-white p-4 rounded-lg shadow-md'>Civilité : <strong>" . $_SESSION['client']['genre'] . "</strong></div>";
+         echo "<div class='bg-white p-4 rounded-lg shadow-md'>Nom : <strong>" . $_SESSION['client']['Nom'] . "</strong></div>";
+         echo "<div class='bg-white p-4 rounded-lg shadow-md'>Prénom : <strong>" . $_SESSION['client']['Prenom'] . "</strong></div>";
+         echo "<div class='bg-white p-4 rounded-lg shadow-md'>Adresse e-mail : <strong>" . $_SESSION['client']['mail'] . "</strong></div>";
+         echo "<div class='bg-white p-4 rounded-lg shadow-md'>Fonction : <strong>" . $_SESSION['client']['fonction'] . "</strong></div>";
+         echo "</div>";
 
-         echo "<h3 class='text-xl font-semibold mb-4'>Vos articles :</h3>";
+         echo "<h3 class='text-2xl font-semibold mb-4 text-indigo-600'>Vos articles :</h3>";
 
          $bdd = getBD();
          // Récupérer l'ID du client connecté
@@ -132,38 +132,30 @@
             echo "<p>Vous n'avez pas encore créer d'article pour le moment.</p>";
          } else {
             // Afficher le tableau répertoriant tout les articles créés du client connecté
-            echo '<table class="table-auto w-full text-left border-collapse">
-                      <thead>
-                      <tr>
-                         <th class="px-4 py-2 border border-gray-400">Id de l\'article</th>
-                         <th class="px-4 py-2 border border-gray-400">Nom de l\'article</th>
-                         <th class="px-4 py-2 border border-gray-400">Pays</th>
-                         <th class="px-4 py-2 border border-gray-400">Statut</th>
-                      </tr>
-                      </thead>
-                      <tbody>';
+            echo "<div class='grid grid-cols-4 gap-4 text-center bg-stone-800 rounded-md text-white p-4 mb-4'>";
+            echo '
+             <div>Id de l\'article</div>
+             <div>Nom de l\'article</div>
+             <div>Pays</div>
+             <div>Statut</div>';
+            echo "</div>";
 
             while ($h = $hist->fetch()) {
 
-               echo '<tr>
-                      <td class="px-4 py-2 border border-gray-400">' . $h['id_article'] . '</td>
-                      <td class="px-4 py-2 border border-gray-400">' . $h['Titre'] . '</td>
-                      <td class="px-4 py-2 border border-gray-400">' . $h['Pays'] . '</td>';
+               echo "<div class='grid grid-cols-4 gap-4 text-center bg-white rounded-md text-gray-900 p-4 mb-2'>";
+               echo "<div>" . $h['id_article'] . "</div>";
+               echo "<div>" . $h['Titre'] . "</div>";
+               echo "<div>" . $h['Pays'] . "</div>";
                if ($h['approuve'] == 0) {
-                  echo ' <td class="px-4 py-2 border border-gray-400">' . "En cours de vérification" . '</td>';
+                  echo ' <div>' . "En cours de vérification" . '</div>';
                } elseif ($h['approuve'] == 1) {
-                  echo ' <td class="px-4 py-2 border border-gray-400">' . "Approuvé" . '</td>';
+                  echo ' <div>' . "Approuvé" . '</div>';
                }
-
-               '</tr>';
+               echo "</div>";
             }
-            echo '</tbody>
-                      </table>';
-
             $hist->closeCursor();
          }
       }
-
       ?>
    </div>
 </body>
