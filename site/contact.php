@@ -129,14 +129,14 @@
          <li>Abdallah Rachydah</li>
       </ul>
       <p class="mb-6">Vous pouvez nous joindre en laissant un message dans le formulaire ci-dessous :</p>
-      <form method="post" action="#">
-         <div class="mb-4">
-            <label for="comment" class="block mb-2">Comments:</label>
-            <textarea class="form-textarea w-full h-24 px-2 py-1 border border-gray-300 rounded" rows="5" id="comment"
-               name="text"></textarea>
-         </div>
-         <button type="submit" class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700">Envoyer</button>
-      </form>
+      <ul class="list-disc list-inside mb-6">
+         <li>audric.girondin@etu.univ-montp3.fr</li>
+         <li>ivan.can-arisoy@etu-univ-montp3.fr</li>
+         <li>axel.carot-gelas@etu.univ-montpellier.fr</li>
+         <li>jonathan.duckes@etu.univ-montp3.fr</li>
+         <li>malala-ny-aina.ravalisaona@etu.univ-montp3.fr</li>
+         <li>rachydah.abdallah@etu.univ-montp3.fr</li>
+      </ul>
    </div>
 </body>
 

@@ -8,6 +8,7 @@
    <title>Carte</title>
    <link href="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.css" rel="stylesheet">
    <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+   <link rel="shortcut icon" type="image/png" href="https://animaproject.s3.amazonaws.com/home/favicon.png" />
    <link rel="stylesheet" href="Projet-SantEco_Map/Projet-SantEco_Map/map.css">
    <script src="https://cdn.tailwindcss.com"></script>
    <link rel="stylesheet" href="map2.css">
