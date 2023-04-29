@@ -28,16 +28,22 @@
 
          <!-- primary nav -->
          <div class="hidden md:flex items-center space-x-1">
-            <a href="testmap.php" class="px-4 py-2">Carte</a>
-            <a href="comparaison2.php" class="px-4 py-2">Comparer</a>
-            <a href="evolutiontest.php" class="px-4 py-2">Evolution</a>
-            <a href="nos-article.php" class="px-4 py-2">Nos Articles</a>
-            <a href="datasets.php" class="px-4 py-2">Datasets</a>
+            <a href="testmap.php"
+               class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Carte</a>
+            <a href="comparaison2.php"
+               class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Comparer</a>
+            <a href="evolutiontest.php"
+               class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Evolution</a>
+            <a href="nos-article.php"
+               class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Nos
+               Articles</a>
+            <a href="datasets.php"
+               class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Datasets</a>
             <?php
             session_start();
             if (!isset($_SESSION['client'])) {
             } else {
-               echo '<a href="create.php" class="mx-2">Créer</a>';
+               echo '<a href="create.php" class="px-4 py-4 border-2 border-stone-800 rounded-md hover:border-2  hover:border-stone-100/10">Créer</a>';
             } ?>
          </div>
       </div>
@@ -91,51 +97,54 @@
                </span></a>';
          }
          ?>
+
       </div>
    </div>
 </nav>
 
 <body>
-   <a href="index.php" class="btn btn-secondary">Back Home</a>
-   <br />
-   <br />
-   <?php
-   echo "<p>Voici les résultats des données pour la recherche : <strong>'" . $_GET['q'] . "'</strong></p>";
-   include("baseD.php");
-   $bdd = getBD();
-   if (isset($_GET['q']) and !empty($_GET['q'])) {
-      $rech = htmlspecialchars($_GET['q']);
-      $data = $bdd->query('select * from data where Pays LIKE "%' . $rech . '%" ORDER by Annee');
-      if ($data->rowCount() > 0 and (!empty($data))) {
-         echo "<div class='row bg-dark text-white'>";
-         echo '
-                <div class="col-sm-2">Pays</div>
-                <div class="col-sm-2">Code Pays</div>
-                <div class="col-sm-2">Année</div>
-                <div class="col-sm-2">PIB par habitant</div>
-                <div class="col-sm-2">Espérance de vie</div>
-                <div class="col-sm-1">Taux d\'obésité(%)</div>
-                <div class="col-sm-1">Dépenses en santé($)</div>';
-         while ($d = $data->fetch()) {
-            echo "<div class='row bg-light text-dark'>";
-            echo "<div class='col-sm-2'>" . $d['Pays'] . "</div>";
-            echo "<div class='col-sm-2'>" . $d['Code'] . "</div>";
-            echo "<div class='col-sm-2'>" . $d['Annee'] . "</div>";
-            echo "<div class='col-sm-2'>" . $d['PIB par habitant'] . "</div>";
-            echo "<div class='col-sm-2'>" . $d['espe_vie'] . "</div>";
-            echo "<div class='col-sm-1'>" . $d['tx_obesite(%)'] . "</div>";
-            echo "<div class='col-sm-1'>" . $d['depenses_sante($)'] . "</div>";
+   <div class="m-4 p-4">
+      <?php
+      echo "<div class='bg-gradient-to-r from-indigo-950 to-purple-500 text-white px-6 py-4 rounded-xl shadow-md mb-6'>";
+      echo "<p class='text-lg font-semibold'>Voici les résultats des données pour la recherche : <strong>'" . $_GET['q'] . "'</strong></p>";
+      echo "</div>";
+      include("baseD.php");
+      $bdd = getBD();
+      if (isset($_GET['q']) and !empty($_GET['q'])) {
+         $rech = htmlspecialchars($_GET['q']);
+         $data = $bdd->query('select * from data where Pays LIKE "%' . $rech . '%" ORDER by Annee');
+         if ($data->rowCount() > 0 and (!empty($data))) {
+            echo "<div class='grid grid-cols-7 gap-4 text-center bg-stone-800 rounded-md text-white p-4 mb-4'>";
+            echo '
+                <div>Pays</div>
+                <div>Code Pays</div>
+                <div>Année</div>
+                <div>PIB par habitant</div>
+                <div>Espérance de vie</div>
+                <div>Taux d\'obésité(%)</div>
+                <div>Dépenses en santé($)</div>';
             echo "</div>";
+
+            while ($d = $data->fetch()) {
+               echo "<div class='grid grid-cols-7 gap-4 text-center bg-gray-100 rounded-md text-gray-900 p-4 mb-2'>";
+               echo "<div>" . $d['Pays'] . "</div>";
+               echo "<div>" . $d['Code'] . "</div>";
+               echo "<div>" . $d['Annee'] . "</div>";
+               echo "<div>" . $d['PIB par habitant'] . "</div>";
+               echo "<div>" . $d['espe_vie'] . "</div>";
+               echo "<div>" . $d['tx_obesite(%)'] . "</div>";
+               echo "<div>" . $d['depenses_sante($)'] . "</div>";
+               echo "</div>";
+            }
+            $data->closeCursor();
+         } else {
+            echo "<p>Aucune correspondance pour votre recherche</p>";
          }
-         $data->closeCursor();
       } else {
-         echo "<p>Aucune correspondance pour votre recherchre</p>";
+         echo "<p>Veuillez saisir une champ dans la barre de recherche</p>";
       }
-   } else {
-      echo "<p>Veuillez saisir une champ dans la barre de recherche</p>";
-   }
-   ?>
-   </>
+      ?>
+   </div>
 </body>
 
 </html>
