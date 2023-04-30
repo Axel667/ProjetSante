@@ -234,13 +234,53 @@
             $decile1 += $valeurs[floor(count($valeurs) * 0.1)];
          }
          $decile2 = $valeurs[floor(count($valeurs) * 0.2)];
+         if ($decile2 ==""){
+            $decile2 = 0;
+         }else{
+            $decile2 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile3 = $valeurs[floor(count($valeurs) * 0.3)];
+         if ($decile3 ==""){
+            $decile3 = 0;
+         }else{
+            $decile3 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile4 = $valeurs[floor(count($valeurs) * 0.4)];
+         if ($decile4 ==""){
+            $decile4 = 0;
+         }else{
+            $decile4 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile5 = $valeurs[floor(count($valeurs) * 0.5)];
+         if ($decile5 ==""){
+            $decile5 = 0;
+         }else{
+            $decile5 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile6 = $valeurs[floor(count($valeurs) * 0.6)];
+         if ($decile6 ==""){
+            $decile6 = 0;
+         }else{
+            $decile6 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile7 = $valeurs[floor(count($valeurs) * 0.7)];
+         if ($decile7 ==""){
+            $decile7 = 0;
+         }else{
+            $decile7 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile8 = $valeurs[floor(count($valeurs) * 0.8)];
+         if ($decile8 ==""){
+            $decile8 = 0;
+         }else{
+            $decile8 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile9 = $valeurs[floor(count($valeurs) * 0.9)];
+         if ($decile9 ==""){
+            $decile9 = 0;
+         }else{
+            $decile9 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
       }
 
       ?>
