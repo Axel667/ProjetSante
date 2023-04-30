@@ -135,6 +135,7 @@
       while ($ligne = $rep3->fetch()) {
          echo "<div class='flex gap-4 mb-4'>";
          echo "<div class='bg-gray-100 p-4 rounded flex items-center'><span class='font-bold'>Titre :</span> <h2 class='text-xl font-semibold text-blue-600 ml-2'>" . $ligne['Titre'] . "</h2></div>";
+         echo "<div class='bg-gray-100 p-4 rounded flex items-center'><span class='font-bold'>Pays :</span> <h3 class='text-lg font-semibold text-purple-600 ml-2'>" . $ligne['Pays'] . "</h3></div>";
          echo "<div class='bg-gray-100 p-4 rounded flex items-center'><span class='font-bold'>Auteur :</span> <h3 class='text-lg font-semibold text-green-600 ml-2'>" . $ligne['auteur'] . "</h3></div>";
          echo "</div>";
          echo "<div class='mb-2'><span class='font-bold'>Article :</span> <div class='bg-gray-100 p-4 rounded'><p class='text-base'>" . $ligne['article'] . "</p></div></div>";
