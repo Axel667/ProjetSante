@@ -226,8 +226,13 @@
 
          // Tri des valeurs
          sort($valeurs);
-
+         
          $decile1 = $valeurs[floor(count($valeurs) * 0.1)];
+         if ($decile1 ==""){
+            $decile1 = 0;
+         }else{
+            $decile1 += $valeurs[floor(count($valeurs) * 0.1)];
+         }
          $decile2 = $valeurs[floor(count($valeurs) * 0.2)];
          $decile3 = $valeurs[floor(count($valeurs) * 0.3)];
          $decile4 = $valeurs[floor(count($valeurs) * 0.4)];
@@ -314,7 +319,7 @@ map.on('load', () => {
    }
 
    const layers = [
-      `Pour l'année ${année} nous avons :`,
+      `Pour <?php echo "$données "; ?> de l'année ${année} nous avons :`,
       '> ' + d1,
       '> ' + d2,
       '> ' + d3,
