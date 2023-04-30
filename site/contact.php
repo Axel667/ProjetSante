@@ -105,14 +105,14 @@
    <div class="m-4 p-4">
       <h2 class="text-2xl font-semibold mt-6 mb-4">Contact :</h2>
       <p class="mb-6">
-         Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS <br />
-         à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créé par 6 jeunes étudiants en plein <br />
-         apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. <br />
-         Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie <br />de
+         Bonjour, nous sommes le groupe SantEconomie actuellement en dernière année de licence MIASHS 
+         à l'université Paul-Valéry 3 de Montpellier. En effet ce site a été créé par 6 jeunes étudiants en plein 
+         apprentissage des mathématiques et de l'informatiques appliquées aux sciences humaines et sociales. 
+         Ce site a pour but de renseigner quiconque le souhaite, sur les données reliant la santé et l'économie de
          chaque
-         pays à travers des graphiques permettant la comparaison du PIB par habitant, l'espérance de vie,<br /> le taux
+         pays à travers des graphiques permettant la comparaison du PIB par habitant, l'espérance de vie, le taux
          d'obésité
-         mais aussi les dépenses en santé, entre pays. Mais aussi en explorant par le biais d'un globe<br /> terrestre,
+         mais aussi les dépenses en santé, entre pays. Mais aussi en explorant par le biais d'un globe terrestre,
          il
          permet
          aussi aux utilisateurs de créer des articles à partir des données mises à disposition de plus les articles
