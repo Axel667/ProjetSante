@@ -123,6 +123,7 @@
             echo "<div class='bg-gray-100 p-4 rounded'><p class='font-semibold'> Approuvée : oui </p></div>";
          }
          echo "<div class='bg-gray-100 p-4 rounded flex items-center'><span class='font-bold'>Titre :</span> <h2 class='text-xl font-semibold text-blue-600 ml-2'>" . $ligne['Titre'] . "</h2></div>";
+         echo "<div class='bg-gray-100 p-4 rounded flex items-center'><span class='font-bold'>Pays :</span> <h3 class='text-lg font-semibold text-purple-600 ml-2'>" . $ligne['Pays'] . "</h3></div>";
          echo "<div class='bg-gray-100 p-4 rounded flex items-center'><span class='font-bold'>Auteur :</span> <h3 class='text-lg font-semibold text-green-600 ml-2'>" . $ligne['auteur'] . "</h3></div>";
          echo "<div class='flex'><a type='button' class='bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2 flex items-center justify-center' href ='approuve.php?id_article=$aa'>Approuver</a>
       <a type='button' class='bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded flex items-center justify-center' href='desapprouver.php?id_article=$aa'>Désapprouver</a></div>";
