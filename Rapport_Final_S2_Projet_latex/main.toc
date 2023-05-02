@@ -1,0 +1,32 @@
+\babel@toc {french}{}
+\contentsline {chapter}{\numberline {1}Introduction}{3}%
+\contentsline {section}{\numberline {1.1}Contexte du projet}{3}%
+\contentsline {section}{\numberline {1.2}Enjeux}{3}%
+\contentsline {section}{\numberline {1.3}Périmètre du projet}{4}%
+\contentsline {chapter}{\numberline {2}Description technique}{5}%
+\contentsline {section}{\numberline {2.1}Technologies utilisées}{5}%
+\contentsline {section}{\numberline {2.2}Planning}{6}%
+\contentsline {section}{\numberline {2.3}Pré-traitements du jeu de données}{6}%
+\contentsline {section}{\numberline {2.4}Modèle de la base de donnée (MCD, MOD)}{7}%
+\contentsline {subsection}{\numberline {2.4.1}MCD}{7}%
+\contentsline {subsection}{\numberline {2.4.2}MOD}{7}%
+\contentsline {section}{\numberline {2.5}Schéma de l'architecture}{8}%
+\contentsline {chapter}{\numberline {3}Description fonctionnelle}{9}%
+\contentsline {section}{\numberline {3.1}L'accueil}{9}%
+\contentsline {section}{\numberline {3.2}La carte}{9}%
+\contentsline {section}{\numberline {3.3}Comparer}{9}%
+\contentsline {section}{\numberline {3.4}Évolution}{9}%
+\contentsline {section}{\numberline {3.5}Nos articles}{10}%
+\contentsline {section}{\numberline {3.6}Datasets}{10}%
+\contentsline {section}{\numberline {3.7}Barre de recherche}{10}%
+\contentsline {section}{\numberline {3.8}Sign-up}{10}%
+\contentsline {section}{\numberline {3.9}Sign-in}{10}%
+\contentsline {section}{\numberline {3.10}Page profil}{10}%
+\contentsline {section}{\numberline {3.11}Log out}{11}%
+\contentsline {section}{\numberline {3.12}Créer un article}{11}%
+\contentsline {section}{\numberline {3.13}À propos}{11}%
+\contentsline {chapter}{\numberline {4}Conclusion}{12}%
+\contentsline {section}{\numberline {4.1}Tableau des tâches}{12}%
+\contentsline {section}{\numberline {4.2}Résumé des contributions}{13}%
+\contentsline {section}{\numberline {4.3}Difficultés rencontrées}{13}%
+\contentsline {section}{\numberline {4.4}Conclusions générales et perspectives}{14}%
