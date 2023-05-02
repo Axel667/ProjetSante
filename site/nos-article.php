@@ -147,9 +147,9 @@
                }
             } else {
                if (isset($_GET['rech']) and !empty($_GET['rech'])) {
-                  $rech = htmlspecialchars($_GET['rech']);
-                  $Rart2 = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%' . $rech . '%"  and approuve = 1');
-                  if ($Rart2->rowCount() > 0 and (!empty($Rart))) {
+                  $rech2 = htmlspecialchars($_GET['rech']);
+                  $Rart2 = $bdd->query('SELECT * FROM sourcer where Pays LIKE "%' . $rech2 . '%" and approuve = 1');
+                  if ($Rart2->rowCount() > 0 and (!empty($Rart2))) {
                      while ($affart2 = $Rart2->fetch()) {
                         echo "<ul class='list-none'><li class='mb-2'><a class='text-indigo-500 hover:text-indigo-700 font-semibold' href ='article.php?id_article=" . $affart2['id_article'] . "'><em><strong>" . $affart2['Titre'] . "</em></strong></a></li></ul>";
                      }

@@ -134,7 +134,7 @@
             // Afficher le tableau répertoriant tout les articles créés du client connecté
             echo "<div class='grid grid-cols-4 gap-4 text-center bg-stone-800 rounded-md text-white p-4 mb-4'>";
             echo '
-             <div>Id de l\'article</div>
+             <div>Identifiant  de l\'article</div>
              <div>Nom de l\'article</div>
              <div>Pays</div>
              <div>Statut</div>';
