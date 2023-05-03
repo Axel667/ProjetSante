@@ -104,8 +104,16 @@
    <div class="container mt-6 mx-auto px-4">
       <h2 class="text-2xl font-semibold mb-4">Datasets :
       </h2>
-      <p class="mb-4">Sur cette page, nous avons mis à votre disposition les données utilisées pour nos graphiques
-         <br /> que nous mettons régulièrement à jour.
+      <h3 class="text-xl font-semibold mb-4">Pré-traitements :</h3>
+
+      <p class="mb-4">
+      Pour les 3 premiers CSV on éliminera les colonnes population et continent puisque nous n’en avons pas besoin dans notre modèle.
+      On filtrera les valeurs nulles, donc on supprimera les années ou il manque des informations, ainsi on réduira aussi notre jeu de donnée. Pour supprimer les colonnes inutiles ou les lignes vides on le fera grâce à aux filtres excel.
+      Ensuite pour avoir notre CSV final qu’on importera sur SQL, on fusionnera tous nos fichiers à l’aide de la librairie pandas de python, plus précisément grâce à la fonction merge qui permet de fusionner plusieurs CSV/Dataframe en s’appuyant sur les colonnes identique contenant les mêmes informations. Dans notre cas il s’agira des colonnes Entity, Code, ou encore Year pour toutes les informations de la même année.
+      On regroupera donc toutes nos données sous un même fichier : data_csv
+      </p>
+      <p class="mb-4">De plus sur cette page, nous avons mis à votre disposition les données utilisées pour nos graphiques
+         que nous mettons régulièrement à jour.
       </p>
       <h3 class="text-xl font-semibold mb-4">Données :</h3>
       <ul class="space-y-4">
